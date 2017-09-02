@@ -29,6 +29,8 @@ My class supports currently the follow syntax. But Pull Request are really welco
 #### Requirements
  * PHP 7
 
+You find the solution and the tests in the [repository on GitHub](https://github.com/bueltge/marksimple).
+
 See the test directory for an example with two different usages. The test directory works as PWA, for examples see only the file `index.php`.
 
 #### Code block with four spaces
@@ -54,4 +56,6 @@ Copyright (c) 2017 [Frank Bültge](https://bueltge.de)
 Good news, this plugin is free for everyone! Since it's released under the [MIT License](https://github.com/inpsyde/marksimple/blob/master/LICENSE) you can use it free of charge on your personal or commercial website.
 
 ## Contributing
+ * [GitHub Repository](https://github.com/bueltge/marksimple)
+
 All feedback / bug reports / pull requests are welcome.
