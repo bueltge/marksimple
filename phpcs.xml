@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<ruleset name="MarkSimple Ruleset">
+	<!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
+	<!-- @see https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file -->
+	<description>Store the rule set changes for default packages.</description>
+
+	<file>*.php</file>
+	<file>test/*.php</file>
+
+	<exclude-pattern>vendor/*</exclude-pattern>
+	<exclude-pattern>node_modules/*</exclude-pattern>
+	<exclude-pattern>*.min.js</exclude-pattern>
+
+	<!-- I write lot of WordPress stuff, so that I use this rules also on NonWordPress topics. -->
+	<!-- Include the WordPress ruleset, with exclusions. -->
+
+	<rule ref="WordPress-VIP">
+		<exclude name="WordPress.VIP.RestrictedFunctions.runtime_configuration" />
+		<exclude name="WordPress.VIP.RestrictedVariables.cache_constraints" />
+		<exclude name="WordPress.VIP.RestrictedFunctions.cookies" />
+		<exclude name="WordPress.PHP.DiscouragedFunctions.Discouraged" />
+		<exclude name="WordPress.VIP.RestrictedFunctions.file_get_contents" />
+	</rule>
+
+	<rule ref="WordPress">
+		<!-- Yoda conditions are not helpful, cost only time. -->
+		<exclude name="WordPress.PHP.YodaConditions" />
+
+		<!-- <exclude name="WordPress.XSS.EscapeOutput" /> -->
+		<exclude name="WordPress.WhiteSpace.ScopeIndent.Incorrect" />
+		<exclude name="WordPress.Arrays.ArrayKeySpacingRestrictions" />
+		<exclude name="WordPress.Arrays.ArrayDeclaration.KeyNotAligned" />
+		<!-- Remove spaces instead of tabs check -->
+		<exclude name="WordPress.Arrays.ArrayDeclaration.ValueNotAligned" />
+		<exclude name="WordPress.Arrays.ArrayDeclaration.CloseBraceNotAligned" />
+		<!-- <exclude name="WordPress.Variables.GlobalVariables" /> -->
+	</rule>
+</ruleset>

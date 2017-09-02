@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "name": "MarkSimple Tests and Examples",
+  "launch_path": "./",
+  "description": "An simple page that render a MarkDown file and create a site.",
+  "icons": {
+    "128": "/images/touch/icon-128x128.png"
+  },
+  "developer": {
+    "name": "Frank Bültge",
+    "url": "https://bueltge.de/"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "MarkSimple Tests and Examples",
+      "description": "An simple page that render a MarkDown file and create a site."
+    }
+  }
+}

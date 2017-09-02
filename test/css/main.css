@@ -1,0 +1,46 @@
+body {
+	margin: 2em 3em;
+	padding: 0;
+	background: #fdfeff;
+	color: #333;
+	font: 1.1em/1.3 Calibri, sans-serif;
+}
+
+code, pre {
+	font-family: 'monospace', 'Monaco';
+	line-height: 2;
+	white-space: pre-wrap;
+	background: #f4f5f6;
+	padding: 5px;
+}
+
+p, h2, h3, pre, li {
+	margin: .5em 0 0;
+}
+
+p {
+	margin-top: 1em;
+}
+
+h2 {
+	margin-top: 1.5em;
+}
+
+h3 + p, ul {
+	margin: 15px 0;
+}
+
+ul {
+	padding-left: 25px;
+}
+
+hr, footer {
+	margin-top: 3em;
+	border-top: 1px solid #d4d5d6;
+	border-width: 1px 0 0
+}
+
+blockquote {
+	padding-left: 40px;
+	border-left: 5px #7d7d7d solid;
+}
