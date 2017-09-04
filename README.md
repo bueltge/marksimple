@@ -24,8 +24,8 @@ My class supports currently the follow syntax. But Pull Request are really welco
  * Inline Code, `code` - ```
  * Code Blocks, `pre` - `    ` (4 spaces) or `	` (tab)
  * Links, `a` - `[Link Text](Link URL)`
- * Horizontal line, '---'
- * Break, new line, '<br>'
+ * Horizontal line, `---`
+ * Break, new line, `<br>`
 
 ## Usage
 #### Requirements
