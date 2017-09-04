@@ -8,7 +8,7 @@ declare( strict_types = 1 );
  * Also Kudos to the Regex tester https://regex101.com and https://www.debuggex.com/
  *
  * @since   2017-08-24
- * @version 2017-08-24
+ * @version 2017-09-04
  */
 
 namespace Bueltge\MarkSimple;
@@ -33,7 +33,7 @@ class MarkSimple {
 		// Strong, bold via double star ** or double underline __.
 		'#(?<!\\\)([*_]{2})([^\n]+?)\1#'                                        => '<strong>\2</strong>',
 		// Italic formatting via one star * or one underline _.
-		'#(?<!\\\)([*_])([^\n|`]+?)\1#'                                           => '<em>\2</em>',
+		'#(?<!\\\)([*_])([^\n|`]+?)\1#'                                         => '<em>\2</em>',
 		// ul List via star *.
 		'#^ *[*\-+] +(.*?)$#m'                                                  => 'self::get_ul_list',
 		// Inline Code via `.
@@ -48,8 +48,8 @@ class MarkSimple {
 		'#\s*<\/(ol|ul)>\n<\1>\s*#'                                             => "\n",
 		// Horizontal line via ---.
 		'#\n-{3,}#'                                                             => "\n<hr>",
-		// Leave br as new line helper.
-		'#&lt;br&gt;#'                                                        => "\n<br>",
+		// Leave br as new line helper, only on break with html > before.
+		'#(?!>).&lt;br&gt;#'                                                    => "\n<br>",
 	];
 
 	/**
