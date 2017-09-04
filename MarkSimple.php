@@ -102,8 +102,11 @@ class MarkSimple {
 
 		list( $temp, $char, $header ) = $content;
 		$heading_level = strlen( $char );
+		$header = trim( $header );
+		// Build anker without space, numbers.
+		$anker = preg_replace( '#[^a-z?!]#', '', strtolower( $header ) );
 
-		return sprintf( '<h%d>%s</h%d>', $heading_level, trim( $header ), $heading_level );
+		return sprintf( '<h%d id="%s">%s</h%d>', $heading_level, $anker, $header, $heading_level );
 	}
 
 	/**
