@@ -46,6 +46,10 @@ class MarkSimple {
 		'#<\/code><\/pre>\n<pre><code(>| .*?>)#'                                => "\n",
 		// Clean up ol|ul li blocks to leave only start/end ul with li.
 		'#\s*<\/(ol|ul)>\n<\1>\s*#'                                             => "\n",
+		// Horizontal line via ---.
+		'#\n-{3,}#'                                                             => "\n<hr>",
+		// Leave br as new line helper.
+		'#&lt;br&gt;#'                                                        => "\n<br>",
 	];
 
 	/**
