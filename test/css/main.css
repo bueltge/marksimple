@@ -7,10 +7,9 @@ body {
 }
 
 code, pre {
-	font-family: monaco, Consolas, "Lucida Console", monospace;;
-	line-height: 2;
+	font: .9em/1.4 monaco, Consolas, "Lucida Console", monospace;
 	white-space: pre-wrap;
-	background: #f4f5f6;
+	background: #F0F0F0;
 	padding: 5px;
 }
 

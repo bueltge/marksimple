@@ -35,7 +35,7 @@
 
 	if ( 'serviceWorker' in navigator &&
 		(window.location.protocol === 'https:' || isLocalhost) ) {
-		navigator.serviceWorker.register( 'service-worker.js' )
+		navigator.serviceWorker.register( './service-worker.js' )
 			.then( function( registration ) {
 				// Registration was successful
 				console.log( 'ServiceWorker registration successful with scope: ', registration.scope );
@@ -74,5 +74,18 @@
 		} );
 	}
 
-	// Your custom JavaScript goes here
-})();
+
+	addEventListener( 'load', function() {
+		var code = document.querySelector( '#code' );
+		var worker = new Worker( './service-worker.js' );
+		worker.onmessage = function(event) { code.innerHTML = event.data; }
+	} )
+
+	window.onload = function() {
+		var aCodes = document.getElementsByTagName( 'pre' );
+		for ( var i=0; i < aCodes.length; i++ ) {
+			hljs.highlightBlock( aCodes[i] );
+		}
+	};
+
+} ) ();

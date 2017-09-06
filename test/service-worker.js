@@ -8,7 +8,9 @@ self.addEventListener( 'install', function( e ) {
 				'./?homescreen=1',
 				'./css/normalize.min.css',
 				'./css/main.css',
-				'./js/main.js'
+				'./css/default.css',
+				'./js/main.js',
+				'./js/highlight.pack.js'
 			] );
 		} )
 	);
@@ -22,3 +24,9 @@ self.addEventListener( 'fetch', function( event ) {
 		} )
 	);
 } );
+
+onmessage = function( event ) {
+	importScripts( './js/highlight.pack.js' );
+	var result = self.hljs.highlightAuto( event.data );
+	postMessage( result.value );
+}
