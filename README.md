@@ -51,6 +51,7 @@ On the way to the goal of my simple parser I use lot of tests, tries on the onli
 
  * [regular expressions 101](https://regex101.com/)
  * [DebuggexBeta](https://www.debuggex.com/)
+ * [Learn Regex The Easy Way](https://github.com/zeeshanu/learn-regex)
 
 ## License
 Copyright (c) 2017 [Frank Bültge](https://bueltge.de)
