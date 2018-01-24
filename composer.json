@@ -23,7 +23,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "marksimple\\Tests\\": "tests/"
+      "Bueltge\\MarkSimple\\Tests\\Unit\\": "tests/phpunit/Unit/"
     }
   }
 }
