@@ -1,7 +1,7 @@
 <?php # -*- coding: utf-8 -*-
 declare( strict_types = 1 );
 
-require_once '../MarkSimple.php';
+require_once '../src/MarkSimple.php';
 use Bueltge\MarkSimple\MarkSimple as MS;
 
 require_once 'head.php';
