@@ -101,7 +101,7 @@ class MarkSimple {
 	private function get_header( array $content ) : string {
 
 		list( $temp, $char, $header ) = $content;
-		$heading_level = strlen( $char );
+		$heading_level = \strlen( $char );
 		$header = trim( $header );
 		// Build anker without space, numbers.
 		$anker = preg_replace( '#[^a-z?!]#', '', strtolower( $header ) );
@@ -244,7 +244,7 @@ class MarkSimple {
 
 		foreach ( $this->rules as $search => $html ) {
 
-			if ( is_callable( $html ) ) {
+			if ( \is_callable( $html ) ) {
 				$content = preg_replace_callback( $search, $html, $content );
 			} else {
 				$content = preg_replace( $search, $html, $content );
