@@ -35,16 +35,10 @@ You find the solution and the tests in the [repository on GitHub](https://github
 
 See the test directory for an example with two different usages. The test directory works as PWA, for examples see only the file `index.php`.
 
-#### Code block with four spaces
-    require_once 'MarkSimple.php';
-    // Smaller PHP 7
-    $ms = new MarkSimple( 'markdown.md' );
-    print $ms;
-
-#### Code block with tab
-	require_once 'MarkSimple.php';
-	// Since PHP 7, short syntax
-	print ( new MS( '../markdown.md' ) );
+#### Usage
+    require_once '../vendor/autoload.php';
+    use Bueltge\Marksimple\Marksimple as MS;
+    print (new MS('../README.md'));
 
 ## Kudos
 On the way to the goal of my simple parser I use lot of tests, tries on the online Regex testers. Thanks a lot to the authors of this followed two sites, great!

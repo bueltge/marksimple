@@ -1,13 +1,28 @@
-<?php
+<?php # -*- coding: utf-8 -*-
+declare( strict_types = 1 );
+
+namespace Bueltge\Marksimple\Rule;
 
 class Header implements ElementRuleInterface
 {
 
+    /**
+     * Get the regex rule to identify the content for the callback.
+     * Header h1 - h6.
+     *
+     * @return string
+     */
     public function rule(): string
     {
         return '#^(\#{1,6})\s*([^\#]+?)\s*\#*$#m';
     }
 
+    /**
+     * Render the content and get content include markup.
+     *
+     * @param array $content
+     * @return string
+     */
     public function render(array $content): string
     {
         /** @noinspection PhpUnusedLocalVariableInspection */

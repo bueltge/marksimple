@@ -23,13 +23,13 @@
   },
   "autoload": {
     "psr-4": {
-      "Bueltge\\MarkSimple\\": "src/"
+      "Bueltge\\Marksimple\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Bueltge\\MarkSimple\\": "src/",
-      "Bueltge\\MarkSimple\\Tests\\Unit\\": "tests/phpunit/Unit/"
+      "Bueltge\\Marksimple\\": "src/",
+      "Bueltge\\Marksimple\\Tests\\Unit\\": "tests/phpunit/Unit/"
     }
   },
   "config": {
