@@ -36,7 +36,7 @@ class Marksimple
     ];
 
     /**
-     * Store the MarkDown content that we should render.
+     * Store the Markdown content that we should render.
      *
      * @var string
      */
@@ -45,7 +45,7 @@ class Marksimple
     /**
      * Marksimple constructor.
      *
-     * @param string $content The MarkDown content that we should render.
+     * @param string $content The Markdown content that we should render.
      */
     public function __construct(string $content = '')
     {
@@ -106,7 +106,7 @@ class Marksimple
     /**
      * Filter the content for not necessary strings.
      *
-     * @param string $content The content from the MarkDown file.
+     * @param string $content The content from the Markdown file.
      *
      * @return string
      */

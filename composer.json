@@ -1,6 +1,6 @@
 {
   "name": "bueltge/marksimple",
-  "description": "A simple MarkDown parser for PHP.",
+  "description": "A simple Markdown parser for PHP.",
   "license": "MIT",
   "keywords": [
     "markdown",

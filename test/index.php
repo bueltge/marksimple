@@ -10,7 +10,7 @@ require_once 'head.php';
 <div class="main">
     <article>
         <?php
-        // Parse the MarkDown syntax from a file.
+        // Parse the Markdown syntax from a file.
         print (new MS('../README.md'));
         ?>
     </article>

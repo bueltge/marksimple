@@ -1,10 +1,10 @@
 # MarkSimple
-A simple MarkDown parser, short and only with the rules there I currently need. The function is regex based and it is possible to enhance your custom rules.
+A simple Markdown parser, short and only with the rules there I currently need. The function is regex based and it is possible to enhance your custom rules.
 
 Yes, **I know**, it give a lot of __open projects__ that solve the same goal. However it was fun to write my custom parser, only with the rules there I need, not to much overhead. Yes, also I mean that other packages more solid solid, lof of usages, bot not points enough to learn about regex and markdown. Besides *I know* a regex parser is not the best, fastest way, but also here, _I would to teach me in this context_.
 
 ## Demo, Tests
-The solution is still active in his tests, you find it [here](https://bueltge.de/MarkSimple/test/). This test of the class is also build as [PWA](https://developers.google.com/web/progressive-web-apps/), Progressive Web App. It was only an fun project for me to understand it on a really simple site how it works. But is important, if you see the directory `test` in this repository here and wounder about so much files there are not in the context of the MarkDown parser. If you will check the PWA, use it on your mobile or play with Chrome/WebInspector.
+The solution is still active in his tests, you find it [here](https://bueltge.de/MarkSimple/test/). This test of the class is also build as [PWA](https://developers.google.com/web/progressive-web-apps/), Progressive Web App. It was only an fun project for me to understand it on a really simple site how it works. But is important, if you see the directory `test` in this repository here and wounder about so much files there are not in the context of the Markdown parser. If you will check the PWA, use it on your mobile or play with Chrome/WebInspector.
 
 ## Active use
 The class is simple and I use it for my own documentation, there I write in markdown. Here and there is the result a single oage to help in each day to find the right syntax, hints, background and others. You can see this on this examples:
