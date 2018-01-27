@@ -26,7 +26,7 @@ My class supports currently the follow syntax. But Pull Request are really welco
  * Italic text, `em` - `*` or `_`
  * Unordered list, `ul` - `*` for each line
  * Inline Code, `code` - ```
- * Code Blocks, `pre` - `    ` (4 spaces) or `	` (tab)
+ * Code Blocks, `pre` - `    ` (4 spaces) or `` (tab)
  * Links, `a` - `[Link Text](Link URL)`
  * Horizontal line, `---`
  * Break, new line, `<br>`
