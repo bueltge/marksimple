@@ -26,13 +26,39 @@ class MarksimpleTest extends AbstractTestCase
     public function testHeader()
     {
 
-        $content = '# Great playground.';
-        $result = '<h1 id="greatplayground">Great playground.</h1>';
+        // Define Markdown examples and his assert result with html.
+        $headers = [
+            '# Great playground.' => '<h1 id="greatplayground">Great playground.</h1>',
+            '## Great playground.' => '<h2 id="greatplayground">Great playground.</h2>',
+            '### Great playground.' => '<h3 id="greatplayground">Great playground.</h3>',
+            '#### Great playground.' => '<h4 id="greatplayground">Great playground.</h4>',
+            '##### Great playground.' => '<h5 id="greatplayground">Great playground.</h5>',
+            '###### Great playground.' => '<h6 id="greatplayground">Great playground.</h6>',
+        ];
 
         $testmd = new Marksimple();
         $testmd->removeAllRules();
         $testmd->addRule('header', new Rule\Header());
-        $testee = $testmd->parse($content);
-        static::assertSame($result, $testee);
+        foreach ($headers as $header => $result) {
+            $testee = $testmd->parse($header);
+            static::assertSame($result, $testee);
+        }
+    }
+
+    public function testCode()
+    {
+        $codes = [
+            '`code`' => '<code>code</code>',
+            '```' => '<code>`</code>',
+            '`<br>`' => '<code>&lt;br&gt;</code>',
+        ];
+
+        $testmd = new Marksimple();
+        $testmd->removeAllRules();
+        $testmd->addRule('code', new Rule\Code());
+        foreach ($codes as $code => $result) {
+            $testee = $testmd->parse($code);
+            static::assertSame($result, $testee);
+        }
     }
 }
