@@ -1,4 +1,7 @@
 # MarkSimple
+
+[![Build Status](https://travis-ci.org/bueltge/marksimple.svg?branch=master)](https://travis-ci.org/bueltge/marksimple)
+
 A simple Markdown parser, short and only with the rules there I currently need. The function is regex based and it is possible to enhance your custom rules.
 
 Yes, **I know**, it give a lot of __open projects__ that solve the same goal. However it was fun to write my custom parser, only with the rules there I need, not to much overhead. Yes, also I mean that other packages more solid solid, lof of usages, bot not points enough to learn about regex and markdown. Besides *I know* a regex parser is not the best, fastest way, but also here, _I would to teach me in this context_.
