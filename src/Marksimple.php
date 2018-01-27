@@ -9,13 +9,6 @@ class Marksimple
 {
 
     /**
-     * Store the tags that we parse and render to html.
-     *
-     * @var array
-     */
-    protected $rules = [];
-
-    /**
      * Define the default rules.
      *
      * @var array
@@ -32,7 +25,6 @@ class Marksimple
         'listcleanuo' => Rule\ListCleanup::class,
         'hr' => Rule\HorizontalLine::class,
         'br' => Rule\NewLine::class,
-        'paragraph' => Rule\Paragraph::class,
     ];
 
     /**
@@ -41,6 +33,23 @@ class Marksimple
      * @var string
      */
     public $content;
+    /**
+     * Store the tags that we parse and render to html.
+     *
+     * @var array
+     */
+    protected $rules = [];
+
+    /**
+     * Store the strings, there we exclude on set paragraph.
+     *
+     * @var array
+     */
+    public $paragraphExcludes = [
+        '<', // HTML.
+        '    ', // Code.
+        "\t", // Tab.
+    ];
 
     /**
      * Marksimple constructor.
@@ -51,6 +60,27 @@ class Marksimple
     {
         $this->content = $content;
         $this->initDefaultRules();
+    }
+
+    /**
+     * Add default rules.
+     */
+    protected function initDefaultRules()
+    {
+        foreach ($this->defaultRules as $name => $class) {
+            $this->addRule($name, new $class);
+        }
+    }
+
+    /**
+     * Add rule to parse content with an regex string.
+     *
+     * @param string $name
+     * @param ElementRuleInterface $rule
+     */
+    public function addRule(string $name, ElementRuleInterface $rule)
+    {
+        $this->rules[$name] = $rule;
     }
 
     /**
@@ -67,40 +97,62 @@ class Marksimple
     }
 
     /**
-     * Add rule to parse content with an regex string.
+     * Active Error Reporting.
      *
-     * @param string $name
-     * @param ElementRuleInterface $rule
+     * @param bool $status Active the visible error reporting.
+     *
+     * @return bool Get true, if error reporting is active.
      */
-    public function addRule(string $name, ElementRuleInterface $rule)
+    protected function setErrorReporting(bool $status = false): bool
     {
-        $this->rules[$name] = $rule;
-    }
 
-    /**
-     * Remove rules, if is not necessary.
-     *
-     * @param string $name
-     * @return bool
-     */
-    public function removeRule(string $name): bool
-    {
-        if (!isset($this->rules[$name])) {
-            throw new \InvalidArgumentException('Missing Rule name: ' . $name);
+        if (!$status) {
+            return false;
         }
 
-        unset($this->rules[$name]);
+        ini_set('display_errors', 'On');
+        error_reporting(E_ALL);
+
         return true;
     }
 
     /**
-     * Add default rules.
+     * Parse the markdown content and check for each rule.
+     *
+     * @param string $content
+     * @return string
      */
-    protected function initDefaultRules()
+    public function parse(string $content): string
     {
-        foreach ($this->defaultRules as $name => $class) {
-            $this->addRule($name, new $class);
+
+        if (file_exists($content) && is_readable($content)) {
+            $content = $this->getContent($content);
         }
+
+        $content = $this->sanitize($content);
+
+        $html = array_reduce(
+            $this->rules,
+            function (string $content, ElementRuleInterface $rule): string {
+                return preg_replace_callback($rule->rule(), [$rule, 'render'], $content);
+            },
+            $content
+        );
+
+        return $this->addParagraph($html);
+    }
+
+    /**
+     * Parse content from a markdown file.
+     *
+     * @param string $file The path to the file that we parse.
+     *
+     * @return string
+     */
+    public function getContent(string $file): string
+    {
+
+        return file_get_contents($file, true);
     }
 
     /**
@@ -128,62 +180,62 @@ class Marksimple
     }
 
     /**
-     * Parse the markdown content and check for each rule.
+     * Remove rules, if is not necessary.
      *
-     * @param string $content
-     * @return string
+     * @param string $name
+     * @return bool
      */
-    public function parse(string $content): string
+    public function removeRule(string $name): bool
     {
-
-        if (file_exists($content) && is_readable($content)) {
-            $content = $this->getContent($content);
+        if (!isset($this->rules[$name])) {
+            throw new \InvalidArgumentException('Missing Rule name: ' . $name);
         }
 
-        $content = $this->sanitize($content);
-
-        $html = array_reduce(
-            $this->rules,
-            function (string $content, ElementRuleInterface $rule): string {
-                return preg_replace_callback($rule->rule(), [$rule, 'render'], $content);
-            },
-            $content
-        );
-
-        return $html;
-    }
-
-    /**
-     * Parse content from a markdown file.
-     *
-     * @param string $file The path to the file that we parse.
-     *
-     * @return string
-     */
-    public function getContent(string $file): string
-    {
-
-        return file_get_contents($file, true);
-    }
-
-    /**
-     * Active Error Reporting.
-     *
-     * @param bool $status Active the visible error reporting.
-     *
-     * @return bool Get true, if error reporting is active.
-     */
-    protected function setErrorReporting(bool $status = false): bool
-    {
-
-        if (!$status) {
-            return false;
-        }
-
-        ini_set('display_errors', 'On');
-        error_reporting(E_ALL);
-
+        unset($this->rules[$name]);
         return true;
+    }
+
+    /**
+     * Add p tag for each paragraph, exclude different content types.
+     *
+     * @param string $content The parsed content in html format.
+     *
+     * @return string
+     */
+    public function addParagraph(string $content): string
+    {
+        // Split for each line to exclude.
+        $content = explode("\n", $content);
+        $p_content = '';
+        foreach ($content as $line) {
+            if (!$this->strposa($line, $this->paragraphExcludes)) {
+                $line = sprintf('<p>%s</p>', trim($line));
+            }
+            $p_content .= "\n" . $line;
+        }
+        return $p_content;
+    }
+
+    /**
+     * Find the position of the first occurrence of a substring in a string.
+     * Get only true, if is on the first position (0).
+     *
+     * @param string $haystack The string to search in.
+     * @param array $needle An array with strings for search.
+     * @param int $offset If specified, search will start this number of characters counted from the beginning of
+     *                         the string.
+     *
+     * @return bool
+     */
+    protected function strposa(string $haystack, array $needle, int $offset = 0): bool
+    {
+        foreach ($needle as $query) {
+            // If we found the string only on position 0.
+            if (strpos($haystack, $query, $offset) === 0) {
+                return true;
+            } // stop on first false result
+        }
+        return false;
     }
 
     /**
