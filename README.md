@@ -35,7 +35,7 @@ You find the solution and the tests in the [repository on GitHub](https://github
 
 See the test directory for an example with two different usages. The test directory works as PWA, for examples see only the file `index.php`.
 
-#### Usage
+#### Code example
     require_once '../vendor/autoload.php';
     use Bueltge\Marksimple\Marksimple as MS;
     print (new MS('../README.md'));

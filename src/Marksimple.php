@@ -34,13 +34,6 @@ class Marksimple
      */
     public $content;
     /**
-     * Store the tags that we parse and render to html.
-     *
-     * @var array
-     */
-    protected $rules = [];
-
-    /**
      * Store the strings, there we exclude on set paragraph.
      *
      * @var array
@@ -50,6 +43,12 @@ class Marksimple
         '    ', // Code.
         "\t", // Tab.
     ];
+    /**
+     * Store the tags that we parse and render to html.
+     *
+     * @var array
+     */
+    protected $rules = [];
 
     /**
      * Marksimple constructor.
@@ -180,22 +179,6 @@ class Marksimple
     }
 
     /**
-     * Remove rules, if is not necessary.
-     *
-     * @param string $name
-     * @return bool
-     */
-    public function removeRule(string $name): bool
-    {
-        if (!isset($this->rules[$name])) {
-            throw new \InvalidArgumentException('Missing Rule name: ' . $name);
-        }
-
-        unset($this->rules[$name]);
-        return true;
-    }
-
-    /**
      * Add p tag for each paragraph, exclude different content types.
      *
      * @param string $content The parsed content in html format.
@@ -211,7 +194,7 @@ class Marksimple
             if (!$this->strposa($line, $this->paragraphExcludes)) {
                 $line = sprintf('<p>%s</p>', trim($line));
             }
-            $p_content .= "\n" . $line;
+            $p_content .= $line;
         }
         return $p_content;
     }
@@ -236,6 +219,32 @@ class Marksimple
             } // stop on first false result
         }
         return false;
+    }
+
+    /**
+     * Remove rules, if is not necessary.
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function removeRule(string $name): bool
+    {
+        if (!isset($this->rules[$name])) {
+            throw new \InvalidArgumentException('Missing Rule name: ' . $name);
+        }
+
+        unset($this->rules[$name]);
+        return true;
+    }
+
+    /**
+     * Remove all rules, reset the variable that store the rules.
+     * @return bool
+     */
+    public function removeAllRules(): bool
+    {
+        $this->rules = [];
+        return true;
     }
 
     /**
