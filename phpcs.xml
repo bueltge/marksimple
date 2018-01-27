@@ -4,8 +4,9 @@
 	<!-- @see https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file -->
 	<description>Store the rule set changes for default packages.</description>
 
-	<file>*.php</file>
+	<file>src/*.php</file>
 	<file>test/*.php</file>
+	<file>tests/*.php</file>
 
 	<exclude-pattern>vendor/*</exclude-pattern>
 	<exclude-pattern>node_modules/*</exclude-pattern>
