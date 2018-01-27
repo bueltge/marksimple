@@ -31,6 +31,8 @@ My class supports currently the follow syntax. But Pull Request are really welco
 #### Requirements
  * PHP 7
 
+Install static via download, clone the repository or use dependency management via Composer `composer require bueltge/marksimple`
+
 You find the solution and the tests in the [repository on GitHub](https://github.com/bueltge/marksimple).
 
 See the test directory for an example with two different usages. The test directory works as PWA, for examples see only the file `index.php`.
