@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <ruleset name="MarkSimple Ruleset">
-	<!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
-	<!-- @see https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file -->
-	<description>Store the rule set changes for default packages.</description>
+    <!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
+    <!-- @see https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file -->
+    <description>Store the rule set changes for default packages.</description>
 
-	<file>src/*.php</file>
-	<file>test/*.php</file>
-	<file>tests/*.php</file>
+    <file>src/*.php</file>
+    <file>test/*.php</file>
+    <file>tests/*.php</file>
 
-	<exclude-pattern>vendor/*</exclude-pattern>
-	<exclude-pattern>node_modules/*</exclude-pattern>
-	<exclude-pattern>*.min.js</exclude-pattern>
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>*.min.js</exclude-pattern>
 
-	<!-- I write lot of WordPress stuff, so that I use this rules also on NonWordPress topics. -->
-	<!-- Include the WordPress ruleset, with exclusions. -->
+    <!-- I write lot of WordPress stuff, so that I use this rules also on NonWordPress topics. -->
+    <!-- Include the WordPress ruleset, with exclusions. -->
 
-	<rule ref="PSR2">
-	</rule>
+    <rule ref="PSR2">
+    </rule>
 </ruleset>
