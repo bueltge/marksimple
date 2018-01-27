@@ -1,6 +1,7 @@
 # MarkSimple
 
 [![Build Status](https://travis-ci.org/bueltge/marksimple.svg?branch=master)](https://travis-ci.org/bueltge/marksimple)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3ce79c7b4118c47951cc/maintainability)](https://codeclimate.com/github/bueltge/marksimple/maintainability)
 
 A simple Markdown parser, short and only with the rules there I currently need. The function is regex based and it is possible to enhance your custom rules.
 
