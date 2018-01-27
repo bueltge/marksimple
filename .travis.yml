@@ -13,6 +13,8 @@ matrix:
     - php: nightly
 
 before_install:
+  - phpenv config-rm xdebug.ini
+  - ./.travis.scripts/compile.sh
   - composer self-update
 
 install:
