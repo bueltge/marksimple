@@ -96,7 +96,7 @@ class Marksimple
     /**
      * Add default rules.
      */
-    private function initDefaultRules()
+    protected function initDefaultRules()
     {
         foreach ($this->defaultRules as $name => $class) {
             $this->addRule($name, new $class);
@@ -110,7 +110,7 @@ class Marksimple
      *
      * @return string
      */
-    private function sanitize(string $content): string
+    protected function sanitize(string $content): string
     {
 
         // Add new line to get the first character of a string.
