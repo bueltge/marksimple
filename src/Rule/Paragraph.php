@@ -15,7 +15,7 @@ class Paragraph implements ElementRuleInterface
      */
     public function rule(): string
     {
-        return '#(?![a-z][0-9]).(.*\n\n)#';
+        return '#(?![a-z][0-9]).(.*\n)#';
     }
 
     /**

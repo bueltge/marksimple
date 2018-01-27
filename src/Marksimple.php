@@ -61,7 +61,7 @@ class Marksimple
     public function __toString()
     {
 
-        $this->set_error_reporting();
+        $this->setErrorReporting();
 
         return $this->parse($this->content);
     }
@@ -137,7 +137,7 @@ class Marksimple
     {
 
         if (file_exists($content) && is_readable($content)) {
-            $content = $this->get_content($content);
+            $content = $this->getContent($content);
         }
 
         $content = $this->sanitize($content);
@@ -160,7 +160,7 @@ class Marksimple
      *
      * @return string
      */
-    public function get_content(string $file): string
+    public function getContent(string $file): string
     {
 
         return file_get_contents($file, true);
@@ -173,7 +173,7 @@ class Marksimple
      *
      * @return bool Get true, if error reporting is active.
      */
-    protected function set_error_reporting(bool $status = false): bool
+    protected function setErrorReporting(bool $status = false): bool
     {
 
         if (!$status) {
