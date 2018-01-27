@@ -45,6 +45,9 @@ class MarksimpleTest extends AbstractTestCase
         }
     }
 
+    /**
+     * Test inline code, that's marked via `
+     */
     public function testCode()
     {
         $codes = [
