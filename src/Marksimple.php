@@ -42,6 +42,7 @@ class Marksimple
         '<', // HTML.
         '    ', // Code.
         "\t", // Tab.
+        '---', // hr
     ];
     /**
      * Store the tags that we parse and render to html.
