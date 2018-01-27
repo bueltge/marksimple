@@ -14,25 +14,6 @@
 	<!-- I write lot of WordPress stuff, so that I use this rules also on NonWordPress topics. -->
 	<!-- Include the WordPress ruleset, with exclusions. -->
 
-	<rule ref="WordPress-VIP">
-		<exclude name="WordPress.VIP.RestrictedFunctions.runtime_configuration" />
-		<exclude name="WordPress.VIP.RestrictedVariables.cache_constraints" />
-		<exclude name="WordPress.VIP.RestrictedFunctions.cookies" />
-		<exclude name="WordPress.PHP.DiscouragedFunctions.Discouraged" />
-		<exclude name="WordPress.VIP.RestrictedFunctions.file_get_contents" />
-	</rule>
-
-	<rule ref="WordPress">
-		<!-- Yoda conditions are not helpful, cost only time. -->
-		<exclude name="WordPress.PHP.YodaConditions" />
-
-		<!-- <exclude name="WordPress.XSS.EscapeOutput" /> -->
-		<exclude name="WordPress.WhiteSpace.ScopeIndent.Incorrect" />
-		<exclude name="WordPress.Arrays.ArrayKeySpacingRestrictions" />
-		<exclude name="WordPress.Arrays.ArrayDeclaration.KeyNotAligned" />
-		<!-- Remove spaces instead of tabs check -->
-		<exclude name="WordPress.Arrays.ArrayDeclaration.ValueNotAligned" />
-		<exclude name="WordPress.Arrays.ArrayDeclaration.CloseBraceNotAligned" />
-		<!-- <exclude name="WordPress.Variables.GlobalVariables" /> -->
+	<rule ref="PSR2">
 	</rule>
 </ruleset>
