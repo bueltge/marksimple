@@ -13,7 +13,7 @@ class Marksimple
      *
      * @var array
      */
-    public $defaultRules = [
+    protected $defaultRules = [
         'header' => Rule\Header::class,
         'link' => Rule\Link::class,
         'strong' => Rule\Strong::class,
