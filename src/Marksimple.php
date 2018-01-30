@@ -174,7 +174,7 @@ class Marksimple
         // Remove surrounding line breaks.
         $content = trim($content, "\n");
         // Filter html.
-        $content = htmlentities($content, ENT_QUOTES, 'UTF-8');
+        $content = htmlentities($content, ENT_NOQUOTES, 'UTF-8');
 
         return $content;
     }
