@@ -27,11 +27,11 @@ class Header implements ElementRuleInterface
     {
         /** @noinspection PhpUnusedLocalVariableInspection */
         list($temp, $char, $header) = $content;
-        $heading_level = \strlen($char);
+        $headingLevel = \strlen($char);
         $header = trim($header);
         // Build anker without space, numbers.
         $anker = preg_replace('#[^a-z?!]#', '', strtolower($header));
 
-        return sprintf('<h%d id="%s">%s</h%d>', $heading_level, $anker, $header, $heading_level);
+        return sprintf('<h%d id="%s">%s</h%d>', $headingLevel, $anker, $header, $headingLevel);
     }
 }
