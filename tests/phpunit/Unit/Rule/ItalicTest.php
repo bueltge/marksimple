@@ -24,7 +24,7 @@ class ItalicTest extends AbstractTestCase
         $testmd->removeAllRules();
         $testmd->addRule('italic', new Rule\Italic());
         foreach ($italics as $italic => $result) {
-            $testee = $testmd->parse($italic);
+            $testee = $testmd->getMarkdown($italic);
             static::assertSame($result, $testee);
         }
     }

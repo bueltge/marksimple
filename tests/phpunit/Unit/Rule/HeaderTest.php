@@ -28,7 +28,7 @@ class HeaderTest extends AbstractTestCase
         $testmd->removeAllRules();
         $testmd->addRule('header', new Rule\Header());
         foreach ($headers as $header => $result) {
-            $testee = $testmd->parse($header);
+            $testee = $testmd->getMarkdown($header);
             static::assertSame($result, $testee);
         }
     }

@@ -23,7 +23,7 @@ class CodeTest extends AbstractTestCase
         $testmd->removeAllRules();
         $testmd->addRule('code', new Rule\Code());
         foreach ($codes as $code => $result) {
-            $testee = $testmd->parse($code);
+            $testee = $testmd->getMarkdown($code);
             static::assertSame($result, $testee);
         }
     }

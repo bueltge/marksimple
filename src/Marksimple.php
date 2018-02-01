@@ -93,40 +93,20 @@ class Marksimple
 
         $this->setErrorReporting(false);
 
-        return $this->parse($this->content);
+        return $this->getMarkdown($this->content);
     }
 
     /**
-     * Active Error Reporting.
-     *
-     * @param bool $status Active the visible error reporting.
-     *
-     * @return bool Get true, if error reporting is active.
-     */
-    protected function setErrorReporting(bool $status): bool
-    {
-
-        if (!$status) {
-            return false;
-        }
-
-        ini_set('display_errors', 'On');
-        error_reporting(E_ALL);
-
-        return true;
-    }
-
-    /**
-     * Parse the markdown content and check for each rule.
+     * Get the markdown formatted content.
      *
      * @param string $content
      * @return string
      */
-    public function parse(string $content): string
+    public function getMarkdown(string $content): string
     {
 
         if (file_exists($content) && is_readable($content)) {
-            $content = $this->getContent($content);
+            $content = $this->getFileContents($content);
         }
 
         $content = $this->sanitize($content);
@@ -149,7 +129,7 @@ class Marksimple
      *
      * @return string
      */
-    public function getContent(string $file): string
+    public function getFileContents(string $file): string
     {
 
         return file_get_contents($file, true);
@@ -245,6 +225,26 @@ class Marksimple
     public function removeAllRules(): bool
     {
         $this->rules = [];
+        return true;
+    }
+
+    /**
+     * Active Error Reporting.
+     *
+     * @param bool $status Active the visible error reporting.
+     *
+     * @return bool Get true, if error reporting is active.
+     */
+    protected function setErrorReporting(bool $status): bool
+    {
+
+        if (!$status) {
+            return false;
+        }
+
+        ini_set('display_errors', 'On');
+        error_reporting(E_ALL);
+
         return true;
     }
 
