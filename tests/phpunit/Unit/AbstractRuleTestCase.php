@@ -7,7 +7,7 @@ use Bueltge\Marksimple\Rule\ElementRuleInterface;
 use Bueltge\Marksimple\Marksimple;
 use Bueltge\Marksimple\Tests\Unit\Rule\RuleTestCaseInterface;
 
-abstract class RuleTest extends AbstractTestCase implements RuleTestCaseInterface
+abstract class AbstractRuleTestCase extends AbstractTestCase implements RuleTestCaseInterface
 {
 
     /**
