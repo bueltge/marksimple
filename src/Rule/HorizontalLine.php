@@ -25,6 +25,6 @@ class HorizontalLine implements ElementRuleInterface
      */
     public function render(array $content): string
     {
-        return '\n<hr>';
+        return '<hr>';
     }
 }

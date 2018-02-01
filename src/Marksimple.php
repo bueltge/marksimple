@@ -15,6 +15,7 @@ class Marksimple
      */
     protected $defaultRules = [
         'header' => Rule\Header::class,
+        'image' => Rule\Image::class,
         'link' => Rule\Link::class,
         'strong' => Rule\Strong::class,
         'italic' => Rule\Italic::class,
