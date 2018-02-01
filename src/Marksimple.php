@@ -22,7 +22,7 @@ class Marksimple
         'code' => Rule\Code::class,
         'pre' => Rule\Pre::class,
         'precleanup' => Rule\PreCleanup::class,
-        'listcleanuo' => Rule\ListCleanup::class,
+        'listcleanup' => Rule\ListCleanup::class,
         'hr' => Rule\HorizontalLine::class,
         'br' => Rule\NewLine::class,
     ];
