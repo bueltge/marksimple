@@ -190,14 +190,14 @@ class Marksimple
     {
         // Split for each line to exclude.
         $content = explode("\n", $content);
-        $p_content = '';
+        $pContent = '';
         foreach ($content as $line) {
             if (!$this->strposa($line, $this->paragraphExcludes)) {
                 $line = sprintf('<p>%s</p>', trim($line));
             }
-            $p_content .= $line;
+            $pContent .= $line;
         }
-        return $p_content;
+        return $pContent;
     }
 
     /**
