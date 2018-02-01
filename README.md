@@ -1,7 +1,5 @@
 # MarkSimple
 
-![Build Status](https://travis-ci.org/bueltge/marksimple.svg?branch=master "Build Status")
-
 [![Build Status](https://travis-ci.org/bueltge/marksimple.svg?branch=master)](https://travis-ci.org/bueltge/marksimple)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3ce79c7b4118c47951cc/maintainability)](https://codeclimate.com/github/bueltge/marksimple/maintainability)
 
