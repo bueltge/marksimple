@@ -7,7 +7,7 @@ use Bueltge\Marksimple\Rule\ElementRuleInterface;
 use Bueltge\Marksimple\Rule;
 use Bueltge\Marksimple\Tests\Unit\AbstractTestCase;
 
-class RuleTestCase extends AbstractTestCase implements RuleTestCaseInterface
+class RuleTestCase extends AbstractTestCase
 {
     public function testee(): ElementRuleInterface
     {
