@@ -1,3 +1,4 @@
+"use strict";
 self.addEventListener( 'install', function( e ) {
 	e.waitUntil(
 		caches.open( 'marksimple' ).then( function( cache ) {
