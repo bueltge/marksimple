@@ -35,7 +35,7 @@ declare(strict_types=1);
 
     <link rel="preload" as="style" href="css/normalize.min.css" onload="this.rel='stylesheet'">
     <link rel="preload" as="style" href="css/main.css" onload="this.rel='stylesheet'">
-    <link rel="preload" as="style" href="css/default.css" onload="this.rel='stylesheet'">
+    <link rel="preload" as="style" href="css/github.css" onload="this.rel='stylesheet'">
 
     <!--[if lt IE 9]>
     <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
