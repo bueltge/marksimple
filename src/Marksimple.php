@@ -19,9 +19,10 @@ class Marksimple
         'strong' => Rule\Strong::class,
         'italic' => Rule\Italic::class,
         'ul' => Rule\UnorderedList::class,
-        'code' => Rule\Code::class,
         'pre' => Rule\Pre::class,
+        'githubpre' => Rule\GithubPre::class,
         'precleanup' => Rule\PreCleanup::class,
+        'code' => Rule\Code::class,
         'listcleanup' => Rule\ListCleanup::class,
         'hr' => Rule\HorizontalLine::class,
         'br' => Rule\NewLine::class,
@@ -153,6 +154,7 @@ class Marksimple
 
         // Remove surrounding line breaks.
         $content = trim($content, "\n");
+
         // Filter html.
         $content = htmlentities($content, ENT_NOQUOTES, 'UTF-8');
 
@@ -251,11 +253,11 @@ class Marksimple
     /**
      * Helps to print the content include markup and line breaks.
      *
-     * @param string $content
+     * @param array|string $content
      * @return string
      */
-    public function debug(string $content): string
+    public function debug($content): string
     {
-        return '<pre>' . json_encode($content) . '</pre>';
+        return '<pre>' . json_encode(htmlentities($content)) . '</pre>';
     }
 }

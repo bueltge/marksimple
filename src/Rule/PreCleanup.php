@@ -25,6 +25,6 @@ class PreCleanup implements ElementRuleInterface
      */
     public function render(array $content): string
     {
-        return "\n";
+        return '<br>';
     }
 }
