@@ -1,9 +1,10 @@
 <?php # -*- coding: utf-8 -*-
 
-namespace Bueltge\Marksimple\Tests\Unit;
+namespace Bueltge\Marksimple\Tests\Unit\Rule;
 
 use Bueltge\Marksimple\Marksimple;
 use Bueltge\Marksimple\Rule;
+use Bueltge\Marksimple\Tests\Unit\AbstractTestCase;
 
 class HeaderTest extends AbstractTestCase
 {
