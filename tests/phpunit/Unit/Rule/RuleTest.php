@@ -5,10 +5,11 @@ namespace Bueltge\Marksimple\Tests\Unit\Rule;
 
 use Bueltge\Marksimple\Rule\ElementRuleInterface;
 use Bueltge\Marksimple\Rule;
-use Bueltge\Marksimple\Tests\Unit\AbstractTestCase;
+use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 
-class RuleTestCase extends AbstractTestCase
+class RuleTest extends AbstractRuleTestCase
 {
+
     public function testee(): ElementRuleInterface
     {
         return new Rule\Code();

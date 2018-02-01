@@ -1,4 +1,5 @@
 <?php # -*- coding: utf-8 -*-
+declare( strict_types = 1 );
 
 namespace Bueltge\Marksimple\Tests\Unit\Rule;
 
