@@ -30,6 +30,6 @@ class GithubPre implements ElementRuleInterface
         $class = !empty($language) ? sprintf(' class="%s language-%s"', $language, $language) : '';
         // Build one block so that we not create each paragraph.
         $content = str_replace("\n", '<br>', $content[4]);
-        return sprintf('<pre%s><code%s>%s</code></pre>', $class, $class, $content);
+        return sprintf('<pre><code%s>%s</code></pre>', $class, $content);
     }
 }
