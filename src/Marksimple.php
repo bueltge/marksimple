@@ -91,7 +91,7 @@ class Marksimple
     public function __toString()
     {
 
-        $this->setErrorReporting();
+        $this->setErrorReporting(false);
 
         return $this->parse($this->content);
     }
@@ -103,7 +103,7 @@ class Marksimple
      *
      * @return bool Get true, if error reporting is active.
      */
-    protected function setErrorReporting(bool $status = false): bool
+    protected function setErrorReporting(bool $status): bool
     {
 
         if (!$status) {
