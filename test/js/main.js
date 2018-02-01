@@ -1,3 +1,4 @@
+"use strict";
 /*!
  *
  *  via Web Starter Kit
@@ -18,7 +19,6 @@
  */
 /* eslint-env browser */
 (function() {
-	'use strict';
 
 	// Check to make sure service workers are supported in the current browser,
 	// and that the current page is accessed from a secure origin. Using a
@@ -79,7 +79,7 @@
 		var code = document.querySelector( '#code' );
 		var worker = new Worker( './service-worker.js' );
 		worker.onmessage = function(event) { code.innerHTML = event.data; }
-	} )
+	} );
 
 	window.onload = function() {
 		var aCodes = document.getElementsByTagName( 'pre' );
