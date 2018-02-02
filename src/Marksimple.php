@@ -14,31 +14,18 @@ class Marksimple
      * @var array
      */
     protected $defaultRules = [
-        'header'      => Rule\Header::class,
-        'image'       => Rule\Image::class,
-        'link'        => Rule\Link::class,
-        'strong'      => Rule\Strong::class,
-        'italic'      => Rule\Italic::class,
-        'ul'          => Rule\UnorderedList::class,
-        'pre'         => Rule\Pre::class,
-        'githubpre'   => Rule\GithubPre::class,
-        'precleanup'  => Rule\PreCleanup::class,
-        'code'        => Rule\Code::class,
-        'listcleanup' => Rule\ListCleanup::class,
-        'hr'          => Rule\HorizontalLine::class,
-        'br'          => Rule\NewLine::class,
-    ];
-
-    /**
-     * Store the strings, there we exclude on set paragraph.
-     *
-     * @var array
-     */
-    protected $paragraphExcludes = [
-        '<', // HTML.
-        '    ', // Code.
-        "\t", // Tab.
-        '---', // hr
+        'header'    => Rule\Header::class,
+        'image'     => Rule\Image::class,
+        'link'      => Rule\Link::class,
+        'strong'    => Rule\Strong::class,
+        'italic'    => Rule\Italic::class,
+        'ul'        => Rule\UnorderedList::class,
+        'pre'       => Rule\Pre::class,
+        'githubpre' => Rule\GithubPre::class,
+        'code'      => Rule\Code::class,
+        'hr'        => Rule\HorizontalLine::class,
+        'br'        => Rule\NewLine::class,
+        'p'         => Rule\Paragraph::class,
     ];
 
     /**
@@ -123,16 +110,14 @@ class Marksimple
     public function parse(string $content): string
     {
 
-        $html = array_reduce(
+        return array_reduce(
             $this->rules,
             function (string $content, ElementRuleInterface $rule): string {
 
-                return preg_replace_callback($rule->rule(), [$rule, 'render'], $content);
+                return $rule->parse($content);
             },
             $this->sanitize($content)
         );
-
-        return $this->addParagraph($html);
     }
 
     /**
@@ -158,53 +143,6 @@ class Marksimple
         $content = htmlentities($content, ENT_NOQUOTES, 'UTF-8');
 
         return $content;
-    }
-
-    /**
-     * Add p tag for each paragraph, exclude different content types.
-     *
-     * @param string $content The parsed content in html format.
-     *
-     * @return string
-     */
-    public function addParagraph(string $content): string
-    {
-
-        // Split for each line to exclude.
-        $content  = explode("\n", $content);
-        $pContent = '';
-        foreach ($content as $line) {
-            if (!$this->strposa($line, $this->paragraphExcludes)) {
-                $line = sprintf('<p>%s</p>', trim($line));
-            }
-            $pContent .= $line;
-        }
-
-        return $pContent;
-    }
-
-    /**
-     * Find the position of the first occurrence of a substring in a string.
-     * Get only true, if is on the first position (0).
-     *
-     * @param string $haystack The string to search in.
-     * @param array  $needle   An array with strings for search.
-     * @param int    $offset   If specified, search will start this number of characters counted from the beginning of
-     *                         the string.
-     *
-     * @return bool
-     */
-    protected function strposa(string $haystack, array $needle, int $offset = 0): bool
-    {
-
-        foreach ($needle as $query) {
-            // If we found the string only on position 0.
-            if (strpos($haystack, $query, $offset) === 0) {
-                return true;
-            } // stop on first false result
-        }
-
-        return false;
     }
 
     /**

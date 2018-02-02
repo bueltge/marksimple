@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
-class UnorderedList implements ElementRuleInterface
+class UnorderedList extends AbstractRegexRule implements RegexRuleInterface
 {
 
     /**
@@ -18,13 +18,12 @@ class UnorderedList implements ElementRuleInterface
     }
 
     /**
-     * Render the content and get content include markup.
-     *
-     * @param array $content
-     * @return string
+     * {@inheritdoc}
      */
-    public function render(array $content): string
+    protected function render(array $content): string
     {
-        return sprintf('<ul><li>%s</li></ul>', trim($content[ 1 ]));
+        $content = sprintf('<ul><li>%s</li></ul>', trim($content[ 1 ]));
+
+        return preg_replace('\'#\s*<\/(ol|ul)>\n<\1>\s*#', '\n', $content);
     }
 }

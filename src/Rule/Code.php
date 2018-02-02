@@ -3,14 +3,11 @@ declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
-class Code implements ElementRuleInterface
+class Code extends AbstractRegexRule implements RegexRuleInterface
 {
 
     /**
-     * Get the regex rule to identify the content for the callback.
-     * Inline Code via `.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function rule(): string
     {
@@ -18,13 +15,10 @@ class Code implements ElementRuleInterface
     }
 
     /**
-     * Render the content and get content include markup.
-     *
-     * @param array $content
-     * @return string
+     * {@inheritdoc}
      */
     public function render(array $content): string
     {
-        return sprintf('<code>%s</code>', $content[ 1 ]);
+        return sprintf('<code>%s</code>', $content[1]);
     }
 }

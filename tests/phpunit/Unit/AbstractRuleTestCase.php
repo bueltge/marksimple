@@ -4,6 +4,7 @@ namespace Bueltge\Marksimple\Tests\Unit;
 
 use Bueltge\Marksimple\Marksimple;
 use Bueltge\Marksimple\Rule\ElementRuleInterface;
+use Bueltge\Marksimple\Rule\RegexRuleInterface;
 
 abstract class AbstractRuleTestCase extends AbstractTestCase
 {
@@ -16,7 +17,10 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
 
         $testee = $this->get_testee();
         static::assertInstanceOf(ElementRuleInterface::class, $testee);
-        static::assertNotEmpty($testee->rule());
+
+        if ($testee instanceof RegexRuleInterface) {
+            static::assertNotEmpty($testee->rule());
+        }
     }
 
     /**
@@ -30,9 +34,8 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
         $testee->removeAllRules();
         $testee->addRule('rule', $this->get_testee());
 
-        $input    = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
-        $expected = '<p>' . $input . '</p>';
-        static::assertSame($expected, $testee->parse($input));
+        $input = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
+        static::assertSame($input, $testee->parse($input));
     }
 
     /**
@@ -45,7 +48,8 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
         $testee->removeAllRules();
         $testee->addRule('rule', $this->get_testee());
 
-        static::assertSame($expected, $testee->parse($input));
+        $output = $testee->parse($input);
+        static::assertSame($expected, $output);
     }
 
     /**

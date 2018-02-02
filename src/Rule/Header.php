@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
-class Header implements ElementRuleInterface
+class Header extends AbstractRegexRule implements RegexRuleInterface
 {
 
     /**
@@ -18,10 +18,7 @@ class Header implements ElementRuleInterface
     }
 
     /**
-     * Render the content and get content include markup.
-     *
-     * @param array $content
-     * @return string
+     * {@inheritdoc}
      */
     public function render(array $content): string
     {

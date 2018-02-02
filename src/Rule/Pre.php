@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
-class Pre implements ElementRuleInterface
+class Pre extends AbstractRegexRule implements RegexRuleInterface
 {
 
     /**
@@ -18,13 +18,12 @@ class Pre implements ElementRuleInterface
     }
 
     /**
-     * Render the content and get content include markup.
-     *
-     * @param array $content
-     * @return string
+     * {@inheritdoc}
      */
     public function render(array $content): string
     {
-        return sprintf('<pre><code>%s</code></pre>', $content[ 3 ]);
+        $content = sprintf('<pre><code>%s</code></pre>', $content[ 3 ]);
+
+        return preg_replace('#<\/code><\/pre>\n<pre><code(>| .*?>)#', '<br>', $content);
     }
 }

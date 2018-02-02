@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
-class Italic implements ElementRuleInterface
+class Italic extends AbstractRegexRule implements RegexRuleInterface
 {
 
     /**
@@ -18,10 +18,7 @@ class Italic implements ElementRuleInterface
     }
 
     /**
-     * Render the content and get content include markup.
-     *
-     * @param array $content
-     * @return string
+     * {@inheritdoc}
      */
     public function render(array $content): string
     {

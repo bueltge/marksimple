@@ -11,7 +11,12 @@ class HorizontalLineTest extends AbstractRuleTestCase
 
     public function provideList(): array
     {
-        return [ /* TODO */];
+        return [
+            'normal horizontal line' => [
+                'Lorem ipsum dolor sit amet --- consetetur sadipscing elitr',
+                'Lorem ipsum dolor sit amet <hr/> consetetur sadipscing elitr'
+            ]
+        ];
     }
 
     protected function get_testee(): ElementRuleInterface

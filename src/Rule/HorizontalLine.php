@@ -6,25 +6,19 @@ namespace Bueltge\Marksimple\Rule;
 class HorizontalLine implements ElementRuleInterface
 {
 
-    /**
-     * Get the regex rule to identify the content for the callback.
-     * Horizontal line via ---.
-     *
-     * @return string
-     */
-    public function rule(): string
-    {
-        return '#\n-{3,}#';
-    }
+    protected $rules = [
+        '***',
+        '*****',
+        '- - -',
+        '---',
+        '---------------------------------------',
+    ];
 
     /**
-     * Render the content and get content include markup.
-     *
-     * @param array $content
-     * @return string
+     * {@inheritdoc}
      */
-    public function render(array $content): string
+    public function parse(string $content): string
     {
-        return '<hr>' . $content[ 0 ];
+        return str_replace($this->rules, '<hr/>', $content);
     }
 }
