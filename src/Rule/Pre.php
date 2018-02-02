@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
-use Bueltge\Marksimple\Marksimple;
-
 class Pre implements ElementRuleInterface
 {
 
@@ -27,6 +25,6 @@ class Pre implements ElementRuleInterface
      */
     public function render(array $content): string
     {
-        return sprintf('<pre><code>%s</code></pre>', $content[3]);
+        return sprintf('<pre><code>%s</code></pre>', $content[ 3 ]);
     }
 }

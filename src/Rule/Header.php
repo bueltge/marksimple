@@ -25,10 +25,8 @@ class Header implements ElementRuleInterface
      */
     public function render(array $content): string
     {
-        /** @noinspection PhpUnusedLocalVariableInspection */
-        list($temp, $char, $header) = $content;
-        $headingLevel = \strlen($char);
-        $header = trim($header);
+        $headingLevel = \strlen($content[1]);
+        $header       = trim($content[2]);
         // Build anker without space, numbers.
         $anker = preg_replace('#[^a-z?!]#', '', strtolower($header));
 

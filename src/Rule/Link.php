@@ -25,6 +25,6 @@ class Link implements ElementRuleInterface
      */
     public function render(array $content): string
     {
-        return '<a href="' . $content[2] . '">' . $content[1] . '</a>';
+        return '<a href="' . $content[ 2 ] . '">' . $content[ 1 ] . '</a>';
     }
 }

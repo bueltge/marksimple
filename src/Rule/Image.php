@@ -26,8 +26,8 @@ class Image implements ElementRuleInterface
      */
     public function render(array $content): string
     {
-        $url = filter_var($content[1], FILTER_SANITIZE_URL);
-        $alt = isset($content[2]) ? filter_var($content[2], FILTER_SANITIZE_STRING) : '';
+        $url = filter_var($content[ 1 ], FILTER_SANITIZE_URL);
+        $alt = isset($content[ 2 ]) ? filter_var($content[ 2 ], FILTER_SANITIZE_STRING) : '';
 
         return sprintf('<img src="%s" alt="%s" />', $url, $alt);
     }

@@ -25,6 +25,6 @@ class UnorderedList implements ElementRuleInterface
      */
     public function render(array $content): string
     {
-        return sprintf('<ul><li>%s</li></ul>', trim($content[1]));
+        return sprintf('<ul><li>%s</li></ul>', trim($content[ 1 ]));
     }
 }

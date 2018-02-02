@@ -25,6 +25,6 @@ class Italic implements ElementRuleInterface
      */
     public function render(array $content): string
     {
-        return sprintf('<em>%s</em>', $content[2]);
+        return sprintf('<em>%s</em>', $content[ 2 ]);
     }
 }

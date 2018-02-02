@@ -1,5 +1,5 @@
 <?php # -*- coding: utf-8 -*-
-declare( strict_types = 1 );
+declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
@@ -25,6 +25,6 @@ class PreCleanup implements ElementRuleInterface
      */
     public function render(array $content): string
     {
-        return '<br>';
+        return '<br>' . $content[ 0 ];
     }
 }

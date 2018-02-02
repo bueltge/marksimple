@@ -3,17 +3,64 @@
 namespace Bueltge\Marksimple\Tests\Unit;
 
 use Bueltge\Marksimple\Marksimple;
+use Bueltge\Marksimple\Rule\ElementRuleInterface;
 
 class MarksimpleTest extends AbstractTestCase
 {
 
-    /**
-     * Create the class an Object?
-     */
     public function testBasic()
     {
 
         $testee = new Marksimple();
         static::assertInternalType('object', $testee);
+    }
+
+
+    public function testAddRule()
+    {
+
+        $expected_name = 'foo';
+
+        $stub = $this->getMockBuilder(ElementRuleInterface::class)->getMock();
+
+        $testee = new Marksimple();
+
+        static::assertFalse($testee->hasRule($expected_name));
+
+        $testee->addRule($expected_name, $stub);
+
+        static::assertTrue($testee->hasRule($expected_name));
+    }
+
+    public function testRemoveRule()
+    {
+
+        $expected_name = 'foo';
+
+        $stub = $this->getMockBuilder(ElementRuleInterface::class)->getMock();
+
+        $testee = new Marksimple();
+        $testee->addRule($expected_name, $stub);
+        static::assertTrue($testee->removeRule($expected_name));
+    }
+
+    /**
+     * @expectedException \Bueltge\Marksimple\Exception\UnknownRuleException
+     */
+    public function testRemoveUnknownRule()
+    {
+
+        (new Marksimple())->removeRule('unknown_rule');
+    }
+
+    /**
+     * Test if basic text input will be parsed and wrapped by paragraphs.
+     */
+    public function testParse()
+    {
+        $testee   = new Marksimple();
+        $input    = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
+        $expected = '<p>' . $input . '</p>';
+        static::assertSame($expected, $testee->parse($input));
     }
 }

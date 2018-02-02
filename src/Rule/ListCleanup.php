@@ -1,5 +1,5 @@
 <?php # -*- coding: utf-8 -*-
-declare( strict_types = 1 );
+declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
@@ -14,6 +14,7 @@ class ListCleanup implements ElementRuleInterface
      */
     public function rule(): string
     {
+
         return '#\s*<\/(ol|ul)>\n<\1>\s*#';
     }
 
@@ -25,6 +26,7 @@ class ListCleanup implements ElementRuleInterface
      */
     public function render(array $content): string
     {
-        return "\n";
+
+        return "\n" . $content[ 0 ];
     }
 }
