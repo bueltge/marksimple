@@ -25,10 +25,10 @@ class Paragraph implements ElementRuleInterface
     {
 
         // Split for each line to exclude.
-        $content  = explode("\n", $content);
+        $content = explode("\n", $content);
         $pContent = '';
         foreach ($content as $line) {
-            if (!$this->strposa($line, $this->paragraphExcludes)) {
+            if (!$this->strposa($line, self::$paragraphExcludes)) {
                 $line = sprintf('<p>%s</p>', trim($line));
             }
             $pContent .= $line;
@@ -43,8 +43,8 @@ class Paragraph implements ElementRuleInterface
      *
      * @param string $haystack The string to search in.
      * @param array  $needle   An array with strings for search.
-     * @param int    $offset   If specified, search will start this number of characters counted from the beginning of
-     *                         the string.
+     * @param int    $offset   If specified, search will start this number of characters counted
+     *                         from the beginning of the string.
      *
      * @return bool
      */
