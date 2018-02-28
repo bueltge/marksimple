@@ -14,18 +14,18 @@ class Marksimple
      * @var array
      */
     protected $defaultRules = [
-        'header'    => Rule\Header::class,
-        'image'     => Rule\Image::class,
-        'link'      => Rule\Link::class,
-        'strong'    => Rule\Strong::class,
-        'italic'    => Rule\Italic::class,
-        'ul'        => Rule\UnorderedList::class,
-        'pre'       => Rule\Pre::class,
+        'header' => Rule\Header::class,
+        'image' => Rule\Image::class,
+        'link' => Rule\Link::class,
+        'strong' => Rule\Strong::class,
+        'italic' => Rule\Italic::class,
+        'ul' => Rule\UnorderedList::class,
+        'pre' => Rule\Pre::class,
         'githubpre' => Rule\GithubPre::class,
-        'code'      => Rule\Code::class,
-        'hr'        => Rule\HorizontalLine::class,
-        'br'        => Rule\NewLine::class,
-        'p'         => Rule\Paragraph::class,
+        'code' => Rule\Code::class,
+        'hr' => Rule\HorizontalLine::class,
+        'br' => Rule\NewLine::class,
+        'p' => Rule\Paragraph::class,
     ];
 
     /**
@@ -58,13 +58,13 @@ class Marksimple
     /**
      * Add rule to parse content with an regex string.
      *
-     * @param string               $name
+     * @param string $name
      * @param ElementRuleInterface $rule
      */
     public function addRule(string $name, ElementRuleInterface $rule)
     {
 
-        $this->rules[ $name ] = $rule;
+        $this->rules[$name] = $rule;
     }
 
     /**
@@ -85,7 +85,7 @@ class Marksimple
             );
         }
 
-        unset($this->rules[ $name ]);
+        unset($this->rules[$name]);
 
         return true;
     }
@@ -97,7 +97,7 @@ class Marksimple
      */
     public function hasRule(string $name): bool
     {
-        return isset($this->rules[ $name ]);
+        return isset($this->rules[$name]);
     }
 
     /**
