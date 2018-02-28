@@ -11,7 +11,7 @@ class Paragraph implements ElementRuleInterface
      *
      * @var array
      */
-    protected $paragraphExcludes = [
+    protected static $paragraphExcludes = [
         '<', // HTML.
         '    ', // Code.
         "\t", // Tab.
