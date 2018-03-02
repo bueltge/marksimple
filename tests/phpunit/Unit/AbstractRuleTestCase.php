@@ -1,4 +1,4 @@
-<?php # -*- coding: utf-8 -*-
+<?php declare(strict_types=1); # -*- coding: utf-8 -*-
 
 namespace Bueltge\Marksimple\Tests\Unit;
 
@@ -15,13 +15,15 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
     public function testBasic()
     {
 
-        $testee = $this->get_testee();
+        $testee = $this->testee();
         static::assertInstanceOf(ElementRuleInterface::class, $testee);
 
         if ($testee instanceof RegexRuleInterface) {
             static::assertNotEmpty($testee->rule());
         }
     }
+
+    abstract protected function testee(): ElementRuleInterface;
 
     /**
      * Test if rules are only triggered when text really contains special markdown.
@@ -32,21 +34,24 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
 
         $testee = new Marksimple();
         $testee->removeAllRules();
-        $testee->addRule('rule', $this->get_testee());
+        $testee->addRule('rule', $this->testee());
 
-        $input = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
+        $input = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,';
+        $input .= ' diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
         static::assertSame($input, $testee->parse($input));
     }
 
     /**
      * @dataProvider provideList
+     * @param string $input
+     * @param string $expected
      */
     public function testList(string $input, string $expected)
     {
 
         $testee = new Marksimple();
         $testee->removeAllRules();
-        $testee->addRule('rule', $this->get_testee());
+        $testee->addRule('rule', $this->testee());
 
         $output = $testee->parse($input);
         static::assertSame($expected, $output);
@@ -58,6 +63,4 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
      * @return array [ [ 'input text', 'expected output' ] ]
      */
     abstract public function provideList(): array;
-
-    abstract protected function get_testee(): ElementRuleInterface;
 }

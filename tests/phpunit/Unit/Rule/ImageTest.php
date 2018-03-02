@@ -14,7 +14,7 @@ class ImageTest extends AbstractRuleTestCase
         return [ /* TODO */];
     }
 
-    protected function get_testee(): ElementRuleInterface
+    protected function testee(): ElementRuleInterface
     {
         return new Rule\Image();
     }

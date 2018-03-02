@@ -18,7 +18,7 @@ class CodeTest extends AbstractRuleTestCase
         ];
     }
 
-    protected function get_testee(): ElementRuleInterface
+    protected function testee(): ElementRuleInterface
     {
         return new Rule\Code();
     }

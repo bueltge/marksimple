@@ -14,7 +14,7 @@ class UnorderedListTest extends AbstractRuleTestCase
         return [ /* TODO */];
     }
 
-    protected function get_testee(): ElementRuleInterface
+    protected function testee(): ElementRuleInterface
     {
         return new Rule\UnorderedList();
     }
