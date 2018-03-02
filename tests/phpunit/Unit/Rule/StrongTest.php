@@ -11,7 +11,10 @@ class StrongTest extends AbstractRuleTestCase
 
     public function provideList(): array
     {
-        return [ /* TODO */];
+        return [
+            'star' => ['**Strong word**', '<strong>Strong word</strong>'],
+            'underline' => ['__Strong word__', '<strong>Strong word</strong>'],
+        ];
     }
 
     public function returnRule(): ElementRuleInterface
