@@ -26,6 +26,6 @@ class ParagraphTest extends AbstractRuleTestCase
 
     public function testNoMarkdownContent()
     {
-        static::markTestSkipped('Paragraphes are always added as wrap arround default content.');
+        static::markTestSkipped('Paragraphes are always added as wrap around default content.');
     }
 }
