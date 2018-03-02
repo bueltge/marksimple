@@ -11,10 +11,13 @@ class UnorderedListTest extends AbstractRuleTestCase
 
     public function provideList(): array
     {
-        return [ /* TODO */];
+        return [
+            'first' => ['* List Element', '<ul><li>List Element</li></ul>'],
+            'second' => ['- List Element', '<ul><li>List Element</li></ul>'],
+        ];
     }
 
-    public function testee(): ElementRuleInterface
+    public function returnRule(): ElementRuleInterface
     {
         return new Rule\UnorderedList();
     }

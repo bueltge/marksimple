@@ -15,7 +15,7 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
     public function testBasic()
     {
 
-        $testee = $this->testee();
+        $testee = $this->returnRule();
         static::assertInstanceOf(ElementRuleInterface::class, $testee);
 
         if ($testee instanceof RegexRuleInterface) {
@@ -23,7 +23,7 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
         }
     }
 
-    abstract public function testee(): ElementRuleInterface;
+    abstract public function returnRule(): ElementRuleInterface;
 
     /**
      * Test if rules are only triggered when text really contains special markdown.
@@ -34,7 +34,7 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
 
         $testee = new Marksimple();
         $testee->removeAllRules();
-        $testee->addRule('rule', $this->testee());
+        $testee->addRule('rule', $this->returnRule());
 
         $input = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,';
         $input .= ' diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
@@ -51,7 +51,7 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
 
         $testee = new Marksimple();
         $testee->removeAllRules();
-        $testee->addRule('rule', $this->testee());
+        $testee->addRule('rule', $this->returnRule());
 
         $output = $testee->parse($input);
         static::assertSame($expected, $output);

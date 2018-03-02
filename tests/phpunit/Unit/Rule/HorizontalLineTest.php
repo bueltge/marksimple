@@ -19,7 +19,7 @@ class HorizontalLineTest extends AbstractRuleTestCase
         ];
     }
 
-    public function testee(): ElementRuleInterface
+    public function returnRule(): ElementRuleInterface
     {
         return new Rule\HorizontalLine();
     }

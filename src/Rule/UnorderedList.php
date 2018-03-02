@@ -8,7 +8,7 @@ class UnorderedList extends AbstractRegexRule
 
     /**
      * Get the regex rule to identify the content for the callback.
-     * ul List via star *.
+     * ul List via star * or -.
      *
      * @return string
      */
@@ -22,7 +22,7 @@ class UnorderedList extends AbstractRegexRule
      */
     protected function render(array $content): string
     {
-        $content = sprintf('<ul><li>%s</li></ul>', trim($content[ 1 ]));
+        $content = sprintf('<ul><li>%s</li></ul>', trim($content[1]));
 
         return preg_replace('#\s*<\/(ol|ul)>\n<\1>\s*#', '\n', $content);
     }

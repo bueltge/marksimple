@@ -14,7 +14,7 @@ class StrongTest extends AbstractRuleTestCase
         return [ /* TODO */];
     }
 
-    public function testee(): ElementRuleInterface
+    public function returnRule(): ElementRuleInterface
     {
         return new Rule\Strong();
     }

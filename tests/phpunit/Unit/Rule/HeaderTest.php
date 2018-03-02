@@ -21,7 +21,7 @@ class HeaderTest extends AbstractRuleTestCase
         ];
     }
 
-    public function testee(): ElementRuleInterface
+    public function returnRule(): ElementRuleInterface
     {
         return new Rule\Header();
     }
