@@ -11,7 +11,15 @@ class GithubPreTest extends AbstractRuleTestCase
 
     public function provideList(): array
     {
-        return [ /* TODO */];
+        return [
+            'githubpre' => [
+                '
+```php
+Code block
+```',
+                '<pre><code class="php language-php">Code block</code></pre>',
+            ],
+        ];
     }
 
     public function returnRule(): ElementRuleInterface

@@ -23,9 +23,13 @@ class Image extends AbstractRegexRule
      */
     public function render(array $content): string
     {
-        $url = filter_var($content[ 1 ], FILTER_SANITIZE_URL);
-        $alt = isset($content[ 2 ]) ? filter_var($content[ 2 ], FILTER_SANITIZE_STRING) : '';
+        $url = filter_var($content[1], FILTER_SANITIZE_URL);
+        $alt = '';
+        if (isset($content[2])) {
+            $content[2] = str_replace('"', '', $content[2]);
+            $alt = ' alt="' . filter_var($content[2], FILTER_SANITIZE_STRING) . '"';
+        }
 
-        return sprintf('<img src="%s" alt="%s" />', $url, $alt);
+        return sprintf('<img src="%s"%s />', $url, $alt);
     }
 }

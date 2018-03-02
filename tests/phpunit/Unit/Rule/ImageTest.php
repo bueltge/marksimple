@@ -11,7 +11,16 @@ class ImageTest extends AbstractRuleTestCase
 
     public function provideList(): array
     {
-        return [ /* TODO */];
+        return [
+            'image' => [
+                '![String](path/to/image.png)',
+                '<img src="path/to/image.png" />',
+            ],
+            'imagealt' => [
+                '![String](path/to/image.png "Alt string")',
+                '<img src="path/to/image.png" alt="Alt string" />',
+            ],
+        ];
     }
 
     public function returnRule(): ElementRuleInterface
