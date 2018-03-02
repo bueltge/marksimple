@@ -11,7 +11,9 @@ class LinkTest extends AbstractRuleTestCase
 
     public function provideList(): array
     {
-        return [ /* TODO */];
+        return [
+            'link' => ['[link](url)', '<a href="url">link</a>'],
+        ];
     }
 
     public function returnRule(): ElementRuleInterface
