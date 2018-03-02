@@ -13,7 +13,8 @@ class GithubPreTest extends AbstractRuleTestCase
     {
         return [
             'githubpre' => [
-                '```php
+                '
+```php
 Code block
 ```',
                 '<pre><code class="php language-php">Code block</code></pre>',
