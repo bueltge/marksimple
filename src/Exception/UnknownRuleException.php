@@ -4,5 +4,4 @@ namespace Bueltge\Marksimple\Exception;
 
 class UnknownRuleException extends \Exception
 {
-
 }

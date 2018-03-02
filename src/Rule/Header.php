@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
-class Header extends AbstractRegexRule implements RegexRuleInterface
+class Header extends AbstractRegexRule
 {
 
     /**
@@ -23,7 +23,7 @@ class Header extends AbstractRegexRule implements RegexRuleInterface
     public function render(array $content): string
     {
         $headingLevel = \strlen($content[1]);
-        $header       = trim($content[2]);
+        $header = trim($content[2]);
         // Build anker without space, numbers.
         $anker = preg_replace('#[^a-z?!]#', '', strtolower($header));
 

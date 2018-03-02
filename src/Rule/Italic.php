@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
-class Italic extends AbstractRegexRule implements RegexRuleInterface
+class Italic extends AbstractRegexRule
 {
 
     /**

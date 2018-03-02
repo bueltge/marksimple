@@ -6,7 +6,7 @@ namespace Bueltge\Marksimple\Rule;
 class HorizontalLine implements ElementRuleInterface
 {
 
-    protected $rules = [
+    protected static $rules = [
         '***',
         '*****',
         '- - -',
@@ -19,6 +19,6 @@ class HorizontalLine implements ElementRuleInterface
      */
     public function parse(string $content): string
     {
-        return str_replace($this->rules, '<hr/>', $content);
+        return str_replace(self::$rules, '<hr/>', $content);
     }
 }

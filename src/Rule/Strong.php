@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
-class Strong extends AbstractRegexRule implements RegexRuleInterface
+class Strong extends AbstractRegexRule
 {
 
     /**
