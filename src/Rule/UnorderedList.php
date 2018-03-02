@@ -24,6 +24,6 @@ class UnorderedList extends AbstractRegexRule
     {
         $content = sprintf('<ul><li>%s</li></ul>', trim($content[ 1 ]));
 
-        return preg_replace('\'#\s*<\/(ol|ul)>\n<\1>\s*#', '\n', $content);
+        return preg_replace('#\s*<\/(ol|ul)>\n<\1>\s*#', '\n', $content);
     }
 }

@@ -46,7 +46,7 @@ class Marksimple
      * Marksimple constructor.
      * @param string $content The content that we should render.
      */
-    public function __construct(string $content)
+    public function __construct(string $content = '')
     {
         $this->content = $content;
         $this->initDefaultRules();
@@ -94,6 +94,10 @@ class Marksimple
      */
     public function parse(string $content): string
     {
+        // Check for file, not string.
+        if (file_exists($content) && is_readable($content)) {
+            $content = $this->content($content);
+        }
 
         return array_reduce(
             $this->rules,
@@ -103,6 +107,18 @@ class Marksimple
             },
             $this->sanitize($content)
         );
+    }
+
+    /**
+     * Parse content from a markdown file.
+     *
+     * @param string $file The path to the file that we parse.
+     *
+     * @return string
+     */
+    protected function content(string $file): string
+    {
+        return file_get_contents($file, true);
     }
 
     /**
