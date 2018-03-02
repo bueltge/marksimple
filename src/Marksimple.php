@@ -44,10 +44,11 @@ class Marksimple
 
     /**
      * Marksimple constructor.
+     * @param string $content The content that we should render.
      */
-    public function __construct()
+    public function __construct(string $content)
     {
-
+        $this->content = $content;
         $this->initDefaultRules();
     }
 
