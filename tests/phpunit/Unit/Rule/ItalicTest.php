@@ -1,4 +1,4 @@
-<?php # -*- coding: utf-8 -*-
+<?php declare(strict_types=1); # -*- coding: utf-8 -*-
 
 namespace Bueltge\Marksimple\Tests\Unit\Rule;
 
@@ -14,11 +14,11 @@ class ItalicTest extends AbstractRuleTestCase
         return [
 
             'underline' => ['_Content in italic_', '<em>Content in italic</em>'],
-            'asterix'   => ['*Content in italic*', '<em>Content in italic</em>'],
+            'asterix' => ['*Content in italic*', '<em>Content in italic</em>'],
         ];
     }
 
-    protected function testee(): ElementRuleInterface
+    public function testee(): ElementRuleInterface
     {
         return new Rule\Italic();
     }

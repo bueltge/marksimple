@@ -36,6 +36,13 @@ class Marksimple
     protected $rules = [];
 
     /**
+     * Store the MarkDown content that we should render.
+     *
+     * @var string
+     */
+    protected $content;
+
+    /**
      * Marksimple constructor.
      */
     public function __construct()
@@ -68,36 +75,13 @@ class Marksimple
     }
 
     /**
-     * @param string $name
+     * Allows this class to decide how it will react.
      *
-     * @throws UnknownRuleException
-     *
-     * @return bool
+     * @return string The content that we should render.
      */
-    public function removeRule(string $name): bool
+    public function __toString(): string
     {
-        if (!$this->hasRule($name)) {
-            throw new UnknownRuleException(
-                sprintf(
-                    'No rule found for the given name "%s".',
-                    $name
-                )
-            );
-        }
-
-        unset($this->rules[$name]);
-
-        return true;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
-    public function hasRule(string $name): bool
-    {
-        return isset($this->rules[$name]);
+        return $this->parse($this->content);
     }
 
     /**
@@ -143,6 +127,39 @@ class Marksimple
         $content = htmlentities($content, ENT_NOQUOTES, 'UTF-8');
 
         return $content;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @throws UnknownRuleException
+     *
+     * @return bool
+     */
+    public function removeRule(string $name): bool
+    {
+        if (!$this->hasRule($name)) {
+            throw new UnknownRuleException(
+                sprintf(
+                    'No rule found for the given name "%s".',
+                    $name
+                )
+            );
+        }
+
+        unset($this->rules[$name]);
+
+        return true;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function hasRule(string $name): bool
+    {
+        return isset($this->rules[$name]);
     }
 
     /**

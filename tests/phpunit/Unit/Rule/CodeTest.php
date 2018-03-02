@@ -1,4 +1,4 @@
-<?php # -*- coding: utf-8 -*-
+<?php declare(strict_types=1); # -*- coding: utf-8 -*-
 
 namespace Bueltge\Marksimple\Tests\Unit\Rule;
 
@@ -12,13 +12,13 @@ class CodeTest extends AbstractRuleTestCase
     public function provideList(): array
     {
         return [
-            'simple'              => ['`code`', '<code>code</code>'],
-            'multiple gravis'     => ['```', '<code>`</code>'],
+            'simple' => ['`code`', '<code>code</code>'],
+            'multiple gravis' => ['```', '<code>`</code>'],
             'encode tags withing' => ['`<br>`', '<code>&lt;br&gt;</code>'],
         ];
     }
 
-    protected function testee(): ElementRuleInterface
+    public function testee(): ElementRuleInterface
     {
         return new Rule\Code();
     }

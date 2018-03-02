@@ -23,7 +23,7 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
         }
     }
 
-    abstract protected function testee(): ElementRuleInterface;
+    abstract public function testee(): ElementRuleInterface;
 
     /**
      * Test if rules are only triggered when text really contains special markdown.

@@ -1,4 +1,4 @@
-<?php # -*- coding: utf-8 -*-
+<?php declare(strict_types=1); # -*- coding: utf-8 -*-
 
 namespace Bueltge\Marksimple\Tests\Unit\Rule;
 
@@ -14,16 +14,15 @@ class ParagraphTest extends AbstractRuleTestCase
         return [
             'normal paragraph' => [
                 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.',
-                '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>'
-            ]
+                '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>',
+            ],
         ];
     }
 
-    protected function testee(): ElementRuleInterface
+    public function testee(): ElementRuleInterface
     {
         return new Rule\Paragraph();
     }
-
 
     public function testNoMarkdownContent()
     {

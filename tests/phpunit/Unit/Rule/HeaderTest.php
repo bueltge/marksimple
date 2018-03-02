@@ -1,4 +1,4 @@
-<?php # -*- coding: utf-8 -*-
+<?php declare(strict_types=1); # -*- coding: utf-8 -*-
 
 namespace Bueltge\Marksimple\Tests\Unit\Rule;
 
@@ -21,7 +21,7 @@ class HeaderTest extends AbstractRuleTestCase
         ];
     }
 
-    protected function testee(): ElementRuleInterface
+    public function testee(): ElementRuleInterface
     {
         return new Rule\Header();
     }

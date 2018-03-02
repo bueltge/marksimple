@@ -1,4 +1,4 @@
-<?php # -*- coding: utf-8 -*-
+<?php declare(strict_types=1); # -*- coding: utf-8 -*-
 
 namespace Bueltge\Marksimple\Tests\Unit;
 
@@ -58,8 +58,9 @@ class MarksimpleTest extends AbstractTestCase
      */
     public function testParse()
     {
-        $testee   = new Marksimple();
-        $input    = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
+        $testee = new Marksimple();
+        $input = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,';
+        $input .= ' diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
         $expected = '<p>' . $input . '</p>';
         static::assertSame($expected, $testee->parse($input));
     }

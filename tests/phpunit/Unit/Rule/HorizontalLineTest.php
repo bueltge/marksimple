@@ -1,4 +1,4 @@
-<?php # -*- coding: utf-8 -*-
+<?php declare(strict_types=1); # -*- coding: utf-8 -*-
 
 namespace Bueltge\Marksimple\Tests\Unit\Rule;
 
@@ -14,12 +14,12 @@ class HorizontalLineTest extends AbstractRuleTestCase
         return [
             'normal horizontal line' => [
                 'Lorem ipsum dolor sit amet --- consetetur sadipscing elitr',
-                'Lorem ipsum dolor sit amet <hr/> consetetur sadipscing elitr'
-            ]
+                'Lorem ipsum dolor sit amet <hr/> consetetur sadipscing elitr',
+            ],
         ];
     }
 
-    protected function testee(): ElementRuleInterface
+    public function testee(): ElementRuleInterface
     {
         return new Rule\HorizontalLine();
     }
