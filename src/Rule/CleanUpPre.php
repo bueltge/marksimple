@@ -21,7 +21,7 @@ class CleanUpPre extends AbstractRegexRule
      * {@inheritdoc}
      */
     public function render(array $content): string
-    {var_dump(json_encode(htmlentities($content[0])));var_dump($content);
+    {
         return '<br>';
     }
 }

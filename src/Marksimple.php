@@ -21,7 +21,7 @@ class Marksimple
         'italic' => Rule\Italic::class,
         'ul' => Rule\UnorderedList::class,
         'pre' => Rule\Pre::class,
-        'cleanuppre' => Rule\CleanUpPre::class,
+        //'cleanuppre' => Rule\CleanUpPre::class,
         'githubpre' => Rule\GithubPre::class,
         'code' => Rule\Code::class,
         'hr' => Rule\HorizontalLine::class,
@@ -88,7 +88,7 @@ class Marksimple
      */
     public function parse(string $content): string
     {
-        return array_reduce(
+        $newcontent =  array_reduce(
             $this->rules,
             function (string $content, ElementRuleInterface $rule): string {
 
@@ -96,6 +96,8 @@ class Marksimple
             },
             $this->sanitize($content)
         );
+        print_r( json_encode(htmlentities($newcontent)));
+        return $newcontent;
     }
 
     /**
