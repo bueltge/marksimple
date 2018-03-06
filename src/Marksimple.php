@@ -55,7 +55,7 @@ class Marksimple
     }
 
     /**
-     * Add rule to parse fromFile with an regex string.
+     * Add rule to parse content with an regex string.
      *
      * @param string $name
      * @param ElementRuleInterface $rule
@@ -67,7 +67,7 @@ class Marksimple
     }
 
     /**
-     * Get the markdown formatted fromFile.
+     * Get the markdown formatted content.
      *
      * @param string $content
      *
@@ -86,7 +86,7 @@ class Marksimple
     }
 
     /**
-     * Parse fromFile from a markdown file.
+     * Parse content from a markdown file.
      *
      * @param string $file The path to the file that we parse.
      *
@@ -103,9 +103,9 @@ class Marksimple
     }
 
     /**
-     * Filter the fromFile for not necessary strings.
+     * Filter the content for not necessary strings.
      *
-     * @param string $content The fromFile from the Markdown file.
+     * @param string $content The content from the Markdown file.
      *
      * @return string
      */
