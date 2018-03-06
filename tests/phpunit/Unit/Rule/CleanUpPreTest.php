@@ -12,8 +12,8 @@ class CleanUpPreTest extends AbstractRuleTestCase
     public function provideList(): array
     {
         return [
-            'prespace' => [
-                '</code></pre>\n<pre><code>',
+            'cleanuppre' => [
+                '&lt;/code&gt;&lt;/pre&gt;\n&lt;pre&gt;&lt;code&gt;',
                 '<br>',
             ],
         ];
