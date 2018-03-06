@@ -88,7 +88,7 @@ class Marksimple
      */
     public function parse(string $content): string
     {
-        $newcontent =  array_reduce(
+        return array_reduce(
             $this->rules,
             function (string $content, ElementRuleInterface $rule): string {
 
@@ -96,8 +96,6 @@ class Marksimple
             },
             $this->sanitize($content)
         );
-        print_r( json_encode(htmlentities($newcontent)));
-        return $newcontent;
     }
 
     /**
