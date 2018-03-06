@@ -13,8 +13,8 @@ class HorizontalLineTest extends AbstractRuleTestCase
     {
         return [
             'normal horizontal line' => [
-                'Lorem ipsum dolor sit amet --- consetetur sadipscing elitr',
-                'Lorem ipsum dolor sit amet <hr> consetetur sadipscing elitr',
+                ' ---',
+                '<hr>',
             ],
         ];
     }

@@ -21,7 +21,7 @@ class HorizontalLine extends AbstractRegexRule
      * {@inheritdoc}
      */
     public function render(array $content): string
-    {
+    {var_dump($content);
         return "\n<hr>";
     }
 }
