@@ -13,8 +13,8 @@ class PreTest extends AbstractRuleTestCase
     {
         return [
             'prespace' => [
-                'cleanuppre',
-                '<\/code><\/pre>\n<pre><code>',
+                '    Code block',
+                '<pre><code>Code block</code></pre>',
             ],
             'pretab' => [
                 '	Code block',
