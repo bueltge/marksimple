@@ -13,7 +13,8 @@ class CleanUpPreTest extends AbstractRuleTestCase
     {
         return [
             'cleanuppre' => [
-                '</code></pre> <pre><code>',
+                '</code></pre>
+<pre><code>',
                 '<br>',
             ],
         ];
