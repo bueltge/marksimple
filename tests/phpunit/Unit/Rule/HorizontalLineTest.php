@@ -13,8 +13,10 @@ class HorizontalLineTest extends AbstractRuleTestCase
     {
         return [
             'normal horizontal line' => [
-                ' ---',
-                '<hr>',
+                'Line
+---',
+                'Line
+<hr>',
             ],
         ];
     }

@@ -68,6 +68,18 @@ class Marksimple
     }
 
     /**
+     * Parse content from a markdown file.
+     *
+     * @param string $file The path to the file that we parse.
+     *
+     * @return string
+     */
+    public function parseFile(string $file): string
+    {
+        return $this->parse($this->getFileContent($file));
+    }
+
+    /**
      * Get the markdown formatted content.
      *
      * @param string $content
@@ -84,23 +96,6 @@ class Marksimple
             },
             $this->sanitize($content)
         );
-    }
-
-    /**
-     * Parse content from a markdown file.
-     *
-     * @param string $file The path to the file that we parse.
-     *
-     * @return string
-     */
-    public function fromFile(string $file): string
-    {
-        // Check for file, not string.
-        if (!file_exists($file) || !is_readable($file)) {
-            print 'The file is not exist or is not readable!';
-        }
-
-        return $this->parse(file_get_contents($file, true));
     }
 
     /**
@@ -126,6 +121,31 @@ class Marksimple
         $content = htmlentities($content, ENT_NOQUOTES, 'UTF-8');
 
         return $content;
+    }
+
+    /**
+     * Return content from a markdown file.
+     *
+     * @param string $file The path to the file that we parse.
+     * @return string The content from the file or an error message.
+     */
+    protected function getFileContent(string $file): string
+    {
+        try {
+            if (!file_exists($file) || !is_readable($file)) {
+                throw new \Exception(
+                    sprintf(
+                        'The file %s is not exist or is not readable!',
+                        $file
+                    )
+                );
+            }
+            return file_get_contents($file, true);
+        } catch (\Exception $e) {
+            $message = filter_var($e->getMessage(), FILTER_SANITIZE_STRING);
+        }
+
+        return $message;
     }
 
     /**

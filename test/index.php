@@ -12,7 +12,7 @@ require_once 'head.php';
         <?php
         // Parse the Markdown syntax from a file.
         $ms = new Marksimple();
-        print $ms->fromFile('../README.md');
+        print $ms->parseFile('../README.md');
         ?>
     </article>
 </div> <!-- .main -->
