@@ -7,7 +7,7 @@ class Header extends AbstractRegexRule
 {
 
     /**
-     * Get the regex rule to identify the content for the callback.
+     * Get the regex rule to identify the fromFile for the callback.
      * Header h1 - h6.
      *
      * @return string

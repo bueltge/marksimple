@@ -124,7 +124,7 @@ Options -MultiViews
 
 <IfModule mod_headers.c>
     Header set X-UA-Compatible "IE=edge"
-    # `mod_headers` cannot match based on the content-type, however,
+    # `mod_headers` cannot match based on the fromFile-type, however,
     # the `X-UA-Compatible` response header should be send only for
     # HTML documents and not for the other resources.
     <FilesMatch "\.(appcache|atom|bbaw|bmp|crx|css|cur|eot|f4[abpv]|flv|geojson|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|topojson|tt[cf]|txt|vcard|vcf|vtt|webapp|web[mp]|woff2?|xloc|xml|xpi)$">
@@ -372,9 +372,9 @@ AddDefaultCharset utf-8
 # | Suppressing / Forcing the `www.` at the beginning of URLs          |
 # ----------------------------------------------------------------------
 
-# The same content should never be available under two different
+# The same fromFile should never be available under two different
 # URLs, especially not with and without `www.` at the beginning.
-# This can cause SEO problems (duplicate content), and therefore,
+# This can cause SEO problems (duplicate fromFile), and therefore,
 # you should choose one of the alternatives and redirect the other
 # one.
 #
@@ -425,7 +425,7 @@ AddDefaultCharset utf-8
 # Protect website against clickjacking.
 #
 # The example below sends the `X-Frame-Options` response header with
-# the value `DENY`, informing browsers not to display the content of
+# the value `DENY`, informing browsers not to display the fromFile of
 # the web page in any frame.
 #
 # This might not be the best setting for everyone. You should read
@@ -435,7 +435,7 @@ AddDefaultCharset utf-8
 #
 # Keep in mind that while you could send the `X-Frame-Options` header
 # for all of your website’s pages, this has the potential downside that
-# it forbids even non-malicious framing of your content (e.g.: when
+# it forbids even non-malicious framing of your fromFile (e.g.: when
 # users visit your website using a Google Image Search results page).
 #
 # Nonetheless, you should ensure that you send the `X-Frame-Options`
@@ -454,7 +454,7 @@ AddDefaultCharset utf-8
 
 # <IfModule mod_headers.c>
 #     Header set X-Frame-Options "DENY"
-#     # `mod_headers` cannot match based on the content-type, however,
+#     # `mod_headers` cannot match based on the fromFile-type, however,
 #     # the `X-Frame-Options` response header should be send only for
 #     # HTML documents and not for the other resources.
 #     <FilesMatch "\.(appcache|atom|bbaw|bmp|crx|css|cur|eot|f4[abpv]|flv|geojson|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|topojson|tt[cf]|txt|vcard|vcf|vtt|webapp|web[mp]|woff2?|xloc|xml|xpi)$">
@@ -466,11 +466,11 @@ AddDefaultCharset utf-8
 # | Content Security Policy (CSP)                                      |
 # ----------------------------------------------------------------------
 
-# Mitigate the risk of cross-site scripting and other content-injection
+# Mitigate the risk of cross-site scripting and other fromFile-injection
 # attacks.
 #
 # This can be done by setting a `Content Security Policy` which
-# whitelists trusted sources of content for your website.
+# whitelists trusted sources of fromFile for your website.
 #
 # The example header below allows ONLY scripts that are loaded from the
 # current website's origin (no inline scripts, no CDN, etc). That almost
@@ -484,7 +484,7 @@ AddDefaultCharset utf-8
 
 # <IfModule mod_headers.c>
 #     Header set Content-Security-Policy "script-src 'self'; object-src 'self'"
-#     # `mod_headers` cannot match based on the content-type, however,
+#     # `mod_headers` cannot match based on the fromFile-type, however,
 #     # the `Content-Security-Policy` response header should be send
 #     # only for HTML documents and not for the other resources.
 #     <FilesMatch "\.(appcache|atom|bbaw|bmp|crx|css|cur|eot|f4[abpv]|flv|geojson|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|topojson|tt[cf]|txt|vcard|vcf|vtt|webapp|web[mp]|woff2?|xloc|xml|xpi)$">
@@ -509,7 +509,7 @@ AddDefaultCharset utf-8
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Block access to all hidden files and directories with the exception of
-# the visible content from within the `/.well-known/` hidden directory.
+# the visible fromFile from within the `/.well-known/` hidden directory.
 #
 # These types of files usually contain user preferences or the preserved
 # state of an utility, and can include rather private places like, for
@@ -518,7 +518,7 @@ AddDefaultCharset utf-8
 # The `/.well-known/` directory represents the standard (RFC 5785) path
 # prefix for "well-known locations" (e.g.: `/.well-known/manifest.json`,
 # `/.well-known/keybase.txt`), and therefore, access to its visible
-# content should not be blocked.
+# fromFile should not be blocked.
 #
 # https://www.mnot.net/blog/2010/04/07/well-known
 # https://tools.ietf.org/html/rfc5785
@@ -597,7 +597,7 @@ AddDefaultCharset utf-8
 #
 # This reduces exposure to drive-by download attacks and cross-origin
 # data leaks, and should be left uncommented, especially if the server
-# is serving user-uploaded content or content that could potentially be
+# is serving user-uploaded fromFile or fromFile that could potentially be
 # treated as executable by the browser.
 #
 # http://www.slideshare.net/hasegawayosuke/owasp-hasegawa
@@ -648,7 +648,7 @@ AddDefaultCharset utf-8
 # <IfModule mod_headers.c>
 #     #                           (1)    (2)
 #     Header set X-XSS-Protection "1; mode=block"
-#     # `mod_headers` cannot match based on the content-type, however,
+#     # `mod_headers` cannot match based on the fromFile-type, however,
 #     # the `X-XSS-Protection` response header should be send only for
 #     # HTML documents and not for the other resources.
 #     <FilesMatch "\.(appcache|atom|bbaw|bmp|crx|css|cur|eot|f4[abpv]|flv|geojson|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|topojson|tt[cf]|txt|vcard|vcf|vtt|webapp|web[mp]|woff2?|xloc|xml|xpi)$">
@@ -750,7 +750,7 @@ AddDefaultCharset utf-8
     # `Content-Enable` response header, client applications (e.g.:
     # browsers) wouldn't know that they first need to uncompress
     # the response, and thus, wouldn't be able to understand the
-    # content.
+    # fromFile.
     #
     # https://httpd.apache.org/docs/current/mod/mod_mime.html#addencoding
 
@@ -766,7 +766,7 @@ AddDefaultCharset utf-8
 
 # Prevent intermediate caches or proxies (e.g.: such as the ones
 # used by mobile network providers) from modifying the website's
-# content.
+# fromFile.
 #
 # https://tools.ietf.org/html/rfc2616#section-14.9.5
 #
@@ -898,7 +898,7 @@ FileETag None
 #       <!--#include file="js/jquery.js" -->
 #       <!--#include file="js/jquery.timer.js" -->
 #
-#   Apache will replace those lines with the content of the
+#   Apache will replace those lines with the fromFile of the
 #   specified files.
 
 # <IfModule mod_include.c>

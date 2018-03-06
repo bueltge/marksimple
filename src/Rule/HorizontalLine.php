@@ -3,22 +3,25 @@ declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
-class HorizontalLine implements ElementRuleInterface
+class HorizontalLine extends AbstractRegexRule
 {
 
-    protected static $rules = [
-        '***',
-        '*****',
-        '- - -',
-        '---',
-        '---------------------------------------',
-    ];
+    /**
+     * Get the regex rule to identify the fromFile for the callback.
+     * Leave nh as horizontal line helper, only on lines without code ` before.
+     *
+     * @return string
+     */
+    public function rule(): string
+    {
+        return '#\n-{3,}#';
+    }
 
     /**
      * {@inheritdoc}
      */
-    public function parse(string $content): string
+    public function render(array $content): string
     {
-        return str_replace(self::$rules, '<hr/>', $content);
+        return "\n<hr>";
     }
 }

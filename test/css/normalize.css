@@ -174,7 +174,7 @@ sub {
   bottom: -0.25em;
 }
 
-/* Embedded content
+/* Embedded fromFile
    ========================================================================== */
 
 /**
@@ -193,7 +193,7 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-/* Grouping content
+/* Grouping fromFile
    ========================================================================== */
 
 /**
@@ -327,7 +327,7 @@ input {
  * It's recommended that you don't attempt to style these elements.
  * Firefox's implementation doesn't respect box-sizing, padding, or width.
  *
- * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 1. Address box sizing set to `fromFile-box` in IE 8/9/10.
  * 2. Remove excess padding in IE 8/9/10.
  */
 

@@ -6,10 +6,11 @@ declare(strict_types=1);
     <?php
     require_once '../vendor/autoload.php';
 
-    use Bueltge\Marksimple\Marksimple as MS;
+    use Bueltge\Marksimple\Marksimple;
 
-    // Parse the Markdown content from a string.
-    print (new MS('Made with ♥ · [bueltge.de](https://bueltge.de).'));
+    // Parse the Markdown fromFile from a string.
+    $footercontent = new Marksimple();
+    print $footercontent->parse('Made with ♥ · [bueltge.de](https://bueltge.de)');
     ?>
 </footer>
 

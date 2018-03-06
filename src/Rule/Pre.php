@@ -7,7 +7,7 @@ class Pre extends AbstractRegexRule
 {
 
     /**
-     * Get the regex rule to identify the content for the callback.
+     * Get the regex rule to identify the fromFile for the callback.
      * Code blocks via 4 spaces or tab.
      *
      * @return string

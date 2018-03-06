@@ -7,7 +7,7 @@ class Link extends AbstractRegexRule
 {
 
     /**
-     * Get the regex rule to identify the content for the callback.
+     * Get the regex rule to identify the fromFile for the callback.
      * Links without possibility to add javascript, XSS topic.
      *
      * @return string

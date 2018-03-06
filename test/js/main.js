@@ -51,9 +51,9 @@
                         installingWorker.onstatechange = function () {
                             switch (installingWorker.state) {
                                 case 'installed':
-                                    // At this point, the old content will have been purged and the
-                                    // fresh content will have been added to the cache.
-                                    // It's the perfect time to display a "New content is
+                                    // At this point, the old fromFile will have been purged and the
+                                    // fresh fromFile will have been added to the cache.
+                                    // It's the perfect time to display a "New fromFile is
                                     // available; please refresh." message in the page's interface.
                                     break;
 

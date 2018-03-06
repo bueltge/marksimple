@@ -47,14 +47,16 @@ See the test directory for an example with two different usages. The test direct
 #### Code examples
     // Example with four spaces.
     require_once '../vendor/autoload.php';
-    use Bueltge\Marksimple\Marksimple as MS;
-    print (new MS('../README.md'));
+    use Bueltge\Marksimple\Marksimple;
+    $ms = new Marksimple();
+    print $ms->parse('../README.md');
 
 ```php
 // Example Github Code Block ```php.
 require_once '../vendor/autoload.php';
-use Bueltge\Marksimple\Marksimple as MS;
-print (new MS('../README.md'));
+use Bueltge\Marksimple\Marksimple;
+$ms = new Marksimple();
+print $ms->parse('../README.md');
 ```
 
 ## Kudos
