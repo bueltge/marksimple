@@ -49,14 +49,14 @@ See the test directory for an example with two different usages. The test direct
     require_once '../vendor/autoload.php';
     use Bueltge\Marksimple\Marksimple;
     $ms = new Marksimple();
-    print $ms->parse('../README.md');
+    print $ms->parseFile('../README.md');
 
 ```php
 // Example Github Code Block ```php.
 require_once '../vendor/autoload.php';
 use Bueltge\Marksimple\Marksimple;
 $ms = new Marksimple();
-print $ms->parse('../README.md');
+print $ms->parseFile('../README.md');
 ```
 
 ## Kudos
