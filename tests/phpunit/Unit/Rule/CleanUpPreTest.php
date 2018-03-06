@@ -6,25 +6,21 @@ use Bueltge\Marksimple\Rule;
 use Bueltge\Marksimple\Rule\ElementRuleInterface;
 use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 
-class PreTest extends AbstractRuleTestCase
+class CleanUpPreTest extends AbstractRuleTestCase
 {
 
     public function provideList(): array
     {
         return [
             'prespace' => [
-                'cleanuppre',
-                '<\/code><\/pre>\n<pre><code>',
-            ],
-            'pretab' => [
-                '	Code block',
-                '<pre><code>Code block</code></pre>',
+                '</code></pre>\n<pre><code>',
+                '<br>',
             ],
         ];
     }
 
     public function returnRule(): ElementRuleInterface
     {
-        return new Rule\Pre();
+        return new Rule\CleanUpPre();
     }
 }

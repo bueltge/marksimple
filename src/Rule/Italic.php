@@ -7,7 +7,7 @@ class Italic extends AbstractRegexRule
 {
 
     /**
-     * Get the regex rule to identify the fromFile for the callback.
+     * Get the regex rule to identify the content for the callback.
      * Italic formatting via one star * or one underline _.
      *
      * @return string

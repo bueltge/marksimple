@@ -7,7 +7,7 @@ class NewLine extends AbstractRegexRule
 {
 
     /**
-     * Get the regex rule to identify the fromFile for the callback.
+     * Get the regex rule to identify the content for the callback.
      * Leave br as new line helper, only on break with html > before.
      *
      * @return string

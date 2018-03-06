@@ -7,7 +7,7 @@ class Strong extends AbstractRegexRule
 {
 
     /**
-     * Get the regex rule to identify the fromFile for the callback.
+     * Get the regex rule to identify the content for the callback.
      * Strong, bold via double star ** or double underline __.
      *
      * @return string

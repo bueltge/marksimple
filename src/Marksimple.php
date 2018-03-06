@@ -21,6 +21,7 @@ class Marksimple
         'italic' => Rule\Italic::class,
         'ul' => Rule\UnorderedList::class,
         'pre' => Rule\Pre::class,
+        'cleanuppre' => Rule\CleanUpPre::class,
         'githubpre' => Rule\GithubPre::class,
         'code' => Rule\Code::class,
         'hr' => Rule\HorizontalLine::class,

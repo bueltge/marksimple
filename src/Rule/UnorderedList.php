@@ -7,7 +7,7 @@ class UnorderedList extends AbstractRegexRule
 {
 
     /**
-     * Get the regex rule to identify the fromFile for the callback.
+     * Get the regex rule to identify the content for the callback.
      * ul List via star * or -.
      *
      * @return string
