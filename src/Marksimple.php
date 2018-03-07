@@ -74,11 +74,14 @@ class Marksimple
      * @param string $file The path to the file that we parse.
      *
      * @return string
-     * @throws InvalideFileException
      */
     public function parseFile(string $file): string
     {
-        return $this->parse($this->getFileContent($file));
+        try {
+            return $this->parse($this->getFileContent($file));
+        } catch ( InvalideFileException $e ) {
+            return filter_var($e->getMessage(), FILTER_SANITIZE_STRING);;
+        }
     }
 
     /**
