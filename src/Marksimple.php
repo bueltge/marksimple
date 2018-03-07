@@ -38,13 +38,6 @@ class Marksimple
     protected $rules = [];
 
     /**
-     * Store filename, path for parsing.
-     *
-     * @var string
-     */
-    private $filename;
-
-    /**
      * Marksimple constructor.
      */
     public function __construct()
@@ -153,13 +146,7 @@ class Marksimple
             );
         }
 
-        $this->filename = $file;
-
-        try {
-            return file_get_contents($file, true);
-        } finally {
-            $this->filename = null;
-        }
+        return (string) file_get_contents($file, true);
     }
 
     /**
