@@ -74,14 +74,23 @@ class Marksimple
      * @param string $file The path to the file that we parse.
      *
      * @return string
+     * @throws InvalideFileException
      */
     public function parseFile(string $file): string
     {
-        try {
-            return $this->parse($this->getFileContent($file));
-        } catch ( InvalideFileException $e ) {
-            return filter_var($e->getMessage(), FILTER_SANITIZE_STRING);;
+        if (!is_file($file)) {
+            throw new InvalideFileException(
+                sprintf('File "%s" does not exist.', $file)
+            );
         }
+
+        if (!is_readable($file)) {
+            throw new InvalideFileException(
+                sprintf('File "%s" cannot be read.', $file)
+            );
+        }
+
+        return $this->parse((string)file_get_contents($file, true));
     }
 
     /**
@@ -126,30 +135,6 @@ class Marksimple
         $content = htmlentities($content, ENT_NOQUOTES, 'UTF-8');
 
         return $content;
-    }
-
-    /**
-     * Return content from a markdown file.
-     *
-     * @param string $file The path to the file that we parse.
-     * @return string The content from the file or an error message.
-     * @throws InvalideFileException
-     */
-    protected function getFileContent(string $file): string
-    {
-        if (!is_file($file)) {
-            throw new InvalideFileException(
-                sprintf('File "%s" does not exist.', $file)
-            );
-        }
-
-        if (!is_readable($file)) {
-            throw new InvalideFileException(
-                sprintf('File "%s" cannot be read.', $file)
-            );
-        }
-
-        return (string) file_get_contents($file, true);
     }
 
     /**
