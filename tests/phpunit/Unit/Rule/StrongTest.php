@@ -9,16 +9,24 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class StrongTest extends AbstractRuleTestCase
 {
 
-    public function provideList(): array
-    {
-        return [
-            'star' => ['**Strong word**', '<strong>Strong word</strong>'],
-            'underline' => ['__Strong word__', '<strong>Strong word</strong>'],
-        ];
-    }
-
     public function returnRule(): ElementRuleInterface
     {
+
         return new Rule\Strong();
+    }
+
+    public function provideList()
+    {
+
+        yield 'star' => ['**Strong word**', '<strong>Strong word</strong>'];
+
+        $input    = '__Strong word__';
+        $expected = '<strong>Strong word</strong>';
+        $text     = 'Lorum ipsum';
+        yield 'underline' => [$input, $expected];
+
+        yield 'text before' => ["$text $input", "$text $expected"];
+        yield 'text after' => ["$input $text", "$expected $text"];
+        yield 'text before and after' => ["$text $input $text", "$text $expected $text"];
     }
 }

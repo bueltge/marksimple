@@ -9,23 +9,24 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class ParagraphTest extends AbstractRuleTestCase
 {
 
-    public function provideList(): array
+    public function provideList()
     {
-        return [
-            'normal paragraph' => [
-                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.',
-                '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>',
-            ],
+
+        yield 'normal paragraph' => [
+            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.',
+            '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>',
         ];
     }
 
     public function returnRule(): ElementRuleInterface
     {
+
         return new Rule\Paragraph();
     }
 
     public function testNoMarkdownContent()
     {
+
         static::markTestSkipped('Paragraphes are always added as wrap around default content.');
     }
 }
