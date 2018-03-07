@@ -2,6 +2,7 @@
 
 namespace Bueltge\Marksimple;
 
+use Bueltge\Marksimple\Exception\InvalideFileException;
 use Bueltge\Marksimple\Exception\UnknownRuleException;
 use Bueltge\Marksimple\Rule\ElementRuleInterface;
 
@@ -35,6 +36,13 @@ class Marksimple
      * @var array
      */
     protected $rules = [];
+
+    /**
+     * Store filename, path for parsing.
+     *
+     * @var string
+     */
+    private $filename;
 
     /**
      * Marksimple constructor.
@@ -73,6 +81,7 @@ class Marksimple
      * @param string $file The path to the file that we parse.
      *
      * @return string
+     * @throws InvalideFileException
      */
     public function parseFile(string $file): string
     {
@@ -128,24 +137,29 @@ class Marksimple
      *
      * @param string $file The path to the file that we parse.
      * @return string The content from the file or an error message.
+     * @throws InvalideFileException
      */
     protected function getFileContent(string $file): string
     {
-        try {
-            if (!file_exists($file) || !is_readable($file)) {
-                throw new \Exception(
-                    sprintf(
-                        'The file %s is not exist or is not readable!',
-                        $file
-                    )
-                );
-            }
-            return file_get_contents($file, true);
-        } catch (\Exception $e) {
-            $message = filter_var($e->getMessage(), FILTER_SANITIZE_STRING);
+        if (!is_file($file)) {
+            throw new InvalideFileException(
+                sprintf('File "%s" does not exist.', $file)
+            );
         }
 
-        return $message;
+        if (!is_readable($file)) {
+            throw new InvalideFileException(
+                sprintf('File "%s" cannot be read.', $file)
+            );
+        }
+
+        $this->filename = $file;
+
+        try {
+            return file_get_contents($file, true);
+        } finally {
+            $this->filename = null;
+        }
     }
 
     /**
