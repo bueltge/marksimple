@@ -22,6 +22,6 @@ class HorizontalLine extends AbstractRegexRule
      */
     public function render(array $content): string
     {
-        return "\n<hr>";
+        return "\n<hr/>";
     }
 }

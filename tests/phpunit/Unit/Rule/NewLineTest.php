@@ -9,19 +9,22 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class NewLineTest extends AbstractRuleTestCase
 {
 
-    public function provideList(): array
+    public function provideList()
     {
-        return [
-            'newline' => ['<br>', '&lt;br&gt;'],
-            'newlinehtml' => [
-                ' <br>', '
-<br> &lt;br&gt;',
-            ],
-        ];
+
+        $input    = '<br/>';
+        $expected = '&lt;br/&gt;';
+        $text     = 'Lorum ipsum';
+
+        yield 'simple' => [$input, $expected];
+        yield 'text before' => ["$text $input", "$text $expected"];
+        yield 'text after' => ["$input $text", "$expected $text"];
+        yield 'text before and after' => ["$text $input $text", "$text $expected $text"];
     }
 
     public function returnRule(): ElementRuleInterface
     {
+
         return new Rule\NewLine();
     }
 }

@@ -9,28 +9,39 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class GithubPreTest extends AbstractRuleTestCase
 {
 
-    public function provideList(): array
+    public function returnRule(): ElementRuleInterface
     {
-        return [
-            'githubpre' => [
-                '
+
+        return new Rule\GithubPre();
+    }
+
+    public function provideList()
+    {
+
+        $input    = <<<MARKDOWN
 ```
 Code block
-```',
-                '<pre><code>Code block</code></pre>',
-                ],
-            'githubprewithlang' => [
-                '
+```
+MARKDOWN;
+        $expected = '<pre><code>Code block</code></pre>';
+
+        yield 'simple' => [ $input, $expected ];
+
+        $text = 'Lorum ipsum';
+        yield 'text before' => ["$text \n $input", "$text $expected"];
+        yield 'text after' => ["$input \n $text", "$expected $text"];
+        yield 'text before and after' => ["$text \n $input \n $text", "$text $expected $text"];
+
+        $input = <<<MARKDOWN
 ```php
-Code block
-```',
-                '<pre><code class="php language-php">Code block</code></pre>',
-            ],
+<?php
+// Code block
+```
+MARKDOWN;
+        yield  'githubprewithlang' => [
+            $input,
+            '<pre><code class="php language-php">&lt;?php<br>// Code block</code></pre>'
         ];
     }
 
-    public function returnRule(): ElementRuleInterface
-    {
-        return new Rule\GithubPre();
-    }
 }

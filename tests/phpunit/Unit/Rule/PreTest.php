@@ -9,22 +9,16 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class PreTest extends AbstractRuleTestCase
 {
 
-    public function provideList(): array
-    {
-        return [
-            'prespace' => [
-                '    Code block',
-                '<pre><code>Code block</code></pre>',
-            ],
-            'pretab' => [
-                '	Code block',
-                '<pre><code>Code block</code></pre>',
-            ],
-        ];
-    }
-
     public function returnRule(): ElementRuleInterface
     {
+
         return new Rule\Pre();
+    }
+
+    public function provideList()
+    {
+
+        yield 'prespace' => ['    Code block', '<pre><code>Code block</code></pre>'];
+        yield 'pretab' => ['	Code block', '<pre><code>Code block</code></pre>'];
     }
 }

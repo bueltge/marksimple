@@ -10,7 +10,8 @@
 	convertNoticesToExceptions="true"
 	convertWarningsToExceptions="true"
 	processIsolation="false"
-	stopOnFailure="false">
+	stopOnFailure="false"
+    printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer">
 	<testsuites>
 		<testsuite name="Unit">
 			<directory suffix="Test.php">tests/phpunit/Unit</directory>
@@ -27,5 +28,6 @@
 	</filter>
 	<logging>
 		<log type="coverage-html" target="tmp" />
+        <log type="coverage-clover" target="clover.xml"/>
 	</logging>
 </phpunit>
