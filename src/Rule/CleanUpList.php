@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
-class CleanUpUl extends AbstractRegexRule
+class CleanUpList extends AbstractRegexRule
 {
 
     /**
@@ -15,7 +15,7 @@ class CleanUpUl extends AbstractRegexRule
      */
     public function rule(): string
     {
-        return '#<\/li><\/ul>\n<ul><li(>| .*?>)#';
+        return '#\s*<\/(ol|ul)>\n<\1>\s*#';
     }
 
     /**
@@ -23,6 +23,6 @@ class CleanUpUl extends AbstractRegexRule
      */
     public function render(array $content): string
     {
-        return '</li><li>';
+        return "\n";
     }
 }
