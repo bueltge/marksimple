@@ -6,6 +6,9 @@
 *.ipr
 *.iws
 
+## Single files
+clover.xml
+
 ## Additional for IntelliJ
 out/
 
