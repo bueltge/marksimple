@@ -5,6 +5,7 @@ namespace Bueltge\Marksimple;
 use Bueltge\Marksimple\Exception\InvalideFileException;
 use Bueltge\Marksimple\Exception\UnknownRuleException;
 use Bueltge\Marksimple\Rule\ElementRuleInterface;
+use PHP_CodeSniffer\Ruleset;
 
 class Marksimple
 {
@@ -21,6 +22,7 @@ class Marksimple
         'strong' => Rule\Strong::class,
         'italic' => Rule\Italic::class,
         'ul' => Rule\UnorderedList::class,
+        'cleanupul' => Rule\CleanUpUl::class,
         'pre' => Rule\Pre::class,
         'cleanuppre' => Rule\CleanUpPre::class,
         'githubpre' => Rule\GithubPre::class,
