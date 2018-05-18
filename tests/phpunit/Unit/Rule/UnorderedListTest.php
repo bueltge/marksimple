@@ -35,7 +35,9 @@ class UnorderedListTest extends AbstractRuleTestCase
 * item 3
 Markdown;
 
-        $expected = '<ul><li>item 1</li><li>item 2</li><li>item 3</li></ul>';
+        $expected = '<ul><li>item 1</li></ul>
+<ul><li>item 2</li></ul>
+<ul><li>item 3</li></ul>';
         yield 'multiple items' => [$input, $expected];
     }
 }
