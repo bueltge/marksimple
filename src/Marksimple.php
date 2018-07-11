@@ -22,7 +22,7 @@ class Marksimple
         'strong' => Rule\Strong::class,
         'italic' => Rule\Italic::class,
         'ul' => Rule\UnorderedList::class,
-        //'cleanuplist' => Rule\CleanUpList::class,
+        'cleanuplist' => Rule\CleanUpList::class,
         'pre' => Rule\Pre::class,
         'cleanuppre' => Rule\CleanUpPre::class,
         'githubpre' => Rule\GithubPre::class,
