@@ -3,25 +3,26 @@ declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
 
-class UnorderedList extends AbstractRegexRule
+class CleanUpList extends AbstractRegexRule
 {
 
     /**
      * Get the regex rule to identify the content for the callback.
-     * ul List via star * or -.
+     * Clean up unordered list blocks to get for a block only one ul, ol block,
+     * not each line and leave the li element.
      *
      * @return string
      */
     public function rule(): string
     {
-        return '#^ *[*\-+] +(.*?)$#m';
+        return '#\s*<\/(ol|ul)>\n<\1>\s*#';
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function render(array $content): string
+    public function render(array $content): string
     {
-        return sprintf('<ul><li>%s</li></ul>', trim($content[1]));
+        return "\n";
     }
 }

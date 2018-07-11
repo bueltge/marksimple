@@ -11,16 +11,13 @@ class HorizontalLineTest extends AbstractRuleTestCase
 
     public function returnRule(): ElementRuleInterface
     {
-
         return new Rule\HorizontalLine();
     }
 
     public function provideList()
     {
-
-        $input    = '---';
-        $expected = '<hr/>';
-
+        $input = "test\n---";
+        $expected = "test\n<hr/>";
         yield 'simple' => [$input, $expected];
 
         $text = 'Lorum ipsum';
@@ -28,5 +25,4 @@ class HorizontalLineTest extends AbstractRuleTestCase
         yield 'text after' => ["$input\n$text", "$expected\n$text"];
         yield 'text before and after' => ["$text\n$input\n$text", "$text\n$expected\n$text"];
     }
-
 }

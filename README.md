@@ -21,6 +21,7 @@ The class is simple and I use it for my own documentation, there I write in mark
  * [My Git Notes](https://bueltge.de/git/)
  * [My Markdown Notes](https://bueltge.de/md/)
  * [My Linux command notes](https://bueltge.de/linux/)
+ * [Thüringen erfahren - a one pager for a bicycle event](https://bueltge.de/thueringen-erfahren/)
 
 ## Support
 
@@ -79,7 +80,7 @@ On the way to the goal of my simple parser I use lot of tests, tries on the onli
 
 ## License
 
-Copyright (c) 2017 [Frank Bültge](https://bueltge.de)
+Copyright (c) 2017 until now, [Frank Bültge](https://bueltge.de)
 
 Good news, this plugin is free for everyone! Since it's released under the [MIT License](https://github.com/inpsyde/marksimple/blob/master/LICENSE) you can use it free of charge on your personal or commercial website.
 
