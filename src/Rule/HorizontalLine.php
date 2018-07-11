@@ -14,7 +14,7 @@ class HorizontalLine extends AbstractRegexRule
      */
     public function rule(): string
     {
-        return '#\n-{3,}([^|`]+?)#';
+        return '#\n-{3,}([^|`]?)#';
     }
 
     /**
