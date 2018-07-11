@@ -21,7 +21,5 @@ install:
 script:
   - vendor/bin/phpcs --config-set installed_paths "../../wp-coding-standards/wpcs/,../../automattic/phpcs-neutron-standard/,../../inpsyde/php-coding-standards/,../../wimg/php-compatibility/,../../pheromone/phpcs-security-audit/Security/"
   - vendor/bin/phpcs -n
-  - vendor/bin/phpunit  --coverage-clover=coverage.xml
-  
-  after_success:
-    - bash <(curl -s https://codecov.io/bash)
+  - vendor/bin/phpunit
+
