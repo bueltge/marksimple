@@ -33,7 +33,7 @@ My class supports currently the follow syntax. But Pull Request are really welco
  * Italic text, `em` - an `*` or `_` before and after the string
  * Unordered list, `ul` - `*` for each line
  * Inline Code, `code` - an ``` backtick before and after the code string
- * Code Blocks, `pre` - `    ` (4 spaces) or `	` (tab) in each line or the fenced code blocks by placing triple backticks and optional the language identifier,
+	* Code Blocks, `pre` - `    ` (4 spaces) or `	` (tab) in each line or the fenced code blocks by placing triple backticks and optional the language identifier,
  * Links, `a` - `[Link Text](Link URL)`
  * Horizontal line, `---`
  * Break, new line, `<br>`
@@ -77,6 +77,7 @@ On the way to the goal of my simple parser I use lot of tests, tries on the onli
  * [regular expressions 101](https://regex101.com/)
  * [DebuggexBeta](https://www.debuggex.com/)
  * [Learn Regex The Easy Way](https://github.com/zeeshanu/learn-regex)
+ * [RegExr](https://regexr.com/)
 
 ## License
 
