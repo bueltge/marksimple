@@ -74,6 +74,7 @@ print $ms->parseFile('../README.md');
 
 On the way to the goal of my simple parser I use lot of tests, tries on the online Regex testers. Thanks a lot to the authors of this followed two sites, great!
 
+ * [PHP Live Regex](https://www.phpliveregex.com/) Really helpful in PHP context.
  * [regular expressions 101](https://regex101.com/)
  * [DebuggexBeta](https://www.debuggex.com/)
  * [Learn Regex The Easy Way](https://github.com/zeeshanu/learn-regex)
