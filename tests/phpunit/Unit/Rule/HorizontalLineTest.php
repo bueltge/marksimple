@@ -9,11 +9,6 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class HorizontalLineTest extends AbstractRuleTestCase
 {
 
-    public function returnRule(): ElementRuleInterface
-    {
-        return new Rule\HorizontalLine();
-    }
-
     public function provideList()
     {
         $text = 'Lorum ipsum';
@@ -24,5 +19,10 @@ class HorizontalLineTest extends AbstractRuleTestCase
         yield 'text before' => ["$text\n$input", "$text\n$expected"];
         yield 'text after' => ["$input\n$text", "$expected\n$text"];
         yield 'text before and after' => ["$text\n$input\n$text", "$text\n$expected\n$text"];
+    }
+
+    public function returnRule(): ElementRuleInterface
+    {
+        return new Rule\HorizontalLine();
     }
 }

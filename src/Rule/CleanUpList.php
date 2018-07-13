@@ -15,7 +15,7 @@ class CleanUpList extends AbstractRegexRule
      */
     public function rule(): string
     {
-        return '#\s*<\/(ol|ul)>\n<\1>\s*#';
+        return '/\s*<\/(ol|ul)>\n<\1>\s*/';
     }
 
     /**
