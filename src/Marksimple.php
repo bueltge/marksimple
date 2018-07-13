@@ -1,11 +1,11 @@
-<?php declare(strict_types=1); # -*- coding: utf-8 -*-
+<?php # -*- coding: utf-8 -*-
+declare(strict_types=1);
 
 namespace Bueltge\Marksimple;
 
 use Bueltge\Marksimple\Exception\InvalideFileException;
 use Bueltge\Marksimple\Exception\UnknownRuleException;
 use Bueltge\Marksimple\Rule\ElementRuleInterface;
-use PHP_CodeSniffer\Ruleset;
 
 class Marksimple
 {
