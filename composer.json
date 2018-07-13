@@ -14,13 +14,13 @@
     }
   ],
   "require": {
-    "php": ">=7"
+    "php": ">=7",
+    "pheromone/phpcs-security-audit": "^2.0"
   },
   "require-dev": {
     "phpunit/phpunit": "6.3.*",
     "codedungeon/phpunit-result-printer": "^0.9",
-    "inpsyde/php-coding-standards": "^0.12",
-    "pheromone/phpcs-security-audit": "^2.0"
+    "inpsyde/php-coding-standards": "^0.12"
   },
   "autoload": {
     "psr-4": {

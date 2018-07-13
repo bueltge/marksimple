@@ -16,11 +16,11 @@ class HorizontalLineTest extends AbstractRuleTestCase
 
     public function provideList()
     {
-        $input = "test\n---";
-        $expected = "test\n<hr/>";
+        $text = 'Lorum ipsum';
+        $input = "$text\n---";
+        $expected = "$text\n<hr/>";
         yield 'simple' => [$input, $expected];
 
-        $text = 'Lorum ipsum';
         yield 'text before' => ["$text\n$input", "$text\n$expected"];
         yield 'text after' => ["$input\n$text", "$expected\n$text"];
         yield 'text before and after' => ["$text\n$input\n$text", "$text\n$expected\n$text"];
