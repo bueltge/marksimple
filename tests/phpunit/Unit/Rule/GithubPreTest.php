@@ -9,12 +9,6 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class GithubPreTest extends AbstractRuleTestCase
 {
 
-    public function returnRule(): ElementRuleInterface
-    {
-
-        return new Rule\GithubPre();
-    }
-
     public function provideList()
     {
 
@@ -44,4 +38,9 @@ MARKDOWN;
         ];
     }
 
+    public function returnRule(): ElementRuleInterface
+    {
+
+        return new Rule\GithubPre();
+    }
 }
