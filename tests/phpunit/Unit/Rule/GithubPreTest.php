@@ -28,9 +28,9 @@ MARKDOWN;
         yield 'simple' => [ $input, $expected ];
 
         $text = 'Lorum ipsum';
-        yield 'text before' => ["$text \n $input", "$text $expected"];
-        yield 'text after' => ["$input \n $text", "$expected $text"];
-        yield 'text before and after' => ["$text \n $input \n $text", "$text $expected $text"];
+        yield 'text before' => ["$text\n$input", "$text$expected"];
+        yield 'text after' => ["$input\n$text", "$expected$text"];
+        yield 'text before and after' => ["$text\n$input\n$text", "$text$expected$text"];
 
         $input = <<<MARKDOWN
 ```php
@@ -40,7 +40,7 @@ MARKDOWN;
 MARKDOWN;
         yield  'githubprewithlang' => [
             $input,
-            '<pre><code class="php language-php">&lt;?php<br>// Code block</code></pre>'
+            '<pre><code class="php language-php">&lt;?php<br>// Code block</code></pre>',
         ];
     }
 
