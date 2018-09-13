@@ -13,7 +13,7 @@ class NewLineTest extends AbstractRuleTestCase
     {
 
         $input    = '<br/>';
-        $expected = '&lt;br/&gt;';
+        $expected = '<br/>';
         $text     = 'Lorum ipsum';
 
         yield 'simple' => [$input, $expected];

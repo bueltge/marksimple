@@ -48,6 +48,12 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
      */
     public function testList(string $input, string $expected)
     {
+        // Mock php core function htmlentities for the unit tests in the sanitize method of the core class.
+        \Patchwork\redefine(
+            'htmlentities',
+            function ($html) {
+                return $html;}
+        );
 
         $testee = new Marksimple();
         $testee->removeAllRules();
