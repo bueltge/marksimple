@@ -34,7 +34,7 @@ MARKDOWN;
 MARKDOWN;
         yield  'githubprewithlang' => [
             $input,
-            '<pre><code class="php language-php">&lt;?php<br>// Code block</code></pre>',
+            '<pre><code class="php language-php"><?php<br>// Code block</code></pre>',
         ];
     }
 
