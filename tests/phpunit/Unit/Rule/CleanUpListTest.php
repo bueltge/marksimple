@@ -12,9 +12,9 @@ class CleanUpListTest extends AbstractRuleTestCase
     public function provideList()
     {
         $text = 'Lorum Ipsum';
-        yield 'noreplacement' => ['</ul><ul>', '&lt;/ul&gt;&lt;ul&gt;'];
-        yield 'cleanupulist' => ["</ul>\n<ul>", "&lt;/ul&gt;\n&lt;ul&gt;"];
-        yield 'cleanupolist' => ["$text</ol>\n<ol>", "$text&lt;/ol&gt;\n&lt;ol&gt;"];
+        yield 'noreplacement' => ['</ul><ul>', '</ul><ul>'];
+        yield 'cleanupulist' => ["</ul>\n<ul>", "\n"];
+        yield 'cleanupolist' => ["$text</ol>\n<ol>", "$text\n"];
     }
 
     public function returnRule(): ElementRuleInterface

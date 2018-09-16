@@ -14,7 +14,6 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
      */
     public function testBasic()
     {
-
         $testee = $this->returnRule();
         static::assertInstanceOf(ElementRuleInterface::class, $testee);
 
@@ -31,7 +30,6 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
      */
     public function testNoMarkdownContent()
     {
-
         $testee = new Marksimple();
         $testee->removeAllRules();
         $testee->addRule('rule', $this->returnRule());
@@ -43,21 +41,16 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
 
     /**
      * @dataProvider provideList
+     *
      * @param string $input
      * @param string $expected
      */
     public function testList(string $input, string $expected)
     {
-        // Mock php core function htmlentities for the unit tests in the sanitize method of the core class.
-        \Patchwork\redefine(
-            'htmlentities',
-            function ($html) {
-                return $html;}
-        );
-
-        $testee = new Marksimple();
-        $testee->removeAllRules();
-        $testee->addRule('rule', $this->returnRule());
+        //$testee = new Marksimple();
+        //$testee->removeAllRules();
+        //$testee->addRule('rule', $this->returnRule());
+        $testee = $this->returnRule();
 
         $output = $testee->parse($input);
         static::assertSame($expected, $output);

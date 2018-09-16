@@ -9,12 +9,14 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class NewLineTest extends AbstractRuleTestCase
 {
 
+    /**
+     * @return array|\Generator
+     */
     public function provideList()
     {
-
-        $input    = '<br/>';
+        $input = '<br/>';
         $expected = '<br/>';
-        $text     = 'Lorum ipsum';
+        $text = 'Lorum ipsum';
 
         yield 'simple' => [$input, $expected];
         yield 'text before' => ["$text $input", "$text $expected"];
@@ -24,7 +26,6 @@ class NewLineTest extends AbstractRuleTestCase
 
     public function returnRule(): ElementRuleInterface
     {
-
         return new Rule\NewLine();
     }
 }
