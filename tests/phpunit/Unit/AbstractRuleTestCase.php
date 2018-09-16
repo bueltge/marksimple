@@ -47,11 +47,7 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
      */
     public function testList(string $input, string $expected)
     {
-        //$testee = new Marksimple();
-        //$testee->removeAllRules();
-        //$testee->addRule('rule', $this->returnRule());
         $testee = $this->returnRule();
-
         $output = $testee->parse($input);
         static::assertSame($expected, $output);
     }
