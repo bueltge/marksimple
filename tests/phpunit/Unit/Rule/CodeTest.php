@@ -21,15 +21,12 @@ class CodeTest extends AbstractRuleTestCase
 
         yield 'multiple gravis' => ['```', '<code>`</code>'];
 
-        yield 'encode tags withing' => [
-            '`<br/>`',
-            '<code>'.html_entity_decode('&lt;br/&gt;').'</code>',
-        ];
+        yield 'encode tags withing' => ['`<br>`', '<code><br></code>'];
 
         $text = 'Lorum ipsum';
-        $input = '`<br/>`';
+        $input = '`<br>`';
         // Because we sanitize on the live run with htmlentities.
-        $expected = '<code>'.html_entity_decode('&lt;br/&gt;').'</code>';
+        $expected = '<code><br></code>';
         yield 'text before' => ["$text\n$input", "$text\n$expected"];
         yield 'text after' => ["$input\n$text", "$expected\n$text"];
         yield 'text before and after' => ["$text\n$input\n$text", "$text\n$expected\n$text"];
