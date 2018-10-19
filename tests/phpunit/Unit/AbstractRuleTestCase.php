@@ -30,12 +30,10 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
      */
     public function testNoMarkdownContent()
     {
-        $testee = new Marksimple();
-        $testee->removeAllRules();
-        $testee->addRule('rule', $this->returnRule());
-
         $input = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,';
         $input .= ' diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
+     
+        $testee = $this->returnRule();
         static::assertSame($input, $testee->parse($input));
     }
 
