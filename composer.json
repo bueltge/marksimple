@@ -14,13 +14,13 @@
         }
     ],
     "require": {
-        "php": ">=7"
+        "php": ">=7",
+        "psr/log": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6",
-        "codedungeon/phpunit-result-printer": "^0",
-        "inpsyde/php-coding-standards": "^0",
-        "antecedent/patchwork": "^2",
+        "phpunit/phpunit": "^6.3",
+        "inpsyde/php-coding-standards": "^0.13",
+        "antecedent/patchwork": "^2.1",
         "dg/composer-cleaner": "^2"
     },
     "autoload": {
@@ -30,7 +30,6 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Bueltge\\Marksimple\\": "src/",
             "Bueltge\\Marksimple\\Tests\\Unit\\": "tests/phpunit/Unit/"
         }
     },

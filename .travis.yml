@@ -1,6 +1,7 @@
 language: php
 
 php:
+  - 7.0
   - 7.1
   - 7.2
   - nightly
@@ -11,11 +12,8 @@ matrix:
   allow_failures:
     - php: nightly
 
-before_install:
-  - composer self-update
-
 install:
-  - composer install
+  - composer update
 
 script:
   - vendor/bin/phpcs --config-set installed_paths "../../wp-coding-standards/wpcs/,../../automattic/phpcs-neutron-standard/,../../inpsyde/php-coding-standards/,../../wimg/php-compatibility/,../../pheromone/phpcs-security-audit/Security/"
