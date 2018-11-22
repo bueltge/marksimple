@@ -11,6 +11,12 @@ use Bueltge\Marksimple\Rule\ElementRuleInterface;
 
 class Marksimple
 {
+    /**
+     * logger class
+     *
+     * @var LoggerInterface
+     */
+    private $logger;
 
     /**
      * Define the default rules.
@@ -182,5 +188,13 @@ class Marksimple
         $this->rules = [];
 
         return true;
+    }
+
+    /**
+     * Get the logger class instance
+     */
+    public function getLogger(): LoggerInterface
+    {
+        return $this->logger;
     }
 }

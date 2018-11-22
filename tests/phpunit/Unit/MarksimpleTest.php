@@ -4,6 +4,7 @@ namespace Bueltge\Marksimple\Tests\Unit;
 
 use Bueltge\Marksimple\Marksimple;
 use Bueltge\Marksimple\Rule\ElementRuleInterface;
+use Psr\Log\NullLogger;
 
 class MarksimpleTest extends AbstractTestCase
 {
@@ -63,5 +64,12 @@ class MarksimpleTest extends AbstractTestCase
         $input .= ' diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
         $expected = '<p>' . $input . '</p>';
         static::assertSame($expected, $testee->parse($input));
+    }
+
+    public function testGetLogger()
+    {
+        $markSimple = new Marksimple();
+
+        $this->assertInstanceOf(NullLogger::class, $markSimple->getLogger());
     }
 }
