@@ -1,8 +1,10 @@
-<?php # -*- coding: utf-8 -*-
+<?php
 declare(strict_types=1);
 
 namespace Bueltge\Marksimple;
 
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use Bueltge\Marksimple\Exception\InvalideFileException;
 use Bueltge\Marksimple\Exception\UnknownRuleException;
 use Bueltge\Marksimple\Rule\ElementRuleInterface;
@@ -42,8 +44,10 @@ class Marksimple
     /**
      * Marksimple constructor.
      */
-    public function __construct()
+    public function __construct(LoggerInterface $logger = null)
     {
+        $this->logger = $logger ?? new NullLogger();
+
         $this->initDefaultRules();
     }
 
