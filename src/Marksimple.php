@@ -49,6 +49,8 @@ class Marksimple
 
     /**
      * Marksimple constructor.
+     *
+     * @param LoggerInterface|null $logger
      */
     public function __construct(LoggerInterface $logger = null)
     {
