@@ -2,11 +2,13 @@
 
 namespace Bueltge\Marksimple\Tests\Unit;
 
+use Bueltge\Marksimple\Exception\InvalideFileException;
 use Bueltge\Marksimple\Exception\UnknownRuleException;
 use Bueltge\Marksimple\Marksimple;
 use Bueltge\Marksimple\Rule\ElementRuleInterface;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Exception;
+use PHPUnit\Framework\SkippedTestError;
 use Psr\Log\NullLogger;
 
 class MarksimpleTest extends AbstractTestCase
@@ -89,13 +91,39 @@ class MarksimpleTest extends AbstractTestCase
         static::assertSame($expected, $testee->parse($input));
     }
 
-    public function testGetLogger()
+    /**
+     * Check the exception if the file is not exist.
+     *
+     * @throws Exception
+     * @throws InvalideFileException
+     * @expectedException        Exception
+     * @expectedExceptionMessage File "noFile" does not exist.
+     */
+    public function testParseFileNoExist()
     {
-        $markSimple = new Marksimple();
+        $testee = new Marksimple();
+        $testee->parseFile('noFile');
+        throw new Exception('File "noFile" does not exist.');
+    }
 
+    public function testLogger()
+    {
+        $testee = new Marksimple();
         try {
-            $this->assertInstanceOf(NullLogger::class, $markSimple->logger());
-        } catch (Exception $error) {
+            $this->assertInstanceOf(NullLogger::class, $testee->logger());
+        } catch (\Exception $error) {
+        }
+    }
+
+    /**
+     * Simple test that return null, if no logger is active.
+     */
+    public function testNullLogger()
+    {
+        $teste = new Marksimple();
+        try {
+            $this->assertNull($teste->logger());
+        } catch (\Exception $error) {
         }
     }
 }
