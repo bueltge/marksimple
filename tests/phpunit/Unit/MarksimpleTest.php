@@ -11,15 +11,12 @@ class MarksimpleTest extends AbstractTestCase
 
     public function testBasic()
     {
-
         $testee = new Marksimple();
         static::assertInternalType('object', $testee);
     }
 
-
     public function testAddRule()
     {
-
         $expected_name = 'foo';
 
         $stub = $this->getMockBuilder(ElementRuleInterface::class)->getMock();
@@ -35,7 +32,6 @@ class MarksimpleTest extends AbstractTestCase
 
     public function testRemoveRule()
     {
-
         $expected_name = 'foo';
 
         $stub = $this->getMockBuilder(ElementRuleInterface::class)->getMock();
@@ -50,7 +46,6 @@ class MarksimpleTest extends AbstractTestCase
      */
     public function testRemoveUnknownRule()
     {
-
         (new Marksimple())->removeRule('unknown_rule');
     }
 
@@ -62,7 +57,7 @@ class MarksimpleTest extends AbstractTestCase
         $testee = new Marksimple();
         $input = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,';
         $input .= ' diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
-        $expected = '<p>' . $input . '</p>';
+        $expected = '<p>'.$input.'</p>';
         static::assertSame($expected, $testee->parse($input));
     }
 
