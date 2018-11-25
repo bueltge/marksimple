@@ -2,8 +2,11 @@
 
 namespace Bueltge\Marksimple\Tests\Unit;
 
+use Bueltge\Marksimple\Exception\UnknownRuleException;
 use Bueltge\Marksimple\Marksimple;
 use Bueltge\Marksimple\Rule\ElementRuleInterface;
+use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\Exception;
 use Psr\Log\NullLogger;
 
 class MarksimpleTest extends AbstractTestCase
@@ -12,22 +15,31 @@ class MarksimpleTest extends AbstractTestCase
     public function testBasic()
     {
         $testee = new Marksimple();
-        static::assertInternalType('object', $testee);
+        try {
+            static::assertInternalType('object', $testee);
+        } catch (Exception $e) {
+        }
     }
 
     public function testAddRule()
     {
-        $expected_name = 'foo';
+        $expectedName = 'foo';
 
         $stub = $this->getMockBuilder(ElementRuleInterface::class)->getMock();
 
         $testee = new Marksimple();
 
-        static::assertFalse($testee->hasRule($expected_name));
+        try {
+            static::assertFalse($testee->hasRule($expectedName));
+        } catch (AssertionFailedError $e) {
+        }
 
-        $testee->addRule($expected_name, $stub);
+        $testee->addRule($expectedName, $stub);
 
-        static::assertTrue($testee->hasRule($expected_name));
+        try {
+            static::assertTrue($testee->hasRule($expectedName));
+        } catch (AssertionFailedError $e) {
+        }
     }
 
     public function testRemoveRule()
@@ -38,7 +50,11 @@ class MarksimpleTest extends AbstractTestCase
 
         $testee = new Marksimple();
         $testee->addRule($expected_name, $stub);
-        static::assertTrue($testee->removeRule($expected_name));
+        try {
+            static::assertTrue($testee->removeRule($expected_name));
+        } catch (UnknownRuleException $e) {
+        } catch (AssertionFailedError $e) {
+        }
     }
 
     /**
@@ -65,6 +81,9 @@ class MarksimpleTest extends AbstractTestCase
     {
         $markSimple = new Marksimple();
 
-        $this->assertInstanceOf(NullLogger::class, $markSimple->getLogger());
+        try {
+            $this->assertInstanceOf(NullLogger::class, $markSimple->getLogger());
+        } catch (Exception $e) {
+        }
     }
 }
