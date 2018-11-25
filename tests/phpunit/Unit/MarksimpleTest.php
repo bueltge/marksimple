@@ -17,7 +17,7 @@ class MarksimpleTest extends AbstractTestCase
         $testee = new Marksimple();
         try {
             static::assertInternalType('object', $testee);
-        } catch (Exception $e) {
+        } catch (Exception $error) {
         }
     }
 
@@ -31,29 +31,41 @@ class MarksimpleTest extends AbstractTestCase
 
         try {
             static::assertFalse($testee->hasRule($expectedName));
-        } catch (AssertionFailedError $e) {
+        } catch (AssertionFailedError $error) {
         }
 
         $testee->addRule($expectedName, $stub);
 
         try {
             static::assertTrue($testee->hasRule($expectedName));
-        } catch (AssertionFailedError $e) {
+        } catch (AssertionFailedError $error) {
         }
     }
 
     public function testRemoveRule()
     {
-        $expected_name = 'foo';
+        $expectedName = 'foo';
 
         $stub = $this->getMockBuilder(ElementRuleInterface::class)->getMock();
 
         $testee = new Marksimple();
-        $testee->addRule($expected_name, $stub);
+        $testee->addRule($expectedName, $stub);
         try {
-            static::assertTrue($testee->removeRule($expected_name));
-        } catch (UnknownRuleException $e) {
-        } catch (AssertionFailedError $e) {
+            static::assertTrue($testee->removeRule($expectedName));
+        } catch (UnknownRuleException $error) {
+        } catch (AssertionFailedError $error) {
+        }
+    }
+
+    /**
+     * Simple test, no parameters, only get a bool.
+     */
+    public function testRemoveAllRules()
+    {
+        $testee = new Marksimple();
+        try {
+            $this->assertTrue($testee->removeAllRules());
+        } catch (AssertionFailedError $error) {
         }
     }
 
@@ -83,7 +95,7 @@ class MarksimpleTest extends AbstractTestCase
 
         try {
             $this->assertInstanceOf(NullLogger::class, $markSimple->getLogger());
-        } catch (Exception $e) {
+        } catch (Exception $error) {
         }
     }
 }
