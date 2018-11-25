@@ -94,7 +94,7 @@ class MarksimpleTest extends AbstractTestCase
         $markSimple = new Marksimple();
 
         try {
-            $this->assertInstanceOf(NullLogger::class, $markSimple->getLogger());
+            $this->assertInstanceOf(NullLogger::class, $markSimple->logger());
         } catch (Exception $error) {
         }
     }

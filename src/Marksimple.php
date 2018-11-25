@@ -193,7 +193,7 @@ class Marksimple
     /**
      * Get the logger class instance
      */
-    public function getLogger(): LoggerInterface
+    public function logger(): LoggerInterface
     {
         return $this->logger;
     }
