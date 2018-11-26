@@ -6,7 +6,9 @@ before_commands:
     - 'composer install --dev --prefer-source'
 
 tools:
-    external_code_coverage: true
+    external_code_coverage:
+        timeout: 3600
+        runs: 5
     php_mess_detector: true
     php_code_sniffer: true
     sensiolabs_security_checker: true
