@@ -7,7 +7,7 @@ interface ElementRuleInterface
 {
 
     /**
-     * @param  string Context which has to be parsed.
+     * @param  string $content Context which has to be parsed.
      * @return string Rendered element.
      */
     public function parse(string $content): string;
