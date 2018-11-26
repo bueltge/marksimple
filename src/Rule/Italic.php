@@ -22,6 +22,6 @@ class Italic extends AbstractRegexRule
      */
     public function render(array $content): string
     {
-        return sprintf('<em>%s</em>', $content[ 2 ]);
+        return sprintf('<em>%s</em>', $content[2]);
     }
 }

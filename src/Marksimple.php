@@ -116,7 +116,7 @@ class Marksimple
     {
         return array_reduce(
             $this->rules,
-            function (string $content, ElementRuleInterface $rule): string {
+            function(string $content, ElementRuleInterface $rule): string {
                 return $rule->parse($content);
             },
             $this->sanitize($content)
@@ -133,7 +133,7 @@ class Marksimple
     protected function sanitize(string $content): string
     {
         // Add new line to get the first character of a string.
-        $content = "\n".$content;
+        $content = "\n" . $content;
 
         // Standardize line breaks.
         $content = str_replace(["\n\n", "\r\n", "\r"], "\n", $content);
