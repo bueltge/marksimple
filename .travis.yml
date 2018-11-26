@@ -18,7 +18,7 @@ matrix:
     - php: '7.2'
       env:
         - COVERAGE="true"
-        - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+        - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml
   allow_failures:
     - php: nightly
     - php: 7.0
