@@ -8,7 +8,7 @@ before_commands:
 tools:
     external_code_coverage:
         timeout: 100
-        runs: 2
+        runs: 1
     php_mess_detector: true
     php_code_sniffer: true
     sensiolabs_security_checker: true
