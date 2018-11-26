@@ -1,5 +1,11 @@
 language: php
 
+php:
+- 7.0
+- 7.1
+- 7.2
+- nightly
+
 env: # important!
 
 stages:
@@ -13,8 +19,6 @@ jobs:
   allow_failures:
     - env: STAGE=quality
     - env: STAGE=failure
-    - php: nightly
-    - php: 7.0
   include:
     - stage: quality
       env: STAGE=quality
@@ -36,8 +40,8 @@ jobs:
       after_script:
       - wget https://scrutinizer-ci.com/ocular.phar
       - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-    - stage: test
-      env: STAGE=test
+    - stage: failure
+      env: STAGE=failure
       php: nightly
       script: vendor/bin/phpunit
 
