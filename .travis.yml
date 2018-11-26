@@ -14,8 +14,9 @@ sudo: false
 
 jobs:
   allow_failures:
-    - env: STAGE=quality
-    - env: STAGE=failure
+    - env:
+      - STAGE=quality
+      - STAGE=failure
   include:
     - stage: quality
       env: STAGE=quality
