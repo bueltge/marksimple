@@ -1,5 +1,11 @@
 language: php
 
+env: # important!
+
+stages:
+  - quality
+  - test
+
 php:
   - 7.0
   - 7.1
@@ -8,20 +14,46 @@ php:
 
 sudo: false
 
-matrix:
+jobs:
   allow_failures:
-    - php: nightly
-    - php: 7.0
+  - env: STAGE=quality
+  - php: nightly
+  - php: 7.0
+  include:
+  - stage: quality
+    env: STAGE=quality
+    php: '7.1'
+    script: vendor/bin/phpcs --config-set installed_paths "../../wp-coding-standards/wpcs/,../../automattic/phpcs-neutron-standard/,../../inpsyde/php-coding-standards/,../../wimg/php-compatibility/,../../pheromone/phpcs-security-audit/Security/"
+    script: vendor/bin/phpcs -n
+  - stage: test
+    env: STAGE=test
+    php: '7.0'
+    script: vendor/bin/phpunit
+  - stage: test
+    env: STAGE=test
+    php: '7.1'
+    script: vendor/bin/phpunit
+  - stage: test
+    env: STAGE=test
+    php: '7.2'
+    script: vendor/bin/phpunit --coverage-clover=coverage.clover
+    after_script: wget https://scrutinizer-ci.com/ocular.phar
+    after_script: php ocular.phar code-coverage:upload --access-token="05d48efadd609bca2ea77d32b45e17284cf71b99237143db9ca813504b445a63" --format=php-clover coverage.clover
+  - stage: test
+    env: STAGE=test
+    php: nightly
+    script: vendor/bin/phpunit
+
+cache:
+  directories:
+  - vendor
+  - $HOME/.composer/cache
+
+before_install:
+  # disable xDebug.
+  - phpenv config-rm xdebug.ini || true
+  # update Composer.
+  - composer self-update
 
 install:
-  - composer update
-
-script:
-  - vendor/bin/phpcs --config-set installed_paths "../../wp-coding-standards/wpcs/,../../automattic/phpcs-neutron-standard/,../../inpsyde/php-coding-standards/,../../wimg/php-compatibility/,../../pheromone/phpcs-security-audit/Security/"
-  - vendor/bin/phpcs -n
-  - vendor/bin/phpunit --coverage-clover=coverage.clover
-
-after_script:
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --access-token="05d48efadd609bca2ea77d32b45e17284cf71b99237143db9ca813504b445a63" --format=php-clover coverage.clover
- 
+  - composer update 
