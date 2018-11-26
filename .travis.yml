@@ -11,9 +11,8 @@ sudo: false
 jobs:
   allow_failures:
   - env: STAGE=quality
-  - php:
-    - nightly
-    - 7.0
+  - php: nightly
+  - php: 7.0
   include:
   - stage: quality
     env: STAGE=quality
@@ -34,7 +33,7 @@ jobs:
     script: vendor/bin/phpunit --coverage-clover=coverage.clover
     after_script:
     - wget https://scrutinizer-ci.com/ocular.phar
-    - php ocular.phar code-coverage:upload --access-token="05d48efadd609bca2ea77d32b45e17284cf71b99237143db9ca813504b445a63" --format=php-clover coverage.clover
+    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
   - stage: test
     env: STAGE=test
     php: nightly
