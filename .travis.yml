@@ -43,8 +43,6 @@ script:
 
 after_script:
   - if [ -n "$COVERAGE" ]; then $OCULAR_BIN code-coverage:upload --format=php-clover coverage.xml; fi
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --access-token="05d48efadd609bca2ea77d32b45e17284cf71b99237143db9ca813504b445a63" --format=php-clover coverage.clover
 
 notifications:
   email: false
