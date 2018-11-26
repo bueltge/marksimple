@@ -22,6 +22,6 @@ class NewLine extends AbstractRegexRule
      */
     public function render(array $content): string
     {
-        return "\n<br>" . $content[ 0 ];
+        return "\n<br>" . $content[0];
     }
 }

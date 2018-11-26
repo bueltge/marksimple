@@ -22,6 +22,6 @@ class Strong extends AbstractRegexRule
      */
     public function render(array $content): string
     {
-        return sprintf('<strong>%s</strong>', $content[ 2 ]);
+        return sprintf('<strong>%s</strong>', $content[2]);
     }
 }
