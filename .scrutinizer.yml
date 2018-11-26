@@ -7,6 +7,8 @@ before_commands:
 
 tools:
     external_code_coverage: true
+        timeout: 600
+        runs: 3
     php_mess_detector: true
     php_code_sniffer: true
     sensiolabs_security_checker: true
@@ -17,4 +19,4 @@ tools:
         excluded_dirs: [vendor, tests, test]
     php_cpd:
         enabled: true
-        excluded_dirs: [vendor, tests. test]
+        excluded_dirs: [vendor, tests, test]
