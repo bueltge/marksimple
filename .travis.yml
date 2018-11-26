@@ -3,47 +3,46 @@ language: php
 env: # important!
 
 stages:
-- quality
-- test
+  - quality
+  - test
 
 sudo: false
 
 jobs:
   allow_failures:
-  - env: STAGE=quality
-  - php: nightly
-  - php: 7.0
+    - env: STAGE=quality
+    - php: nightly
+    - php: 7.0
   include:
-  - stage: quality
-    env: STAGE=quality
-    php: '7.1'
-    script:
-    - vendor/bin/phpcs --config-set installed_paths "../../wp-coding-standards/wpcs/,../../automattic/phpcs-neutron-standard/,../../inpsyde/php-coding-standards/,../../wimg/php-compatibility/,../../pheromone/phpcs-security-audit/Security/"
-    - vendor/bin/phpcs -n
-  - stage: test
-    env: STAGE=test
-    php: '7.0'
-    script: vendor/bin/phpunit
-  - stage: test
-    env: STAGE=test
-    php: '7.1'
-    script: vendor/bin/phpunit
-  - stage: test
-    env: STAGE=test
-    php: '7.2'
-    script: vendor/bin/phpunit --coverage-clover=coverage.clover
-    after_script:
-    - wget https://scrutinizer-ci.com/ocular.phar
-    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-  - stage: test
-    env: STAGE=test
-    php: nightly
-    script: vendor/bin/phpunit
+    - stage: quality
+      env: STAGE=quality
+      php: '7.1'
+      script: vendor/bin/phpcs --config-set installed_paths "../../wp-coding-standards/wpcs/,../../automattic/phpcs-neutron-standard/,../../inpsyde/php-coding-standards/,../../wimg/php-compatibility/,../../pheromone/phpcs-security-audit/Security/"
+      script: vendor/bin/phpcs -n
+    - stage: test
+      env: STAGE=test
+      php: '7.0'
+      script: vendor/bin/phpunit
+    - stage: test
+      env: STAGE=test
+      php: '7.1'
+      script: vendor/bin/phpunit
+    - stage: test
+      env: STAGE=test
+      php: '7.2'
+      script: vendor/bin/phpunit --coverage-clover=coverage.clover
+      after_script:
+      - wget https://scrutinizer-ci.com/ocular.phar
+      - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+    - stage: test
+      env: STAGE=test
+      php: nightly
+      script: vendor/bin/phpunit
 
 cache:
   directories:
-  - vendor
-  - $HOME/.composer/cache
+    - vendor
+    - $HOME/.composer/cache
 
 before_install:
   # disable xDebug.
