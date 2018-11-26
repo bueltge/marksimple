@@ -1,58 +1,50 @@
 language: php
 
 php:
+  - 7.0
+  - 7.1
   - 7.2
-
-env: # important!
-
-stages:
-  - quality
-  - test
-  - failure
+  - nightly
 
 sudo: false
 
-jobs:
-  allow_failures:
-    - env:
-      - STAGE=quality
-      - STAGE=failure
-  include:
-    - stage: quality
-      env: STAGE=quality
-      php: '7.1'
-      script: vendor/bin/phpcs --config-set installed_paths "../../wp-coding-standards/wpcs/,../../automattic/phpcs-neutron-standard/,../../inpsyde/php-coding-standards/,../../wimg/php-compatibility/,../../pheromone/phpcs-security-audit/Security/"
-      script: vendor/bin/phpcs -n
-    - stage: failure
-      env: STAGE=failure
-      php: '7.0'
-      script: vendor/bin/phpunit
-    - stage: test
-      env: STAGE=test
-      php: '7.1'
-      script: vendor/bin/phpunit
-    - stage: test
-      env: STAGE=test
-      php: '7.2'
-      script: vendor/bin/phpunit --coverage-clover=coverage.clover
-      after_script:
-      - wget https://scrutinizer-ci.com/ocular.phar
-      - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-    - stage: failure
-      env: STAGE=failure
-      php: nightly
-      script: vendor/bin/phpunit
+env:
+  global:
+    - OCULAR_BIN=$HOME/.bin/ocular.phar
 
-cache:
-  directories:
-    - vendor
-    - $HOME/.composer/cache
+matrix:
+  fast_finish: true
+  include:
+    - php '7.2'
+      env:
+        - COVERAGE="true"
+        - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+  allow_failures:
+    - php: nightly
+    - php: 7.0
 
 before_install:
-  # disable xDebug.
-  - phpenv config-rm xdebug.ini || true
-  # update Composer.
-  - composer self-update
+  - |
+    if [ -n "$COVERAGE" ]; then
+      if [ ! -e $OCULAR_BIN ]; then
+          wget https://scrutinizer-ci.com/ocular.phar -O $OCULAR_BIN
+          chmod +x $OCULAR_BIN
+          alias ocular="php $OCULAR_BIN"
+      fi
+    fi
 
 install:
-  - composer update 
+  - composer update
+
+script:
+  - vendor/bin/phpcs --config-set installed_paths "../../wp-coding-standards/wpcs/,../../automattic/phpcs-neutron-standard/,../../inpsyde/php-coding-standards/,../../wimg/php-compatibility/,../../pheromone/phpcs-security-audit/Security/"
+  - vendor/bin/phpcs -n
+  - vendor/bin/phpunit
+
+after_script:
+  - if [ -n "$COVERAGE" ]; then $OCULAR_BIN code-coverage:upload --format=php-clover coverage.xml; fi
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --access-token="05d48efadd609bca2ea77d32b45e17284cf71b99237143db9ca813504b445a63" --format=php-clover coverage.clover
+
+notifications:
+  email: false
