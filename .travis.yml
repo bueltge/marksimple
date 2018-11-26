@@ -11,8 +11,6 @@ sudo: false
 jobs:
   allow_failures:
     - env: STAGE=quality
-    - php: nightly
-    - php: 7.0
   include:
     - stage: quality
       env: STAGE=quality
