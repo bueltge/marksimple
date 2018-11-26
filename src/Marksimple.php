@@ -116,7 +116,7 @@ class Marksimple
     {
         return array_reduce(
             $this->rules,
-            function(string $content, ElementRuleInterface $rule): string {
+            function (string $content, ElementRuleInterface $rule): string {
                 return $rule->parse($content);
             },
             $this->sanitize($content)
