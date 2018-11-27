@@ -7,13 +7,13 @@ php:
 
 sudo: false
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=3113b3359f694d9349eae240d0a471a16c2cb9ff5b39339b7399edc86fee491a
+
 matrix:
   fast_finish: true
   include:
-    - php: '7.1'
-      env:
-        - COVERAGE="true"
-        - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml
     - php: '7.2'
       env:
         - COVERAGE="true"
@@ -25,14 +25,20 @@ matrix:
 install:
   - composer update
 
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
 script:
   - vendor/bin/phpcs --config-set installed_paths "../../wp-coding-standards/wpcs/,../../automattic/phpcs-neutron-standard/,../../inpsyde/php-coding-standards/,../../wimg/php-compatibility/,../../pheromone/phpcs-security-audit/Security/"
   - vendor/bin/phpcs -n
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml
 
 after_script:
   - if [ -n "$COVERAGE" ]; then bash <(curl -s https://codecov.io/bash); fi
   - wget https://scrutinizer-ci.com/ocular.phar; php ocular.phar code-coverage:upload --format=php-clover coverage.xml;
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 notifications:
   email: false
