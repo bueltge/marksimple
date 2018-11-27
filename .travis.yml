@@ -1,7 +1,6 @@
 language: php
 
 php:
-  - 7.0
   - 7.1
   - 7.2
   - nightly
@@ -11,6 +10,10 @@ sudo: false
 matrix:
   fast_finish: true
   include:
+    - php: '7.1'
+      env:
+        - COVERAGE="true"
+        - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml
     - php: '7.2'
       env:
         - COVERAGE="true"
