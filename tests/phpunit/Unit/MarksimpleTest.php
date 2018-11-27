@@ -14,6 +14,19 @@ use Psr\Log\NullLogger;
 class MarksimpleTest extends AbstractTestCase
 {
 
+    protected $noReadableFile = __DIR__ . '/./no_readable_file.txt';
+
+    public function setUp()
+    {
+        touch($this->noReadableFile);
+        chmod($this->noReadableFile, 27);
+    }
+
+    public function tearDown()
+    {
+        unlink($this->noReadableFile);
+    }
+
     public function testBasic()
     {
         $testee = new Marksimple();
@@ -103,7 +116,20 @@ class MarksimpleTest extends AbstractTestCase
     {
         $testee = new Marksimple();
         $testee->parseFile('noFile');
-        throw new Exception('File "noFile" does not exist.');
+    }
+
+    /**
+     * Check the exception if the file is not readable.
+     *
+     * @throws Exception
+     * @throws InvalideFileException
+     * @expectedException              Exception
+     * @expectedExceptionMessageRegExp /File.* cannot be read./
+     */
+    public function testParseFileNoReadable()
+    {
+        $testee = new Marksimple();
+        $testee->parseFile($this->noReadableFile);
     }
 
     public function testLogger()
