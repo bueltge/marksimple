@@ -11,6 +11,11 @@ use Bueltge\Marksimple\Rule\ElementRuleInterface;
 
 class Marksimple
 {
+    /**
+     * Error log level number
+     *
+     * @var integer
+     */
     private $errorLogLevel = 200;
 
     /**
@@ -196,6 +201,8 @@ class Marksimple
 
     /**
      * Get the logger class instance
+     *
+     * @return LoggerInterface
      */
     public function logger(): LoggerInterface
     {

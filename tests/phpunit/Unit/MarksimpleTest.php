@@ -14,6 +14,11 @@ use Psr\Log\NullLogger;
 class MarksimpleTest extends AbstractTestCase
 {
 
+    /**
+     * The unreaddable file path.
+     *
+     * @var string
+     */
     protected $noReadableFile = __DIR__ . '/./no_readable_file.txt';
 
     public function setUp()
@@ -27,6 +32,9 @@ class MarksimpleTest extends AbstractTestCase
         unlink($this->noReadableFile);
     }
 
+    /**
+     * Check the MarkSimple class instance can be created correctly.
+     */
     public function testBasic()
     {
         $testee = new Marksimple();
@@ -36,6 +44,9 @@ class MarksimpleTest extends AbstractTestCase
         }
     }
 
+    /**
+     * Check addRule can add the specified rule correctly.
+     */
     public function testAddRule()
     {
         $expectedName = 'foo';
@@ -57,6 +68,9 @@ class MarksimpleTest extends AbstractTestCase
         }
     }
 
+    /**
+     * Check removeRule can remove specified rule correctly.
+     */
     public function testRemoveRule()
     {
         $expectedName = 'foo';
@@ -132,6 +146,9 @@ class MarksimpleTest extends AbstractTestCase
         $testee->parseFile($this->noReadableFile);
     }
 
+    /**
+     * Check logger method will return NullLogger class instance.
+     */
     public function testLogger()
     {
         $testee = new Marksimple();
