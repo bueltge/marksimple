@@ -105,7 +105,7 @@ class Marksimple
 
         if (!is_readable($file)) {
             $errorMessage = sprintf('File "%s" cannot be read.', $file);
-            $this->logger($this->errorLogLevel, $errorMessage);
+            $this->logger->log($this->errorLogLevel, $errorMessage);
             throw new InvalideFileException($errorMessage);
         }
 
