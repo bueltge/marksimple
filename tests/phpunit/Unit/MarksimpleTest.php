@@ -21,12 +21,18 @@ class MarksimpleTest extends AbstractTestCase
      */
     protected $noReadableFile = __DIR__ . '/./no_readable_file.txt';
 
+    /**
+     * Set up environment with adding unreadable file
+     */
     public function setUp()
     {
         touch($this->noReadableFile);
         chmod($this->noReadableFile, 27);
     }
 
+    /**
+     * Tear down environment with deleting unreadable file
+     */
     public function tearDown()
     {
         unlink($this->noReadableFile);
