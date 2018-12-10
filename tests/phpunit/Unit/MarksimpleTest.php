@@ -14,6 +14,33 @@ use Psr\Log\NullLogger;
 class MarksimpleTest extends AbstractTestCase
 {
 
+    /**
+     * The unreaddable file path.
+     *
+     * @var string
+     */
+    protected $noReadableFile = __DIR__ . '/./no_readable_file.txt';
+
+    /**
+     * Set up environment with adding unreadable file
+     */
+    public function setUp()
+    {
+        touch($this->noReadableFile);
+        chmod($this->noReadableFile, 27);
+    }
+
+    /**
+     * Tear down environment with deleting unreadable file
+     */
+    public function tearDown()
+    {
+        unlink($this->noReadableFile);
+    }
+
+    /**
+     * Check the MarkSimple class instance can be created correctly.
+     */
     public function testBasic()
     {
         $testee = new Marksimple();
@@ -23,6 +50,9 @@ class MarksimpleTest extends AbstractTestCase
         }
     }
 
+    /**
+     * Check addRule can add the specified rule correctly.
+     */
     public function testAddRule()
     {
         $expectedName = 'foo';
@@ -44,6 +74,9 @@ class MarksimpleTest extends AbstractTestCase
         }
     }
 
+    /**
+     * Check removeRule can remove specified rule correctly.
+     */
     public function testRemoveRule()
     {
         $expectedName = 'foo';
@@ -103,9 +136,25 @@ class MarksimpleTest extends AbstractTestCase
     {
         $testee = new Marksimple();
         $testee->parseFile('noFile');
-        throw new Exception('File "noFile" does not exist.');
     }
 
+    /**
+     * Check the exception if the file is not readable.
+     *
+     * @throws Exception
+     * @throws InvalideFileException
+     * @expectedException              Exception
+     * @expectedExceptionMessageRegExp /File.* cannot be read./
+     */
+    public function testParseFileNoReadable()
+    {
+        $testee = new Marksimple();
+        $testee->parseFile($this->noReadableFile);
+    }
+
+    /**
+     * Check logger method will return NullLogger class instance.
+     */
     public function testLogger()
     {
         $testee = new Marksimple();

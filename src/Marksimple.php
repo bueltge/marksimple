@@ -12,6 +12,13 @@ use Bueltge\Marksimple\Rule\ElementRuleInterface;
 class Marksimple
 {
     /**
+     * Error log level number
+     *
+     * @var integer
+     */
+    private $errorLogLevel = 200;
+
+    /**
      * logger class
      *
      * @var LoggerInterface
@@ -91,15 +98,15 @@ class Marksimple
     public function parseFile(string $file): string
     {
         if (!is_file($file)) {
-            throw new InvalideFileException(
-                sprintf('File "%s" does not exist.', $file)
-            );
+            $errorMessage = sprintf('File "%s" does not exist.', $file);
+            $this->logger->log($this->errorLogLevel, $errorMessage);
+            throw new InvalideFileException($errorMessage);
         }
 
         if (!is_readable($file)) {
-            throw new InvalideFileException(
-                sprintf('File "%s" cannot be read.', $file)
-            );
+            $errorMessage = sprintf('File "%s" cannot be read.', $file);
+            $this->logger->log($this->errorLogLevel, $errorMessage);
+            throw new InvalideFileException($errorMessage);
         }
 
         return $this->parse((string) file_get_contents($file, true));
@@ -194,6 +201,8 @@ class Marksimple
 
     /**
      * Get the logger class instance
+     *
+     * @return LoggerInterface
      */
     public function logger(): LoggerInterface
     {

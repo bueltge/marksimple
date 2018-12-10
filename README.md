@@ -72,6 +72,19 @@ $ms = new Marksimple();
 print $ms->parseFile('../README.md');
 ```
 
+#### Add Logger examples
+
+The `MarkSimple` class instance uses the `psr/log` feature.
+
+And the default `Logger` is the `NullLogger` it will be created when declaring `MarkSimple` class instance.
+
+The more details about `psr/log`, please visit this [link](https://www.php-fig.org/psr/psr-3/).
+
+```
+$testee = new Marksimple();
+echo get_class($testee->logger()); //output: Psr\Log\NullLogger
+```
+
 ## Kudos
 
 On the way to the goal of my simple parser I use lot of tests, tries on the online Regex testers. Thanks a lot to the authors of this followed two sites, great!
