@@ -19,7 +19,7 @@ The solution is still active in his tests, you find it [here](https://bueltge.de
 
 The class is simple and I use it for my own documentation, there I write in markdown. Here and there is the result a single oage to help in each day to find the right syntax, hints, background and others. You can see this on this examples:
 
- * [MarkSimple Tests](https://bueltge.de/MarkSimple/test/)
+ * [MarkSimple Tests](https://bueltge.de/marksimple/test/)
  * [My Git Notes](https://bueltge.de/git/)
  * [My Markdown Notes](https://bueltge.de/md/)
  * [My Linux command notes](https://bueltge.de/linux/)
