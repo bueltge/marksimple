@@ -14,8 +14,8 @@ class NewLineTest extends AbstractRuleTestCase
      */
     public function provideList()
     {
-        $input = '<br>';
-        $expected = '<br>';
+        $input = '&lt;br&gt;';
+        $expected = '&lt;br&gt;';
         $text = 'Lorum ipsum';
 
         yield 'simple' => [$input, $expected];
