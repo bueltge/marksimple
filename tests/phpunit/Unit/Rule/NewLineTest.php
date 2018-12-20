@@ -19,9 +19,9 @@ class NewLineTest extends AbstractRuleTestCase
         $text = 'Lorum ipsum';
 
         yield 'simple' => [$input, $expected];
-        yield 'text before' => ["$text $input", "$text<br>$expected"];
+        yield 'text before' => ["$text $input", "$text\n<br> $expected"];
         yield 'text after' => ["$input $text", "$expected $text"];
-        yield 'text before and after' => ["$text $input $text", "$text<br>$expected $text"];
+        yield 'text before and after' => ["$text $input $text", "$text\n<br> $expected $text"];
     }
 
     public function returnRule(): ElementRuleInterface
