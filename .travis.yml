@@ -16,6 +16,7 @@ matrix:
         - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml
   allow_failures:
     - php: nightly
+      env: NIGHLTY=true
     - php: 7.0
 
 install:
@@ -28,6 +29,7 @@ script:
 
 after_script:
   - if [ -n "$COVERAGE" ]; then bash <(curl -s https://codecov.io/bash); fi
+  - if [ -n "$NIGHLTY" ]; then composer require "phpunit/phpunit:^8"; fi
   - wget https://scrutinizer-ci.com/ocular.phar; php ocular.phar code-coverage:upload --format=php-clover coverage.xml;
 
 notifications:
