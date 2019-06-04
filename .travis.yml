@@ -20,7 +20,8 @@ matrix:
     - php: 7.0
 
 install:
-  - composer install
+  - composer clear-cache
+  - composer update
   - if [[ $NIGHLTY == true ]]; then composer require "phpunit/phpunit:^8"; fi
   
 script:
