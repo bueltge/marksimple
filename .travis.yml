@@ -20,8 +20,9 @@ matrix:
     - php: 7.0
 
 install:
-  - composer update
-
+  - composer install
+  - if [[ $NIGHLTY == true ]]; then composer require "phpunit/phpunit:^8"; fi
+  
 script:
 #  - vendor/bin/phpcs --config-set installed_paths "../../wp-coding-standards/wpcs/,../../automattic/phpcs-neutron-standard/,../../inpsyde/php-coding-standards/,../../wimg/php-compatibility/,../../pheromone/phpcs-security-audit/Security/"
 #  - vendor/bin/phpcs -n
@@ -29,7 +30,6 @@ script:
 
 after_script:
   - if [[ $COVERAGE == true ]]; then bash <(curl -s https://codecov.io/bash); fi
-  - if [[ $NIGHLTY == true ]]; then composer require "phpunit/phpunit:^8"; fi
   - wget https://scrutinizer-ci.com/ocular.phar; php ocular.phar code-coverage:upload --format=php-clover coverage.xml;
 
 notifications:
