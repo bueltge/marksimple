@@ -1,22 +1,21 @@
 language: php
 
-php:
-  - 7.1
-  - 7.2
-  - nightly
-
 sudo: false
 
 matrix:
   fast_finish: true
   include:
-    - php: '7.2'
+    - php: 7.0
+    - php: 7.1
+    - php: 7.2
       env:
         - COVERAGE=true
         - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml
-  allow_failures:
+    - php: 7.3
     - php: nightly
       env: NIGHLTY=true
+  allow_failures:
+    - php: nightly
     - php: 7.0
 
 install:
