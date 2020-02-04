@@ -13,7 +13,7 @@ Yes, **I know**, it give a lot of __open projects__ that solve the same goal. Ho
 
 ## Demo, Tests
 
-The solution is still active in his tests, you find it [here](https://bueltge.de/MarkSimple/test/). This test of the class is also build as [PWA](https://developers.google.com/web/progressive-web-apps/), Progressive Web App. It was only an fun project for me to understand it on a really simple site how it works. But is important, if you see the directory `test` in this repository here and wounder about so much files there are not in the context of the Markdown parser. If you will check the PWA, use it on your mobile or play with Chrome/WebInspector.
+The solution is still active in his tests, you find it [here](https://bueltge.de/thueringen-erfahren/). This test of the class is also build as [PWA](https://developers.google.com/web/progressive-web-apps/), Progressive Web App. It was only an fun project for me to understand it on a really simple site how it works. But is important, if you see the directory `test` in this repository here and wounder about so much files there are not in the context of the Markdown parser. If you will check the PWA, use it on your mobile or play with Chrome/WebInspector.
 
 ## Active use
 
