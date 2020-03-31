@@ -21,11 +21,7 @@ jobs:
       
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
-    
-    # Runs Code Sniffer with the phpcs.xml.dist file at the root of this project
-    - name: PHP Code Style (phpcs)
-      uses: chindit/actions-phpcs@master
-      
+
     # Run PHPUnit tests
     - name: PHPUnit tests
       uses: php-actions/phpunit@v1
