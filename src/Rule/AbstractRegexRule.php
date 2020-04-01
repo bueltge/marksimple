@@ -10,7 +10,6 @@ abstract class AbstractRegexRule implements RegexRuleInterface
      */
     public function parse(string $content): string
     {
-
         return preg_replace_callback($this->rule(), [$this, 'render'], $content);
     }
 
