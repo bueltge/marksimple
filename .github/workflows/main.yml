@@ -15,13 +15,13 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    
+
     - name: Clear cache of Composer
       run: composer clear-cache
-      
+
     - name: Update Composer.json and composer.lock
       run: composer update
-      
+
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
