@@ -41,6 +41,6 @@
         "scripts": {
         "cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
         "pu": "@php ./vendor/bin/phpunit",
-        "qa": ["@cs", "pu"]
+        "qa": ["@cs", "@pu"]
     }
 }
