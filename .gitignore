@@ -8,6 +8,8 @@
 
 ## Single files
 clover.xml
+*.log
+*.cache
 
 ## Additional for IntelliJ
 out/
@@ -30,6 +32,7 @@ node_modules/
 composer.phar
 !/js/vendor/*
 /vendor/
+
 
 #################
 ## Eclipse / Aptana IDE
