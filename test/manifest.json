@@ -2,9 +2,10 @@
   "name": "MarkSimple Test and Exmaples",
   "short_name": "MarkSimple",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#2F3BA2",
+  "theme_color": "#ffffff",
   "lang": "en",
   "icons": [
       {
