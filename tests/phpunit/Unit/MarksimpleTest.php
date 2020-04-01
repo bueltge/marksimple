@@ -24,7 +24,7 @@ class MarksimpleTest extends AbstractTestCase
     /**
      * Set up environment with adding unreadable file
      */
-    public function setUp()
+    public function setUp():void
     {
         touch($this->noReadableFile);
         chmod($this->noReadableFile, 27);
@@ -33,7 +33,7 @@ class MarksimpleTest extends AbstractTestCase
     /**
      * Tear down environment with deleting unreadable file
      */
-    public function tearDown()
+    public function tearDown():void
     {
         unlink($this->noReadableFile);
     }
