@@ -23,7 +23,6 @@ class Paragraph implements ElementRuleInterface
      */
     public function parse(string $content): string
     {
-
         // Split for each line to exclude.
         $content = explode("\n", $content);
         $pContent = '';
@@ -50,7 +49,6 @@ class Paragraph implements ElementRuleInterface
      */
     protected function strposa(string $haystack, array $needle, int $offset = 0): bool
     {
-
         foreach ($needle as $query) {
             // If we found the string only on position 0.
             if (strpos($haystack, $query, $offset) === 0) {
