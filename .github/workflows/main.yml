@@ -25,8 +25,5 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    # Run PHPUnit tests
-    - name: PHPUnit tests
-      uses: php-actions/phpunit@v1
-      with:
-        config: ./phpunit.xml.dist
+    - name: Run QA Scripts from composer.json
+      run: composer qa

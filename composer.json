@@ -37,5 +37,9 @@
     },
     "config": {
         "optimize-autoloader": true
+    },
+        "scripts": {
+        "cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
+        "qa": ["@cs"]
     }
 }
