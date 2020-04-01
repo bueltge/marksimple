@@ -45,7 +45,7 @@ class MarksimpleTest extends AbstractTestCase
     {
         $testee = new Marksimple();
         try {
-            static::assertInternalType('object', $testee);
+            static::assertIsObject($testee);
         } catch (Exception $error) {
         }
     }
@@ -105,10 +105,11 @@ class MarksimpleTest extends AbstractTestCase
     }
 
     /**
-     * @expectedException \Bueltge\Marksimple\Exception\UnknownRuleException
+     * Test for unknown rule.
      */
     public function testRemoveUnknownRule()
     {
+        $this->expectException(UnknownRuleException::class);
         (new Marksimple())->removeRule('unknown_rule');
     }
 
@@ -129,11 +130,10 @@ class MarksimpleTest extends AbstractTestCase
      *
      * @throws Exception
      * @throws InvalideFileException
-     * @expectedException        Exception
-     * @expectedExceptionMessage File "noFile" does not exist.
      */
     public function testParseFileNoExist()
     {
+        $this->expectException(InvalideFileException::class);
         $testee = new Marksimple();
         $testee->parseFile('noFile');
     }
@@ -143,11 +143,10 @@ class MarksimpleTest extends AbstractTestCase
      *
      * @throws Exception
      * @throws InvalideFileException
-     * @expectedException              Exception
-     * @expectedExceptionMessageRegExp /File.* cannot be read./
      */
     public function testParseFileNoReadable()
     {
+        $this->expectException(InvalideFileException::class);
         $testee = new Marksimple();
         $testee->parseFile($this->noReadableFile);
     }
