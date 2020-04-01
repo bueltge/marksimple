@@ -17,8 +17,8 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Clear cache of Composer
-	  run: composer clear-cache
-	  
+      run: composer clear-cache
+      
     - name: Update Composer.json and composer.lock
       run: composer update
       
