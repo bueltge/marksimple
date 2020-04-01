@@ -40,6 +40,7 @@
     },
         "scripts": {
         "cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
-        "qa": ["@cs"]
+        "pu": "@php ./vendor/bin/phpunit",
+        "qa": ["@cs", "pu"]
     }
 }
