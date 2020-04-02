@@ -19,8 +19,8 @@ jobs:
     - name: Clear cache of Composer
       run: composer clear-cache
 
-    - name: Update Composer.json and composer.lock
-      run: composer install
+    - name: Validate Composer.json and composer.lock
+      run: composer validate
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
