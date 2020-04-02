@@ -20,7 +20,7 @@ jobs:
       run: composer clear-cache
 
     - name: Update Composer.json and composer.lock
-      run: composer update
+      run: composer install
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
