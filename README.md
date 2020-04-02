@@ -1,6 +1,6 @@
 # MarkSimple
 
-![CI](https://github.com/bueltge/marksimple/workflows/CI/badge.svg)
+[![CI](https://github.com/bueltge/marksimple/workflows/CI/badge.svg)](https://github.com/bueltge/marksimple/actions)
 [![Build Status](https://travis-ci.com/bueltge/marksimple.svg?branch=master "Build Status")](https://travis-ci.com/bueltge/marksimple)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3ce79c7b4118c47951cc/maintainability "Maintainability")](https://codeclimate.com/github/bueltge/marksimple/maintainability)
 [![Code Coverage](https://codecov.io/gh/bueltge/marksimple/branch/master/graph/badge.svg)](https://codecov.io/gh/bueltge/marksimple)
