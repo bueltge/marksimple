@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa131630209474d166cbc2686e3f3296",
+    "content-hash": "967907c2399c93bdca845491d8b079f6",
     "packages": [
         {
             "name": "psr/log",
@@ -233,16 +233,16 @@
         },
         {
             "name": "codedungeon/phpunit-result-printer",
-            "version": "0.26.2",
+            "version": "0.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikeerickson/phpunit-pretty-result-printer.git",
-                "reference": "89f1664579d8732e987bf5db1f689dab39d19d36"
+                "reference": "b1321647ef3eacfb145fcc9559483b22d0c86cfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/89f1664579d8732e987bf5db1f689dab39d19d36",
-                "reference": "89f1664579d8732e987bf5db1f689dab39d19d36",
+                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/b1321647ef3eacfb145fcc9559483b22d0c86cfe",
+                "reference": "b1321647ef3eacfb145fcc9559483b22d0c86cfe",
                 "shasum": ""
             },
             "require": {
@@ -250,7 +250,7 @@
                 "codedungeon/php-cli-colors": "^1.10.2",
                 "hassankhan/config": "^0.11.2",
                 "php": "^7.1",
-                "phpunit/phpunit": "^8.0",
+                "phpunit/phpunit": "^8.0|^9.0",
                 "symfony/yaml": "^2.7|^3.0|^4.0"
             },
             "require-dev": {
@@ -282,7 +282,7 @@
                 "result-printer",
                 "testing"
             ],
-            "time": "2019-04-02T17:06:04+00:00"
+            "time": "2020-02-29T21:59:20+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
