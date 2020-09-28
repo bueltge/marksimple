@@ -233,16 +233,16 @@
         },
         {
             "name": "codedungeon/phpunit-result-printer",
-            "version": "0.29.1",
+            "version": "0.29.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikeerickson/phpunit-pretty-result-printer.git",
-                "reference": "65075c1f92cd47c64f850bcab567e33e6cd0475f"
+                "reference": "4d075a3cb6574ee9466bd66b648aca8b2a967e4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/65075c1f92cd47c64f850bcab567e33e6cd0475f",
-                "reference": "65075c1f92cd47c64f850bcab567e33e6cd0475f",
+                "url": "https://api.github.com/repos/mikeerickson/phpunit-pretty-result-printer/zipball/4d075a3cb6574ee9466bd66b648aca8b2a967e4b",
+                "reference": "4d075a3cb6574ee9466bd66b648aca8b2a967e4b",
                 "shasum": ""
             },
             "require": {
@@ -281,7 +281,7 @@
                 "result-printer",
                 "testing"
             ],
-            "time": "2020-09-13T23:26:30+00:00"
+            "time": "2020-09-23T15:57:12+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -2094,16 +2094,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.4.13",
+            "version": "v4.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "e2a69525b11a33be51cb00b8d6d13a9258a296b1"
+                "reference": "c7885964b1eceb70b0981556d0a9b01d2d97c8d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/e2a69525b11a33be51cb00b8d6d13a9258a296b1",
-                "reference": "e2a69525b11a33be51cb00b8d6d13a9258a296b1",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/c7885964b1eceb70b0981556d0a9b01d2d97c8d1",
+                "reference": "c7885964b1eceb70b0981556d0a9b01d2d97c8d1",
                 "shasum": ""
             },
             "require": {
@@ -2163,7 +2163,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-26T08:30:46+00:00"
+            "time": "2020-09-27T03:36:23+00:00"
         },
         {
             "name": "theseer/tokenizer",
