@@ -32,6 +32,8 @@
             "Bueltge\\Marksimple\\Tests\\Unit\\": "tests/phpunit/Unit/"
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "optimize-autoloader": true
     },
