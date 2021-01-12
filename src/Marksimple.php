@@ -1,4 +1,5 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+
 declare(strict_types=1);
 
 namespace Bueltge\Marksimple;
@@ -72,7 +73,7 @@ class Marksimple
     protected function initDefaultRules()
     {
         foreach ($this->defaultRules as $name => $class) {
-            $this->addRule($name, new $class);
+            $this->addRule($name, new $class());
         }
     }
 
@@ -123,7 +124,7 @@ class Marksimple
     {
         return array_reduce(
             $this->rules,
-            function (string $content, ElementRuleInterface $rule): string {
+            static function (string $content, ElementRuleInterface $rule): string {
                 return $rule->parse($content);
             },
             $this->sanitize($content)
