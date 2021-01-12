@@ -20,7 +20,7 @@ jobs:
       run: composer clear-cache
 
     - name: Validate Composer.json and composer.lock
-      run: composer validate
+      run: composer update
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
