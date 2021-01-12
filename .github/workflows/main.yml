@@ -33,7 +33,7 @@ jobs:
       run: composer update
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      run: composer install -q -n -a --no-progress --prefer-dist
 
     - name: Check code styles
       run: ./vendor/bin/phpcs
