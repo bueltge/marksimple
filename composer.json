@@ -39,6 +39,7 @@
     },
         "scripts": {
         "cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
+        "csfix": "@php ./vendor/bin/phpcbf",
         "pu": "@php ./vendor/bin/phpunit",
         "qa": ["@cs", "@pu"]
     }
