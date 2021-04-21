@@ -1,4 +1,5 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+
 declare(strict_types=1);
 
 namespace Bueltge\Marksimple\Rule;
