@@ -36,6 +36,7 @@ jobs:
       run: composer install -q -n -a --no-progress --prefer-dist
 
     - name: Check code styles
+      continue-on-error: true
       run: ./vendor/bin/phpcs
 
     - name: Run QA Scripts from composer.json
