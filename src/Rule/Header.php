@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class Header extends AbstractRegexRule
 {
-
     /**
      * Get the regex rule to identify the fromFile for the callback.
      * Header h1 - h6.

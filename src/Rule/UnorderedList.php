@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class UnorderedList extends AbstractRegexRule
 {
-
     /**
      * Get the regex rule to identify the content for the callback.
      * ul List via star * or -.

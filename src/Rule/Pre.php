@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class Pre extends AbstractRegexRule
 {
-
     /**
      * Get the regex rule to identify the content for the callback.
      * Code blocks via 4 spaces or tab.

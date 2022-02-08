@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class Strong extends AbstractRegexRule
 {
-
     /**
      * Get the regex rule to identify the content for the callback.
      * Strong, bold via double star ** or double underline __.

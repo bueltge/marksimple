@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class Code extends AbstractRegexRule
 {
-
     /**
      * {@inheritdoc}
      */

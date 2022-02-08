@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class CleanUpList extends AbstractRegexRule
 {
-
     /**
      * Get the regex rule to identify the content for the callback.
      * Clean up unordered list blocks to get for a block only one ul, ol block,

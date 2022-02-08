@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 abstract class AbstractRegexRule implements RegexRuleInterface
 {
-
     /**
      * {@inheritdoc}
      */

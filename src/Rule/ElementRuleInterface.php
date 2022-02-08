@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 interface ElementRuleInterface
 {
-
     /**
      * @param  string $content Context which has to be parsed.
      * @return string Rendered element.

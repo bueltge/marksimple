@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class Link extends AbstractRegexRule
 {
-
     /**
      * Get the regex rule to identify the fromFile for the callback.
      * Links without possibility to add javascript, XSS topic.

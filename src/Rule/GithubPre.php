@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class GithubPre extends AbstractRegexRule
 {
-
     /**
      * Get the regex rule to identify the fromFile for the callback.
      * Code blocks via 3 ` include language string (optional).

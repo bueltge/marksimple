@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class Italic extends AbstractRegexRule
 {
-
     /**
      * Get the regex rule to identify the content for the callback.
      * Italic formatting via one star * or one underline _.

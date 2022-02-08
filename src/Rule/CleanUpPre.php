@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class CleanUpPre extends AbstractRegexRule
 {
-
     /**
      * Get the regex rule to identify the content for the callback.
      * Clean up pre code blocks to get for a block only one pre code block, not each line.

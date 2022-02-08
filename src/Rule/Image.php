@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class Image extends AbstractRegexRule
 {
-
     /**
      * Get the regex rule to identify the content for the callback.
      * Parse image with optional alt string, like ![String](path/to/image.png "Alt string")

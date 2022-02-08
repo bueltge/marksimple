@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 interface RegexRuleInterface extends ElementRuleInterface
 {
-
     /**
      * @return string    RegEx rule
      */

@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class Paragraph implements ElementRuleInterface
 {
-
     /**
      * Store the strings, there we exclude on set paragraph.
      *

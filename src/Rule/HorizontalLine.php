@@ -6,7 +6,6 @@ namespace Bueltge\Marksimple\Rule;
 
 class HorizontalLine extends AbstractRegexRule
 {
-
     /**
      * Get the regex rule to identify the fromFile for the callback.
      * Leave nh as horizontal line helper, only on lines without code ` before.
