@@ -19,7 +19,7 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0",
-        "inpsyde/php-coding-standards": "^1",
+        "inpsyde/php-coding-standards": "^1@dev",
         "antecedent/patchwork": "^2.1"
     },
     "autoload": {
