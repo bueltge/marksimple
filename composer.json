@@ -35,10 +35,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "optimize-autoloader": true,
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
+        "optimize-autoloader": true
     },
     "scripts": {
         "cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
