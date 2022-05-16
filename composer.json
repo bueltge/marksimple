@@ -14,12 +14,12 @@
         }
     ],
     "require": {
-        "php": ">=7",
-        "psr/log": "^1.0"
+        "php": "^7.4|^8.0.2",
+        "psr/log": "^1.0|^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0",
-        "inpsyde/php-coding-standards": "^1@dev",
+        "inpsyde/php-coding-standards": "^1.0",
         "antecedent/patchwork": "^2.1"
     },
     "autoload": {
@@ -37,10 +37,13 @@
     "config": {
         "optimize-autoloader": true
     },
-        "scripts": {
+    "scripts": {
         "cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
         "csfix": "@php ./vendor/bin/phpcbf",
         "pu": "@php ./vendor/bin/phpunit",
-        "qa": ["@cs", "@pu"]
+        "qa": [
+            "@cs",
+            "@pu"
+        ]
     }
 }
