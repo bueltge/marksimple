@@ -22,6 +22,9 @@
         "inpsyde/php-coding-standards": "^1.0",
         "antecedent/patchwork": "^2.1"
     },
+    "conflict": {
+        "psr/log": ">=3"
+    },
     "autoload": {
         "psr-4": {
             "Bueltge\\Marksimple\\": "src/"
