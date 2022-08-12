@@ -38,8 +38,14 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "optimize-autoloader": true
-    },
+		"optimize-autoloader": true,
+		"sort-packages": true,
+		"allow-plugins": {
+			"composer/installers": true,
+			"roots/wordpress-core-installer": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
     "scripts": {
         "cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
         "csfix": "@php ./vendor/bin/phpcbf",
