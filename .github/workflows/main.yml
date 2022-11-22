@@ -12,13 +12,21 @@ jobs:
     runs-on: ubuntu-latest    
     strategy:
       matrix:
-        php-versions: ['7.4', '8.0', '8.1']
+        php-versions:
+          - '7.4'
+          - '8.0'
+          - '8.1'
+        
+        include:
+          - php-version: '8.2'
+            experimental: true
+            
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v3
 
-    - name: Setup PHP
+    - name: Setup PHP Version ${{ matrix.php-versions }}
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-versions }}
