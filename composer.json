@@ -18,7 +18,7 @@
         "psr/log": "^1|^2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^9.6.33",
         "inpsyde/php-coding-standards": "^1.0",
         "antecedent/patchwork": "^2.1"
     },
