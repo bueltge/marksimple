@@ -27,7 +27,8 @@ class Image extends AbstractRegexRule
         $alt = '';
         if (isset($content[2])) {
             $content[2] = str_replace('"', '', $content[2]);
-            $alt = ' alt="' . htmlspecialchars($content[2], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') . '"';
+            $escapedAlt = htmlspecialchars($content[2], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+            $alt = sprintf(' alt="%s"', $escapedAlt);
         }
 
         return sprintf('<img src="%s"%s />', $url, $alt);
