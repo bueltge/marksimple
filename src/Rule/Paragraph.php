@@ -9,9 +9,9 @@ class Paragraph implements ElementRuleInterface
     /**
      * Store the strings, there we exclude on set paragraph.
      *
-     * @var array
+     * @var string[]
      */
-    protected static $paragraphExcludes = [
+    protected static array $paragraphExcludes = [
         '<', // HTML.
         '    ', // Code.
         "\t", // Tab.
