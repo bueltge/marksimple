@@ -1,11 +1,22 @@
+build:
+  environment:
+    php:
+      version: 8.2
+  dependencies:
+    override:
+      - composer install --no-interaction --prefer-dist
+  nodes:
+    analysis:
+      tests:
+        override:
+          - php-scrutinizer-run
+          
 filter:
     paths: [src/*]
     excluded_paths: [vendor/*, tests/*, test/*]
 
-before_commands:
-    - 'composer install --dev --prefer-source'
-
 tools:
+    php_code_sniffer: false
     external_code_coverage:
         timeout: 100
         runs: 1
