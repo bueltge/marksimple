@@ -27,6 +27,7 @@ class Marksimple
     /**
      * Define the default rules.
      *
+     * @var array<string, class-string<ElementRuleInterface>>
      */
     protected array $defaultRules = [
         'header' => Rule\Header::class,
@@ -48,6 +49,7 @@ class Marksimple
     /**
      * Store the tags that we parse and render to html.
      *
+     * @var array<string, ElementRuleInterface>
      */
     protected array $rules = [];
 
@@ -66,7 +68,7 @@ class Marksimple
     /**
      * Add default rules.
      */
-    protected function initDefaultRules()
+    protected function initDefaultRules(): void
     {
         foreach ($this->defaultRules as $name => $class) {
             $this->addRule($name, new $class());
@@ -79,7 +81,7 @@ class Marksimple
      * @param string $name
      * @param ElementRuleInterface $rule
      */
-    public function addRule(string $name, ElementRuleInterface $rule)
+    public function addRule(string $name, ElementRuleInterface $rule): void
     {
         $this->rules[$name] = $rule;
     }
