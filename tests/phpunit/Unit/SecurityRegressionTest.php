@@ -63,7 +63,17 @@ class SecurityRegressionTest extends AbstractTestCase
         $output = (new Marksimple())->parse(
             '[click](https://example.test/" onmouseover="alert(1))'
         );
-        static::assertStringNotContainsString('onmouseover=', $output);
+
+        $document = new \DOMDocument();
+        $document->loadHTML($output, LIBXML_NONET);
+
+        $link = $document->getElementsByTagName('a')->item(0);
+        static::assertNotNull($link);
+        static::assertSame(
+            'https://example.test/" onmouseover="alert(1',
+            $link->getAttribute('href')
+        );
+        static::assertFalse($link->hasAttribute('onmouseover'));
     }
 
     /**
