@@ -7,6 +7,36 @@ on:
     branches: [ master ]
 
 jobs:
+  # Automatically fixes code style errors that can be resolved and commits them
+  # Only for pull requests from your own repo (not for forks, not on master)
+  autofix:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      - name: Install dependencies
+        run: composer install -q -n -a --no-progress --prefer-dist
+
+      - name: Run PHPCBF
+        # Exit-Code 1/2 bedeutet "es wurde etwas gefixt", daher || true
+        run: ./vendor/bin/phpcbf || true
+
+      - name: Commit fixes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "style: apply phpcbf fixes"
+          
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
