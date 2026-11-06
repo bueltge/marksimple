@@ -9,7 +9,7 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class ItalicTest extends AbstractRuleTestCase
 {
 
-    public function provideList()
+    public static function provideList(): iterable
     {
 
         yield 'underline' => ['_Content in italic_', '<em>Content in italic</em>'];

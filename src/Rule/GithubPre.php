@@ -23,7 +23,7 @@ class GithubPre extends AbstractRegexRule
     public function render(array $content): string
     {
         // Define css class for each language.
-        $language = !empty($content[3]) ? filter_var($content[3], FILTER_SANITIZE_STRING) : '';
+        $language = !empty($content[3]) ? $content[3] : '';
         $class = !empty($language) ? sprintf(' class="%s language-%s"', $language, $language) : '';
         // Build one block so that we not create each paragraph.
         $content = str_replace("\n", '<br>', $content[4]);

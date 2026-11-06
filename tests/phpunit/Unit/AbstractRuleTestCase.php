@@ -5,6 +5,7 @@ namespace Bueltge\Marksimple\Tests\Unit;
 use Bueltge\Marksimple\Marksimple;
 use Bueltge\Marksimple\Rule\ElementRuleInterface;
 use Bueltge\Marksimple\Rule\RegexRuleInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 abstract class AbstractRuleTestCase extends AbstractTestCase
 {
@@ -38,11 +39,10 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
     }
 
     /**
-     * @dataProvider provideList
-     *
      * @param string $input
      * @param string $expected
      */
+    #[DataProvider('provideList')]
     public function testList(string $input, string $expected)
     {
         $testee = $this->returnRule();
@@ -55,5 +55,5 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
      *
      * @return array [ [ 'input text', 'expected output' ] ]
      */
-    abstract public function provideList();
+    abstract public static function provideList(): iterable;
 }

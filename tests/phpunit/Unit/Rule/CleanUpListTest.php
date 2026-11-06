@@ -9,7 +9,7 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class CleanUpListTest extends AbstractRuleTestCase
 {
 
-    public function provideList()
+    public static function provideList(): iterable
     {
         $text = 'Lorum Ipsum';
         yield 'noreplacement' => ['</ul><ul>', '</ul><ul>'];

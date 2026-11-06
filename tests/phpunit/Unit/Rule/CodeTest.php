@@ -15,7 +15,7 @@ class CodeTest extends AbstractRuleTestCase
         return new Rule\Code();
     }
 
-    public function provideList()
+    public static function provideList(): iterable
     {
         yield 'simple' => ['`code`', '<code>code</code>'];
 

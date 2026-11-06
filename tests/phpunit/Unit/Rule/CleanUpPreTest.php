@@ -9,7 +9,7 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class CleanUpPreTest extends AbstractRuleTestCase
 {
 
-    public function provideList()
+    public static function provideList(): iterable
     {
         yield 'simple' => ["</code></pre>\n<pre><code>", '<br>'];
     }

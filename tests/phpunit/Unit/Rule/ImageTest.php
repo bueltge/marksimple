@@ -8,7 +8,7 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class ImageTest extends AbstractRuleTestCase
 {
 
-    public function provideList()
+    public static function provideList(): iterable
     {
 
         $input    = '![String](path/to/image.png)';
@@ -23,6 +23,11 @@ class ImageTest extends AbstractRuleTestCase
         yield 'image with alt' => [
             '![String](path/to/image.png "Alt string")',
             '<img src="path/to/image.png" alt="Alt string" />',
+        ];
+
+        yield 'image with escaped alt' => [
+            '![String](path/to/image.png "A & B <C>")',
+            '<img src="path/to/image.png" alt="A &amp; B &lt;C&gt;" />',
         ];
     }
 

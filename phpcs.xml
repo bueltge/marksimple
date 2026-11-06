@@ -5,9 +5,11 @@
  <file>./src</file>
 
  <!-- Code Reviews Rules -->
- <rule ref="Inpsyde"/>
+ <rule ref="Inpsyde">
+    <exclude name="WordPress.PHP.POSIXFunctions"/>
+    <exclude name="WordPressVIPMinimum.Functions.DynamicCalls"/>
+ </rule>
  <rule ref="WordPress.Security.EscapeOutput">
     <severity>0</severity>
  </rule>
 </ruleset>
-

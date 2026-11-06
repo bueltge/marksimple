@@ -15,7 +15,7 @@ class StrongTest extends AbstractRuleTestCase
         return new Rule\Strong();
     }
 
-    public function provideList()
+    public static function provideList(): iterable
     {
 
         yield 'star' => ['**Strong word**', '<strong>Strong word</strong>'];
