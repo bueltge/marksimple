@@ -15,23 +15,20 @@ class Marksimple
     /**
      * Error log level number
      *
-     * @var integer
      */
-    private $errorLogLevel = 200;
+    private int $errorLogLevel = 200;
 
     /**
      * logger class
      *
-     * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * Define the default rules.
      *
-     * @var array
      */
-    protected $defaultRules = [
+    protected array $defaultRules = [
         'header' => Rule\Header::class,
         'image' => Rule\Image::class,
         'link' => Rule\Link::class,
@@ -51,9 +48,8 @@ class Marksimple
     /**
      * Store the tags that we parse and render to html.
      *
-     * @var array
      */
-    protected $rules = [];
+    protected array $rules = [];
 
     /**
      * Marksimple constructor.
