@@ -42,10 +42,6 @@ class SecurityRegressionTest extends AbstractTestCase
      */
     public function testJavascriptLinkIsRejected(): void
     {
-        $this->markTestIncomplete(
-            'Known security gap: link destinations are not validated against executable schemes.'
-        );
-
         $output = (new Marksimple())->parse('[click](javascript:alert(1))');
         static::assertStringNotContainsString('href="javascript:', $output);
     }
@@ -55,10 +51,6 @@ class SecurityRegressionTest extends AbstractTestCase
      */
     public function testDataLinkIsRejected(): void
     {
-        $this->markTestIncomplete(
-            'Known security gap: data: link destinations are accepted without a scheme allowlist.'
-        );
-
         $output = (new Marksimple())->parse('[click](data:text/html,example)');
         static::assertStringNotContainsString('href="data:', $output);
     }
@@ -68,10 +60,6 @@ class SecurityRegressionTest extends AbstractTestCase
      */
     public function testLinkAttributeInjectionIsEscaped(): void
     {
-        $this->markTestIncomplete(
-            'Known security gap: quotes in link destinations can escape the href attribute.'
-        );
-
         $output = (new Marksimple())->parse(
             '[click](https://example.test/" onmouseover="alert(1))'
         );
