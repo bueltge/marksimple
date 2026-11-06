@@ -15,7 +15,7 @@ class PreTest extends AbstractRuleTestCase
         return new Rule\Pre();
     }
 
-    public function provideList()
+    public static function provideList()
     {
 
         yield 'prespace' => ['    Code block', '<pre><code>Code block</code></pre>'];

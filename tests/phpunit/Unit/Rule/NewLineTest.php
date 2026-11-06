@@ -12,7 +12,7 @@ class NewLineTest extends AbstractRuleTestCase
     /**
      * @return array|\Generator
      */
-    public function provideList()
+    public static function provideList()
     {
         $input = '&lt;br&gt;';
         $expected = '&lt;br&gt;';

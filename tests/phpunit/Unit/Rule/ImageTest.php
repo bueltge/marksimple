@@ -8,7 +8,7 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class ImageTest extends AbstractRuleTestCase
 {
 
-    public function provideList()
+    public static function provideList()
     {
 
         $input    = '![String](path/to/image.png)';

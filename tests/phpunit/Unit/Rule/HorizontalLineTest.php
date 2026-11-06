@@ -9,7 +9,7 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class HorizontalLineTest extends AbstractRuleTestCase
 {
 
-    public function provideList()
+    public static function provideList()
     {
         $text = 'Lorum ipsum';
         $input = "$text\n---";
