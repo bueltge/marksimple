@@ -44,7 +44,6 @@ My class supports currently the follow syntax. But Pull Request are really welco
 
 #### Requirements
 
- * PHP 7.4 (not tested)
  * PHP 8.2 tested
 
 Install static via download, clone the repository or use dependency management via Composer
