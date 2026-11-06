@@ -108,7 +108,14 @@ class Marksimple
             throw new InvalideFileException($errorMessage);
         }
 
-        return $this->parse((string) file_get_contents($file, true));
+        $content = file_get_contents($file);
+        if ($content === false) {
+            $errorMessage = sprintf('File "%s" could not be read.', $file);
+            $this->logger->log($this->errorLogLevel, $errorMessage);
+            throw new InvalideFileException($errorMessage);
+        }
+
+        return $this->parse($content);
     }
 
     /**
