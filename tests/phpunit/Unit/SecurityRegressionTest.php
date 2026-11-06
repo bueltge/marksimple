@@ -38,6 +38,19 @@ class SecurityRegressionTest extends AbstractTestCase
     }
 
     /**
+     * Verify invalid UTF-8 bytes are replaced instead of discarded.
+     */
+    public function testInvalidUtf8IsReplacedDuringSanitization(): void
+    {
+        $output = (new Marksimple())->parse("invalid\xC3\x28sequence");
+
+        static::assertSame(
+            '<p>invalid' . "\u{FFFD}" . '(sequence</p>',
+            $output
+        );
+    }
+
+    /**
      * Verify JavaScript link destinations are rejected.
      */
     public function testJavascriptLinkIsRejected(): void

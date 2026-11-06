@@ -155,7 +155,7 @@ class Marksimple
         $content = trim($content, "\n");
 
         // Filter html.
-        $content = htmlentities($content, ENT_NOQUOTES, 'UTF-8');
+        $content = htmlentities($content, ENT_NOQUOTES | ENT_SUBSTITUTE, 'UTF-8');
 
         return $content;
     }
