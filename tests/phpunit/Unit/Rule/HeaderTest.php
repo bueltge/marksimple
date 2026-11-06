@@ -9,7 +9,7 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class HeaderTest extends AbstractRuleTestCase
 {
 
-    public static function provideList()
+    public static function provideList(): iterable
     {
 
         yield 'h1' => ['# Great playground.', '<h1 id="greatplayground">Great playground.</h1>'];

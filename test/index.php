@@ -17,7 +17,7 @@ require_once 'head.php';
             $ms = new Marksimple();
             print $ms->parseFile('../README.md');
         } catch ( InvalideFileException $e ) {
-            print filter_var($e->getMessage(), FILTER_SANITIZE_STRING);
+            print htmlspecialchars($e->getMessage(), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
         }
         ?>
     </article>

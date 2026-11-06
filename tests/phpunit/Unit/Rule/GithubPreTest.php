@@ -9,7 +9,7 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class GithubPreTest extends AbstractRuleTestCase
 {
 
-    public static function provideList()
+    public static function provideList(): iterable
     {
 
         $input    = <<<MARKDOWN

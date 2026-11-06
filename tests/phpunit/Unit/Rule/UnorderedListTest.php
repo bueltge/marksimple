@@ -15,7 +15,7 @@ class UnorderedListTest extends AbstractRuleTestCase
         return new Rule\UnorderedList();
     }
 
-    public static function provideList()
+    public static function provideList(): iterable
     {
 
         yield 'asterix' => ['* List Element', '<ul><li>List Element</li></ul>'];

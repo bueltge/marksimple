@@ -9,7 +9,7 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class LinkTest extends AbstractRuleTestCase
 {
 
-    public static function provideList()
+    public static function provideList(): iterable
     {
 
         $input    = '[link](url)';
