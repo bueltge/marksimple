@@ -1,4 +1,4 @@
-name: CI
+name: PHPCBF - CodeSniffer automatically correct coding.
 
 on:
   push:
