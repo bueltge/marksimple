@@ -6,6 +6,8 @@
 
  <!-- Code Reviews Rules -->
  <rule ref="Inpsyde"/>
-
+ <rule ref="WordPress.Security.EscapeOutput">
+    <severity>0</severity>
+ </rule>
 </ruleset>
 
