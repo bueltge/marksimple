@@ -1,0 +1,32 @@
+name: Update composer.lock
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          # Niedrigste unterstützte Version, damit die Lock-Datei überall passt
+          php-version: '8.2'
+          tools: composer
+
+      - name: Update lock file
+        run: composer update phpunit/phpunit --with-dependencies --no-interaction --no-progress --prefer-dist
+
+      - name: Validate
+        run: composer validate --strict
+
+      - name: Commit composer.lock
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "build: update composer.lock"
+          file_pattern: composer.lock
