@@ -6,8 +6,14 @@ namespace Bueltge\Marksimple\Tests\Unit;
 
 use Bueltge\Marksimple\Marksimple;
 
+/**
+ * Security regression tests for untrusted Markdown input.
+ */
 class SecurityRegressionTest extends AbstractTestCase
 {
+    /**
+     * Verify raw HTML is escaped in text and supported Markdown elements.
+     */
     public function testRawHtmlIsEscapedInTextAndMarkdownElements(): void
     {
         $testee = new Marksimple();
@@ -31,6 +37,9 @@ class SecurityRegressionTest extends AbstractTestCase
         }
     }
 
+    /**
+     * Verify JavaScript link destinations are rejected.
+     */
     public function testJavascriptLinkIsRejected(): void
     {
         $this->markTestIncomplete(
@@ -41,6 +50,9 @@ class SecurityRegressionTest extends AbstractTestCase
         static::assertStringNotContainsString('href="javascript:', $output);
     }
 
+    /**
+     * Verify data URI link destinations are rejected.
+     */
     public function testDataLinkIsRejected(): void
     {
         $this->markTestIncomplete(
@@ -51,6 +63,9 @@ class SecurityRegressionTest extends AbstractTestCase
         static::assertStringNotContainsString('href="data:', $output);
     }
 
+    /**
+     * Verify quotes in link URLs cannot inject HTML attributes.
+     */
     public function testLinkAttributeInjectionIsEscaped(): void
     {
         $this->markTestIncomplete(
@@ -63,6 +78,9 @@ class SecurityRegressionTest extends AbstractTestCase
         static::assertStringNotContainsString('onmouseover=', $output);
     }
 
+    /**
+     * Verify quotes in image URLs cannot inject HTML attributes.
+     */
     public function testImageUrlAttributeInjectionIsEscaped(): void
     {
         $this->markTestIncomplete(
@@ -75,6 +93,9 @@ class SecurityRegressionTest extends AbstractTestCase
         static::assertStringNotContainsString('onerror=', $output);
     }
 
+    /**
+     * Verify JavaScript image URLs are rejected.
+     */
     public function testImageJavascriptUrlIsRejected(): void
     {
         $this->markTestIncomplete(
@@ -85,6 +106,9 @@ class SecurityRegressionTest extends AbstractTestCase
         static::assertStringNotContainsString('src="javascript:', $output);
     }
 
+    /**
+     * Verify image alt text cannot inject HTML attributes.
+     */
     public function testImageAltAttributeInjectionIsEscaped(): void
     {
         $this->markTestIncomplete(
@@ -95,6 +119,9 @@ class SecurityRegressionTest extends AbstractTestCase
         static::assertStringNotContainsString('onerror=', $output);
     }
 
+    /**
+     * Verify script markup in image alt text is escaped.
+     */
     public function testImageAltScriptIsEscaped(): void
     {
         $this->markTestIncomplete(
@@ -105,6 +132,9 @@ class SecurityRegressionTest extends AbstractTestCase
         static::assertStringNotContainsString('<script', $output);
     }
 
+    /**
+     * Verify CRLF and CR line endings are normalized to LF.
+     */
     public function testCrLfAndCrLineEndingsAreNormalized(): void
     {
         $testee = new Marksimple();
