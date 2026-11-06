@@ -37,8 +37,3 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "style: apply phpcbf fixes [skip ci]"
-
-  build:
-    needs: autofix
-    runs-on: ubuntu-latest
-    # ... dein bisheriger Job unverändert
