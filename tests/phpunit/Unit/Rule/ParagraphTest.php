@@ -9,7 +9,7 @@ use Bueltge\Marksimple\Tests\Unit\AbstractRuleTestCase;
 class ParagraphTest extends AbstractRuleTestCase
 {
 
-    public function provideList()
+    public static function provideList()
     {
 
         yield 'normal paragraph' => [

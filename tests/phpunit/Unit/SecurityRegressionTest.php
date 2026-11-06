@@ -1,0 +1,116 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bueltge\Marksimple\Tests\Unit;
+
+use Bueltge\Marksimple\Marksimple;
+
+class SecurityRegressionTest extends AbstractTestCase
+{
+    public function testRawHtmlIsEscapedInTextAndMarkdownElements(): void
+    {
+        $testee = new Marksimple();
+        $inputs = [
+            'text' => '<script>alert(1)</script>',
+            'header' => '# <script>alert(1)</script>',
+            'list' => '- <script>alert(1)</script>',
+            'code' => '`<script>alert(1)</script>`',
+            'pre' => '    <script>alert(1)</script>',
+        ];
+
+        foreach ($inputs as $context => $input) {
+            $output = $testee->parse($input);
+
+            static::assertStringNotContainsString('<script', $output, $context);
+            static::assertStringContainsString(
+                '&lt;script&gt;',
+                $output,
+                $context
+            );
+        }
+    }
+
+    public function testJavascriptLinkIsRejected(): void
+    {
+        $this->markTestIncomplete(
+            'Known security gap: link destinations are not validated against executable schemes.'
+        );
+
+        $output = (new Marksimple())->parse('[click](javascript:alert(1))');
+        static::assertStringNotContainsString('href="javascript:', $output);
+    }
+
+    public function testDataLinkIsRejected(): void
+    {
+        $this->markTestIncomplete(
+            'Known security gap: data: link destinations are accepted without a scheme allowlist.'
+        );
+
+        $output = (new Marksimple())->parse('[click](data:text/html,example)');
+        static::assertStringNotContainsString('href="data:', $output);
+    }
+
+    public function testLinkAttributeInjectionIsEscaped(): void
+    {
+        $this->markTestIncomplete(
+            'Known security gap: quotes in link destinations can escape the href attribute.'
+        );
+
+        $output = (new Marksimple())->parse(
+            '[click](https://example.test/" onmouseover="alert(1))'
+        );
+        static::assertStringNotContainsString('onmouseover=', $output);
+    }
+
+    public function testImageUrlAttributeInjectionIsEscaped(): void
+    {
+        $this->markTestIncomplete(
+            'Known security gap: a hostile image URL can inject an HTML attribute.'
+        );
+
+        $output = (new Marksimple())->parse(
+            '![image](https://example.test/image.png" onerror="alert(1))'
+        );
+        static::assertStringNotContainsString('onerror=', $output);
+    }
+
+    public function testImageJavascriptUrlIsRejected(): void
+    {
+        $this->markTestIncomplete(
+            'Known security gap: image URLs are not validated against executable schemes.'
+        );
+
+        $output = (new Marksimple())->parse('![image](javascript:alert(1))');
+        static::assertStringNotContainsString('src="javascript:', $output);
+    }
+
+    public function testImageAltAttributeInjectionIsEscaped(): void
+    {
+        $this->markTestIncomplete(
+            'Known security gap: hostile image title text is not consistently HTML-escaped.'
+        );
+
+        $output = (new Marksimple())->parse('![image](path "alt" onerror="alert(1)")');
+        static::assertStringNotContainsString('onerror=', $output);
+    }
+
+    public function testImageAltScriptIsEscaped(): void
+    {
+        $this->markTestIncomplete(
+            'Known security gap: script content in image title text is not consistently escaped.'
+        );
+
+        $output = (new Marksimple())->parse('![image](path "<script>alert(1)</script>")');
+        static::assertStringNotContainsString('<script', $output);
+    }
+
+    public function testCrLfAndCrLineEndingsAreNormalized(): void
+    {
+        $testee = new Marksimple();
+        $expected = $testee->parse("first\nsecond");
+
+        static::assertSame($expected, $testee->parse("first\r\nsecond"));
+        static::assertSame($expected, $testee->parse("first\rsecond"));
+    }
+}

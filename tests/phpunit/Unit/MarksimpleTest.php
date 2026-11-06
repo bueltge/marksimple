@@ -146,6 +146,10 @@ class MarksimpleTest extends AbstractTestCase
      */
     public function testParseFileNoReadable()
     {
+        if (DIRECTORY_SEPARATOR === '\\') {
+            $this->markTestSkipped('chmod() cannot make files unreadable on Windows.');
+        }
+
         $this->expectException(InvalideFileException::class);
         $testee = new Marksimple();
         $testee->parseFile($this->noReadableFile);
