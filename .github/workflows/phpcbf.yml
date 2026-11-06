@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+permissions:
+  contents: write
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    # Nur für Branches im eigenen Repo, nicht für Forks
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Bei PRs den Branch auschecken, nicht den Merge-Commit
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      - name: Install dependencies
+        run: composer install -q -n -a --no-progress --prefer-dist
+
+      - name: Run PHPCBF
+        # phpcbf gibt Exit-Code 1 zurück, wenn etwas gefixt wurde
+        run: ./vendor/bin/phpcbf || true
+
+      - name: Commit fixes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "style: apply phpcbf fixes [skip ci]"
+
+  build:
+    needs: autofix
+    runs-on: ubuntu-latest
+    # ... dein bisheriger Job unverändert
