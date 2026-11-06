@@ -22,6 +22,18 @@ class Link extends AbstractRegexRule
      */
     public function render(array $content): string
     {
-        return '<a href="' . $content[2] . '">' . $content[1] . '</a>';
+        $url = $content[2];
+        $normalizedUrl = preg_replace('/[\x00-\x20\x7f]+/', '', $url);
+
+        if (
+            preg_match('/^[a-z][a-z0-9+.-]*:/i', $normalizedUrl, $scheme) === 1
+            && !in_array(strtolower(substr($scheme[0], 0, -1)), ['http', 'https', 'mailto'], true)
+        ) {
+            return $content[1];
+        }
+
+        $escapedUrl = htmlspecialchars($url, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8', false);
+
+        return '<a href="' . $escapedUrl . '">' . $content[1] . '</a>';
     }
 }
