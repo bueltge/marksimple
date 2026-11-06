@@ -55,5 +55,5 @@ abstract class AbstractRuleTestCase extends AbstractTestCase
      *
      * @return array [ [ 'input text', 'expected output' ] ]
      */
-    abstract public static function provideList();
+    abstract public function provideList();
 }
