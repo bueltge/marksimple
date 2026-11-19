@@ -18,7 +18,7 @@
         "psr/log": "^1|^2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^13.4",
+        "phpunit/phpunit": "^11.5",
         "inpsyde/php-coding-standards": "^2.0",
         "antecedent/patchwork": "^2.1"
     },
@@ -35,14 +35,12 @@
             "Bueltge\\Marksimple\\Tests\\Unit\\": "tests/phpunit/Unit/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "config": {
         "optimize-autoloader": true,
         "sort-packages": true,
         "allow-plugins": {
-            "composer/installers": true,
-            "roots/wordpress-core-installer": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
