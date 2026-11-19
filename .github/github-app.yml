@@ -1,24 +1,7 @@
-# GitHub App Manifest / Konfigurationsdatei (.github/github-app.yml)
-version: 1
-
-# Grundlegende Informationen zur App-Konfiguration
-name: "Copilot & Bot Workflow Integration"
-description: "Repository-spezifische Konfiguration für automatisierte Workflows und Copilot-Assistenten."
-
-# Standard-Anweisungen und Prompt-Kontext für Copilot im Repository
+# Repository configuration for the GitHub Copilot app
+# https://docs.github.com/copilot/reference/github-copilot-app-reference/repository-configuration
 instructions: |
   # Repository-Richtlinien für GitHub Copilot
   - Achten Sie darauf, bestehende Architekturmuster und Code-Konventionen (z. B. Coding Styles, Namenskonventionen) einzuhalten.
   - Dokumentieren Sie neue Funktionen und Schnittstellen direkt im jeweiligen Code-Modul.
   - Vermeiden Sie hardgecodete Secrets oder sensible Konfigurationswerte im Code.
-
-# Berechtigungen und Events (Beispielhaft für Automatisierungen)
-default_permissions:
-  contents: write
-  pull_requests: write
-  issues: read
-
-default_events:
-  - pull_request
-  - push
-  - issues
