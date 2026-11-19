@@ -10,6 +10,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Lower `phpunit/phpunit` to `^11.5`: PHPUnit 13 requires PHP 8.4, but the library and CI support PHP 8.2 and 8.3. Refresh `composer.lock`.
 * Set `minimum-stability` to `stable` and remove unused `allow-plugins` entries.
 * CI: remove the duplicate `phpcbf.yml` autofix workflow (autofix stays in `main.yml` for pull requests), set default `contents: read` permissions, drop the redundant non-blocking `phpcs` step and `composer clear-cache`, and cache Composer packages.
+* Create the unreadable test file in the system temp directory, so no `no_readable_file.txt` is left in the repository.
+* Remove the coverage reports from `phpunit.xml.dist` (no more "No code coverage driver" warning) and add the `composer coverage` script.
+* Reduce `.github/github-app.yml` to the supported `instructions` key and update the PHP requirement in the README.
 * Update `antecedent/patchwork` to 2.2.5 and `stefanzweifel/git-auto-commit-action` to 7.
 
 ## 2.3.0 (2026-11-06)
