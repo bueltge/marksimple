@@ -5,6 +5,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   update-lock:
@@ -25,8 +26,14 @@ jobs:
       - name: Validate
         run: composer validate --strict
 
-      - name: Commit composer.lock
-        uses: stefanzweifel/git-auto-commit-action@v7
+      # Requires "Allow GitHub Actions to create and approve pull requests"
+      # in the repository settings (Actions > General).
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
         with:
-          commit_message: "build: update composer.lock"
-          file_pattern: composer.lock
+          add-paths: composer.lock
+          branch: build/update-composer-lock
+          delete-branch: true
+          commit-message: "build: update composer.lock"
+          title: "build: update composer.lock"
+          body: "Automated update of `composer.lock` via the *Update composer.lock* workflow (PHP 8.2 platform)."
